@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>AWA SITE</title>
+    <meta name="description" content="kawasawa Home Page">
+    <link rel="canonical" href="https://kawasawa.github.io/">
+
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="AWA SITE"/>
+    <meta property="og:description" content="kawasawa Home Page"/>
+    <meta property="og:url" content="https://kawasawa.github.io/"/>
+    <meta property="og:image" content="img/image-top.jpg"/>
+    <meta property="og:site_name" content="AWA SITE"/>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/media-queries.css">
+    <style type="text/css">
+        .jumbotron {
+            background-image: url(img/image-top.jpg);
+        }
+
+        .page-top {
+            height: 100vh;
+            overflow: hidden;
+            padding-right: 0;
+            padding-left: 0;
+        }
+
+        .ttl-bdr {
+            font-size: 3rem;
+            line-height: 1.5;
+            position: relative;
+            margin-bottom: 50px;
+        }
+        .ttl-bdr::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-bottom: 2px solid #000;
+            width: 12%;
+            margin: 0 auto -15px;
+        }
+
+        #sec-links article > .row {
+            border: 1px solid #dddddd;
+        }
+        #sec-links > div:nth-child(1) img {
+            width: 100%;
+        }
+        #sec-links h3{
+            margin-bottom: 0.1rem;
+        }
+        #sec-links article > div div header {
+            padding: 10px;
+        }
+
+        #footer-sns a {
+            color: #696969;
+        }
+        #footer-sns a:hover {
+            color: #a9a9a9;
+        }
+    </style>
+</head>
+
+<body data-spy="scroll" data-target="#navbar">
+    <header class="page-top">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="img/logo-white.png" alt="logo" class="logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="ナビゲーションの切替">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbar">
+                    <ul class="navbar-nav py-3 py-lg-0 mt-3 mt-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="#sec-tools">TOOLS</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#sec-links">LINKS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="jumbotron jumbotron-fluid img-responsive mb-0">
+            <div class="container">
+                <div class="col-md-7 ml-auto bg-rgba p-4 rounded">
+                    <h1 class="display-4 font-weight-bold mb-4">OUR AWA SITE</h1>
+                    <h2 class="lead font-weight-bold text-right">Powered by GitHub Pages</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="sec-tools" class="container py-5">
+            <h2 class="font-weight-bold text-center ttl-bdr">TOOLS</h2>
+            <div class="row py-4">
+                <div class="col-md-7 text-center mb-4">
+                    <h3 class="h1 font-weight-bold">
+                        MyPad
+                    </h3>
+                    <p class="h2 text-muted">
+                        Text Editor
+                    </p>
+                    <p class="lead text-left">
+                        簡単操作ですぐに使えるフラットデザインのメモ帳です。
+                        標準のメモ帳では足りないちょっとした機能のほか、簡単なコーディングにも利用できます。
+                    </p>
+                    <a type="button" class="btn-secondary btn-lg mb-4" target="_blank" href="https://www.microsoft.com/ja-jp/p/mypad-%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF/9pp2600zm2jd">
+                        Download
+                    </a>
+                </div>
+                <div class="col-md-5">
+                    <img class="card-img-top rounded-0" src="img/mypad.jpg" alt="MyPad">
+                </div>
+            </div>
+
+            <hr/>
+
+            <div class="row py-4">
+                <div class="col-md-7 text-center mb-4 order-md-2">
+                    <h3 class="h1 font-weight-bold">
+                        Plow / Plow.Wpf
+                    </h3>
+                    <p class="h2 text-muted">
+                        Libraries for developers
+                    </p>
+                    <p class="lead text-left">
+                        Prism / Prism.Wpf を使用したアプリケーションの開発をサポートするための軽量ライブラリです。
+                        標準機能を拡張するための少数のクラスから構成されています。
+                    </p>
+                    <a type="button" class="btn-secondary btn-lg mb-4" target="_blank" href="https://www.nuget.org/packages/Plow">
+                        Download (Plow)
+                    </a>
+                    <a type="button" class="btn-secondary btn-lg mb-4" target="_blank" href="https://www.nuget.org/packages/Plow.Wpf">
+                        Download (Plow.Wpf)
+                    </a>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <img class="card-img-top rounded-0" src="img/nuget.jpg" alt="NuGet">
+                </div>
+            </div>
+
+            <hr/>
+
+            <div class="row py-4">
+                <div class="col-md-7 text-center mb-4">
+                    <h3 class="h1 font-weight-bold">
+                        こよみ
+                    </h3>
+                    <p class="h2 text-muted">
+                        Japanese Calendar
+                    </p>
+                    <p class="lead text-left">
+                        暦の情報を一覧できるアプリです。
+                        四季や二十四節季のほか干支、六曜、十二星座など詳細に確認することができます。
+                    </p>
+                    <a type="button" class="btn-secondary btn-lg mb-4" target="_blank" href="https://www.microsoft.com/ja-jp/p/%E3%81%93%E3%82%88%E3%81%BF/9p8klstr60nm">
+                        Download
+                    </a>
+                </div>
+                <div class="col-md-5">
+                    <img class="card-img-top rounded-0" src="img/koyomi.jpg" alt="Koyomi">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-light">
+        <section id="sec-links" class="container py-4 py-md-5">
+            <h2 class="font-weight-bold text-center ttl-bdr">LINKS</h2>
+            <div id="footer-sns" class="row align-items-center border-bottom py-4">
+                <div class="col-6 col-lg-3 pb-4">
+                    <a class="d-flex align-items-center" target="_blank" rel="nofollow" href="https://qiita.com/kawasawa">
+                        <span class="fa-stack fa-2x" style="margin-right: 25px; color:greenyellow">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-search fa-stack-1x fa-inverse fa-2x"></i>
+                        </span>
+                        <span>Qiita</span>
+                    </a>
+                </div>
+                <div class="col-6 col-lg-3 pb-4">
+                    <a class="d-flex align-items-center" target="_blank" rel="nofollow" href="https://github.com/kawasawa">
+                        <i class="fab fa-github fa-4x" style="margin-right: 25px; color: gray" aria-hidden="true"></i>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+                <div class="col-6 col-lg-3 pb-4">
+                    <a class="d-flex align-items-center" target="_blank" rel="nofollow" href="https://www.facebook.com/kazuki.awasawa/">
+                        <i class="fab fa-facebook fa-4x" style="margin-right: 25px; color: dodgerblue" aria-hidden="true"></i>
+                        <span>Facebook</span>
+                    </a>
+                </div>
+                <div class="col-6 col-lg-3 pb-4">
+                    <a class="d-flex align-items-center" target="_blank" rel="nofollow" href="https://www.linkedin.com/in/kawasawa/">
+                        <i class="fab fa-linkedin fa-4x" style="margin-right: 25px; color: steelblue" aria-hidden="true"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="bg-dark text-white py-3">
+            <div class="text-center">
+                <h6>© Kazuki Awasawa All Rights Reserved.</h6>
+            </div>
+        </div>
+    </footer>
+
+    <nav>
+        <p id="btn-gototop"><a href="#">PAGE TOP</a></p>
+    </nav>
+
+    <script src="https://code.jquery.com/jquery-3.4.0.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+/*
+ * 大デバイス（デスクトップ, 1200px 未満）
+ */
+@media screen and (max-width: 1199.98px) {
+  .herounit h1 {
+    margin-top: 10rem;
+  }
+}
+
+/*
+ * 中デバイス（タブレット, 992px 未満）
+ */
+@media screen and (max-width: 991.98px) {
+  .container {
+    max-width: 740px;
+  }
+}
+
+/*
+ * 小デバイス（横向きモバイル, 768px 未満）
+ */
+@media screen and (max-width: 767.98px) {
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1.2;
+  }
+  header .navbar-brand {
+    width: 70%;
+  }
+  header .navbar-brand .logo {
+    width: 100%;
+  }
+  header .navbar-nav {
+    border-top: 1px solid #fff;
+  }
+}
+
+/*
+ * 極小デバイス（縦向きモバイル, 576px 未満）
+ */
+@media screen and (max-width: 575.98px) {
+  .display-3 {
+    line-height: 0.8em;
+  }
+  .display-4 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+    header .navbar-brand {
+    width: 70%;
+  }
+}
