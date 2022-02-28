@@ -1,0 +1,446 @@
+{
+	"info": {
+		"name": "kawasawa.github.io",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "spreadsheets",
+			"item": [
+				{
+					"name": "articles-metadata",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('ステータスコードが 200 であること', () => {",
+									"    pm.response.to.status(200);",
+									"});",
+									"",
+									"pm.test('Content-Type が \"application/json\" であること', () => {",
+									"    pm.expect(pm.response.headers.get('Content-Type').toLowerCase()).to.include('application/json');",
+									"});",
+									"",
+									"pm.test('記事のメタデータを取得できること', () => {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData.values.length).to.gte(2)",
+									"    pm.expect(responseData.values[0]).to.eql([",
+									"        'id', 'title', 'body', 'tags', 'url', 'likes_count', 'stocks_count', 'comments_count', 'created_at', 'updated_at'",
+									"    ]);",
+									"    for (let i = 1; i < responseData.values.length; i++) {",
+									"        pm.expect(responseData.values[i][0]).to.match(/^[0-9a-zA-Z]+$/);",
+									"        pm.expect(responseData.values[i][1]).not.to.empty;",
+									"        pm.expect(responseData.values[i][2]).not.to.empty;",
+									"        pm.expect(responseData.values[i][4]).to.match(/^https?:\\/\\/[\\w/:%#\\$&\\?\\(\\)~\\.=\\+\\-]+$/);",
+									"        pm.expect(responseData.values[i][5]).to.match(/^[0-9]+$/);",
+									"        pm.expect(responseData.values[i][6]).to.match(/^[0-9]+$/);",
+									"        pm.expect(responseData.values[i][7]).to.match(/^[0-9]+$/);",
+									"        pm.expect(responseData.values[i][8]).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\+\\d{2}:\\d{2}$/);",
+									"        pm.expect(responseData.values[i][9]).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\+\\d{2}:\\d{2}$/);",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Referer",
+								"value": "{{REFERER}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{REACT_APP_GOOGLEAPIS_URL}}/spreadsheets/{{REACT_APP_GOOGLE_SHEETS_ID}}/values/articles-metadata?key={{REACT_APP_GOOGLE_SHEETS_API_KEY}}",
+							"host": [
+								"{{REACT_APP_GOOGLEAPIS_URL}}"
+							],
+							"path": [
+								"spreadsheets",
+								"{{REACT_APP_GOOGLE_SHEETS_ID}}",
+								"values",
+								"articles-metadata"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{REACT_APP_GOOGLE_SHEETS_API_KEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "articles-pickup",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('ステータスコードが 200 であること', () => {",
+									"    pm.response.to.status(200);",
+									"});",
+									"",
+									"pm.test('Content-Type が \"application/json\" であること', () => {",
+									"    pm.expect(pm.response.headers.get('Content-Type').toLowerCase()).to.include('application/json');",
+									"});",
+									"",
+									"pm.test('ピックアップ記事を取得できること', () => {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData.values.length).to.gte(2)",
+									"    pm.expect(responseData.values[0]).to.eql([",
+									"        'id', 'data'",
+									"    ]);",
+									"    for (let i = 1; i < responseData.values.length; i++) {",
+									"        pm.expect(responseData.values[i][0]).to.match(/^[0-9a-zA-Z]+$/);",
+									"        pm.expect(responseData.values[i][1]).to.match(/^data:image\\/webp;base64,.+$/);",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Referer",
+								"value": "{{REFERER}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{REACT_APP_GOOGLEAPIS_URL}}/spreadsheets/{{REACT_APP_GOOGLE_SHEETS_ID}}/values/articles-pickup?key={{REACT_APP_GOOGLE_SHEETS_API_KEY}}",
+							"host": [
+								"{{REACT_APP_GOOGLEAPIS_URL}}"
+							],
+							"path": [
+								"spreadsheets",
+								"{{REACT_APP_GOOGLE_SHEETS_ID}}",
+								"values",
+								"articles-pickup"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{REACT_APP_GOOGLE_SHEETS_API_KEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "version",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('ステータスコードが 200 であること', () => {",
+									"    pm.response.to.status(200);",
+									"});",
+									"",
+									"pm.test('Content-Type が \"application/json\" であること', () => {",
+									"    pm.expect(pm.response.headers.get('Content-Type').toLowerCase()).to.include('application/json');",
+									"});",
+									"",
+									"pm.test('最終更新日時を取得できること', () => {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData.values.length).to.gte(2)",
+									"    pm.expect(responseData.values[0]).to.eql(['last_update']);",
+									"    for (let i = 1; i < responseData.values.length; i++) {",
+									"        pm.expect(responseData.values[i][0]).to.match(/^\\d{4}\\/\\d{1,2}\\/\\d{1,2}\\s\\d{1,2}:\\d{1,2}:\\d{1,2}$/);",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Referer",
+								"value": "{{REFERER}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{REACT_APP_GOOGLEAPIS_URL}}/spreadsheets/{{REACT_APP_GOOGLE_SHEETS_ID}}/values/version?key={{REACT_APP_GOOGLE_SHEETS_API_KEY}}",
+							"host": [
+								"{{REACT_APP_GOOGLEAPIS_URL}}"
+							],
+							"path": [
+								"spreadsheets",
+								"{{REACT_APP_GOOGLE_SHEETS_ID}}",
+								"values",
+								"version"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{REACT_APP_GOOGLE_SHEETS_API_KEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "dev",
+			"item": [
+				{
+					"name": "error",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('ステータスコードが 500 であること', () => {",
+									"    pm.response.to.status(500);",
+									"});",
+									"",
+									"pm.test('Content-Type が \"application/json\" であること', () => {",
+									"    pm.expect(pm.response.headers.get('Content-Type').toLowerCase()).to.include('application/json');",
+									"});",
+									"",
+									"pm.test('エラーメッセージを取得できること', () => {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData.error.code).to.eql(500);",
+									"    pm.expect(responseData.error.message).to.match(/^Internal Server Error:.+$/);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Referer",
+								"value": "{{REFERER}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{REACT_APP_GOOGLEAPIS_URL}}/dev/error",
+							"host": [
+								"{{REACT_APP_GOOGLEAPIS_URL}}"
+							],
+							"path": [
+								"dev",
+								"error"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "boom-error",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('ステータスコードが 500 であること', () => {",
+									"    pm.response.to.status(500);",
+									"});",
+									"",
+									"pm.test('Content-Type が \"application/json\" であること', () => {",
+									"    pm.expect(pm.response.headers.get('Content-Type').toLowerCase()).to.include('application/json');",
+									"});",
+									"",
+									"pm.test('エラーメッセージを取得できること', () => {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData.error.code).to.eql(500);",
+									"    pm.expect(responseData.error.message).to.match(/^Internal Server Error:.+$/);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Referer",
+								"value": "{{REFERER}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{REACT_APP_GOOGLEAPIS_URL}}/dev/error/boom",
+							"host": [
+								"{{REACT_APP_GOOGLEAPIS_URL}}"
+							],
+							"path": [
+								"dev",
+								"error",
+								"boom"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "async-error",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('ステータスコードが 500 であること', () => {",
+									"    pm.response.to.status(500);",
+									"});",
+									"",
+									"pm.test('Content-Type が \"application/json\" であること', () => {",
+									"    pm.expect(pm.response.headers.get('Content-Type').toLowerCase()).to.include('application/json');",
+									"});",
+									"",
+									"pm.test('エラーメッセージを取得できること', () => {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData.error.code).to.eql(500);",
+									"    pm.expect(responseData.error.message).to.match(/^Internal Server Error:.+$/);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Referer",
+								"value": "{{REFERER}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{REACT_APP_GOOGLEAPIS_URL}}/dev/error/async",
+							"host": [
+								"{{REACT_APP_GOOGLEAPIS_URL}}"
+							],
+							"path": [
+								"dev",
+								"error",
+								"async"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "health",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('ステータスコードが 200 であること', () => {",
+							"    pm.response.to.status(200);",
+							"});",
+							"",
+							"pm.test('Content-Type が \"application/json\" であること', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type').toLowerCase()).to.include('application/json');",
+							"});",
+							"",
+							"pm.test('レスポンスを取得できること', () => {",
+							"    const responseData = pm.response.json();",
+							"    pm.expect(responseData.success).to.eql(true);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Referer",
+						"value": "{{REFERER}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{REACT_APP_GOOGLEAPIS_URL}}/health",
+					"host": [
+						"{{REACT_APP_GOOGLEAPIS_URL}}"
+					],
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "not-found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('ステータスコードが 404 であること', () => {",
+							"    pm.response.to.status(404);",
+							"});",
+							"",
+							"pm.test('Content-Type が \"application/json\" であること', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type').toLowerCase()).to.include('application/json');",
+							"});",
+							"",
+							"pm.test('エラーメッセージを取得できること', () => {",
+							"    const responseData = pm.response.json();",
+							"    pm.expect(responseData.error.code).to.eql(404);",
+							"    pm.expect(responseData.error.message).to.match(/^Not Found:.+$/);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Referer",
+						"value": "{{REFERER}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{REACT_APP_GOOGLEAPIS_URL}}/path/to/notfound",
+					"host": [
+						"{{REACT_APP_GOOGLEAPIS_URL}}"
+					],
+					"path": [
+						"path",
+						"to",
+						"notfound"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
