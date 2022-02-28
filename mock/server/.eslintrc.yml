@@ -1,0 +1,58 @@
+parser: '@typescript-eslint/parser'
+
+env:
+  es2020: true
+  node: true
+
+plugins:
+  - '@typescript-eslint'
+  - simple-import-sort
+
+extends:
+  - eslint:recommended
+  - plugin:@typescript-eslint/eslint-recommended
+  - plugin:@typescript-eslint/recommended
+  - prettier
+
+rules:
+  simple-import-sort/imports: error
+  simple-import-sort/exports: error
+  complexity:
+    - error
+    - 10
+  max-depth:
+    - warn
+    - 5
+  eqeqeq: error
+  no-multi-spaces: error
+  no-undef-init: error
+  no-var: error
+  prefer-const: error
+  prefer-template: warn
+  dot-notation: warn
+  '@typescript-eslint/explicit-module-boundary-types': 'off'
+  '@typescript-eslint/naming-convention':
+    - warn
+    - selector:
+        - parameter
+        - parameterProperty
+      format:
+        - camelCase
+      leadingUnderscore: allowSingleOrDouble
+    - selector:
+        - classMethod
+        - typeMethod
+      format:
+        - camelCase
+    - selector:
+        - class
+        - interface
+      format:
+        - PascalCase
+
+overrides:
+  - files: ['**/*.test.ts']
+    rules:
+      '@typescript-eslint/no-empty-function': off
+      '@typescript-eslint/no-explicit-any': off
+      '@typescript-eslint/no-non-null-assertion': off
