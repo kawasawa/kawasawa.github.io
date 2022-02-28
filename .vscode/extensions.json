@@ -1,0 +1,24 @@
+// ******************************************************************************
+// VSCode 拡張機能リコメンド
+// ******************************************************************************
+
+{
+  "recommendations": [
+    // インフラ開発
+    "ms-azuretools.vscode-docker",
+    "mtxr.sqltools",
+    "mtxr.sqltools-driver-mysql",
+    "Natizyskunk.sftp",
+
+    // Web 開発
+    "ms-vscode.vscode-typescript-next",
+    "Orta.vscode-jest",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+
+    // その他
+    "streetsidesoftware.code-spell-checker",
+    "Gruntfuggly.todo-tree",
+    "hediet.vscode-drawio"
+  ]
+}

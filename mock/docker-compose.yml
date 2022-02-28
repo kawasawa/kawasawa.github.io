@@ -1,0 +1,89 @@
+# プロジェクト名
+#   未指定時は親ディレクトリ名が使用される
+#   生成されるコンテナは `${プロジェクト名}-${サービス名}-${インデックス}` の規則で命名される
+name: kawasawa
+
+services:
+  mysql:
+    image: mysql:8.4 # LTS
+    platform: linux/amd64
+    env_file:
+      - ./server/.env
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql_volume:/var/lib/mysql
+      - ./docker/mysql/conf.d:/etc/mysql/conf.d
+      - ./docker/mysql/initdb.d:/docker-entrypoint-initdb.d
+    command: mysqld
+    init: true
+
+  express:
+    # ビルド対象 Dockerfile が配置されたホスト端末のディレクトリ
+    build: ./server
+    # ベースイメージ
+    #   build 指定時は Dockerfile からビルドされた Docker イメージ名にもなる
+    image: kawasawa.github.io/express.js
+    # 参照する環境変数ファイル
+    env_file:
+      - ./server/.env
+    # 明示的に定義する環境変数
+    #   ここでは .env に未定義 (つまりアプリ側と共有しない) の変数を宣言している
+    environment:
+      - MYSQL_HOST=mysql
+    # ホスト端末とバインドされるポート
+    ports:
+      - ${EXPRESS_PORT}:${EXPRESS_PORT}
+    # Docker ボリュームまたはホスト端末とバインドされるディレクトリ
+    #   ボリューム名を指定した場合は Docker ボリュームと、パスを指定した場合はホスト端末の該当パスとバインドされる
+    volumes:
+      - ./server/src:/usr/src/app/src/
+    # 依存先の Docker コンテナ
+    #   指定のコンテナが起動するまで開始が待機される
+    depends_on:
+      - mysql
+    # init プロセスの有効化
+    #   これにより子プロセスの適切なクリーンアップが行われる (ゾンビプロセスを抑止する)
+    init: true
+    # コンテナの自動再起動
+    #   ホストマシンの起動時、Docker サービスの起動時、コンテナの異常終了時に自動でコンテナを再起動する
+    #   商用環境の常時起動サービス (Web サーバや DB サーバなど) 向け
+    #restart: always
+
+  sonarqube:
+    image: sonarqube:community
+    environment:
+      # 起動時のエラーを回避する ("seccomp unavailable: CONFIG_SECCOMP not compiled into kernel, CONFIG_SECCOMP and CONFIG_SECCOMP_FILTER are needed")
+      # https://docs.sonarsource.com/sonarqube-server/latest/try-out-sonarqube/
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+    ports:
+      - 9000:9000
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - ./docker/sonarqube/logs:/opt/sonarqube/logs
+    init: true
+
+  sonarqube-init:
+    image: curlimages/curl:latest
+    environment:
+      - INIT_FLAG=/init/.init_done
+      - SONAR_QUBE_HOST=sonarqube
+      - SONAR_QUBE_PORT=9000
+      - PROJECT_NAME=kawasawa.github.io
+      - PROJECT_KEY=kawasawa
+    volumes:
+      - ./docker/sonarqube/init:/init
+    depends_on:
+      - sonarqube
+    entrypoint: ["/bin/sh", "/init/init.sh"]
+
+volumes:
+  mysql_volume:
+    # ボリューム名
+    #   未指定時は `${プロジェクト名}-${ボリューム名}` の規則で命名される
+    name: kawasawa_db
+  sonarqube_data:
+    name: kawasawa_sq_data
+  sonarqube_extensions:
+    name: kawasawa_sq_extensions
