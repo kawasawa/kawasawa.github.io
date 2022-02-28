@@ -1,0 +1,2 @@
+dsn: mysql://user:password@localhost:3306/database
+docPath: tools/dist/er/

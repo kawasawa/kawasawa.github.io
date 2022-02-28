@@ -1,0 +1,48 @@
+{
+  "banner__message": "このサイトはどうやって動いてるの？",
+
+  "products__mypad__name": "MyPad",
+  "products__mypad__description": "\"毎日使うものこそ、美しく便利なものを...\" そんな想いで作られたテキストエディタが MyPad です。視認性に優れるモダンな外観に、使い慣れたクラシックな操作性を兼ね備え、様々な用途にご利用頂けます。",
+  "products__hiyori__name": "ひより",
+  "products__hiyori__description": "気象情報を一覧できる Web サイトです。現在位置における直近から数日先までの三時間ごとの天気、気温、湿度、風の情報をまとめて確認できます。",
+  "products__toolbox__name": "工具箱",
+  "products__toolbox__description": "開発者向けの簡易ツールです。文字列のケース変換やハッシュ化、Base変換などに対応しています。すべての処理はブラウザ内で行われ、データは外部に送信されません。",
+  "products__koyomi__name": "こよみ",
+  "products__koyomi__description": "暦の情報を一覧できる Web サイトです。旧暦や六曜のほか二十四節気、星座、干支、月相などの暦注を確認できます。",
+  "products__mybase__name": "MyBase",
+  "products__mybase__description": "MyBase は .NET Framework, .NET Core による WPF アプリケーションの開発をサポートするためのライブラリです。Prism と連携し標準機能を拡張する処理や、最新の Prism では廃止されてしまった実装の一部が移植されています。",
+
+  "about__author__job": "Software Engineer",
+  "about__career__college__name": "山梨大学 工学部 卒業",
+  "about__career__college__body": "コンピュータサイエンスを専攻",
+  "about__career__ysk__name": "株式会社 YSK e-com",
+  "about__career__ysk__body": "民需系業務システム開発を担当",
+  "about__career__compmind__name": "株式会社 コンピュータマインド",
+  "about__career__compmind__body": "製造系制御システム開発を担当",
+  "about__career__jcb__name": "株式会社 ジェーシービー",
+  "about__career__jcb__body": "金融系マイクロサービス開発を担当",
+  "about__career__freelance__name": "個人事業主として開業",
+  "about__career__freelance__body": "Web/オープン系を中心とした開発に従事",
+
+  "about__certification__FE__name": "基本情報技術者",
+  "about__certification__FE__body": "情報処理推進機構",
+  "about__certification__AP__name": "応用情報技術者",
+  "about__certification__AP__body": "情報処理推進機構",
+  "about__certification__FP3__name": "3級 ファイナンシャル・プラニング技能士",
+  "about__certification__FP3__body": "日本FP協会",
+  "about__certification__NB3__name": "日商簿記検定試験 3級",
+  "about__certification__NB3__body": "日本商工会議所",
+  "about__certification__PD__name": "個人情報取扱主任者",
+  "about__certification__PD__body": "日本クレジット協会",
+
+  "about__contact__name": "お名前",
+  "about__contact__email": "メールアドレス",
+  "about__contact__message": "お問い合わせの内容",
+  "about__contact__send": "送信する",
+  "about__contact__send--confirm": "問い合わせを送信します。よろしいですか？",
+  "about__contact__send--succeeded": "送信されました。",
+  "about__contact__attention": "サーバの都合でメールを送信できない場合がございます。その際はお手数ですが、SNS からお問い合わせください。",
+  "about__contact__privacyPolicy": "プライバシーポリシー",
+
+  "__EOF__": ""
+}

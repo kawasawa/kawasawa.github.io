@@ -1,0 +1,125 @@
+# ------------------------------------------------------------
+# パーサーの指定
+# ------------------------------------------------------------
+# 既定では JavaScript に対応する ESLint で TypeScript を解析できるようにする
+parser: '@typescript-eslint/parser'
+
+# ------------------------------------------------------------
+# パーサーオプションの指定
+# ------------------------------------------------------------
+#parserOptions:
+
+# ------------------------------------------------------------
+# 実行環境の指定
+# ------------------------------------------------------------
+env:
+  # JavaScript のバージョン
+  es2020: true
+  # ブラウザで実行されるコードを検証
+  browser: true
+
+# ------------------------------------------------------------
+# グローバル変数の指定
+# ------------------------------------------------------------
+#globals:
+
+# ------------------------------------------------------------
+# 共通設定の指定
+# ------------------------------------------------------------
+settings:
+  react:
+    # eslint-plugin-react で適用される React のバージョンを自動特定
+    version: detect
+
+# ------------------------------------------------------------
+# 追加するプラグインの指定
+# ------------------------------------------------------------
+plugins:
+  - react
+  - react-hooks
+  - '@typescript-eslint'
+  - simple-import-sort
+
+# ------------------------------------------------------------
+# 継承するルールセットの指定
+# ------------------------------------------------------------
+extends:
+  # ESLint の JavaScript ルールセットで初期化
+  - eslint:recommended
+  # TypeScript のルールセットを追加
+  - plugin:@typescript-eslint/eslint-recommended
+  - plugin:@typescript-eslint/recommended
+  # React のルールセットを追加
+  - plugin:react/recommended
+  - plugin:react-hooks/recommended
+  # Prettier のルールセットを追加
+  - prettier
+
+# ------------------------------------------------------------
+# 個別ルールの指定
+# ------------------------------------------------------------
+rules:
+  # import, export のソート
+  simple-import-sort/imports: error
+  simple-import-sort/exports: error
+  # 循環的複雑度を制限
+  complexity:
+    - error
+    - 10
+  # ネストの深度を制限
+  max-depth:
+    - warn
+    - 5
+  # 厳密な等価比較を強制
+  eqeqeq: error
+  # マルチスペースの使用を禁止
+  no-multi-spaces: error
+  # undefined による初期化を禁止
+  no-undef-init: error
+  # var を禁止
+  no-var: error
+  # const を強制
+  prefer-const: error
+  # テンプレートリテラルを推奨
+  prefer-template: warn
+  # ドット表記を推奨
+  dot-notation: warn
+  # 関数の戻り値にも型推論を適用
+  '@typescript-eslint/explicit-module-boundary-types': off
+  # 未使用の変数を禁止
+  '@typescript-eslint/no-unused-vars':
+    - warn
+    - varsIgnorePattern: ^_ # アンダースコアで始まる変数は除外する
+  # 命名規則を指定
+  '@typescript-eslint/naming-convention':
+    - warn
+    - selector:
+        - parameter
+        - parameterProperty
+      format:
+        - camelCase
+      leadingUnderscore: allowSingleOrDouble
+    - selector:
+        - classMethod
+        - typeMethod
+      format:
+        - camelCase
+    - selector:
+        - class
+        - interface
+      format:
+        - PascalCase
+  # props の検証を無効化
+  react/prop-types: off
+  # メモ化を強制
+  react-hooks/exhaustive-deps: error
+
+# ------------------------------------------------------------
+# 上書きルールの指定
+# ------------------------------------------------------------
+overrides:
+  - files: ['**/?(*.)+(spec|test).[jt]s?(x)']
+    rules:
+      '@typescript-eslint/no-empty-function': off
+      '@typescript-eslint/no-explicit-any': off
+      '@typescript-eslint/no-non-null-assertion': off

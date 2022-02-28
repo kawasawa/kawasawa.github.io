@@ -1,0 +1,485 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: kawasawa.github.io
+  description: kawasawa.github.io のモックサーバ向け API 仕様
+  contact:
+    name: Kazuki Awasawa
+    url: 'https://kawasawa.github.io/'
+servers:
+  - url: 'http://localhost:8080'
+tags:
+  - name: spreadsheets
+paths:
+  '/spreadsheets/{GOOGLE_SHEETS_ID}/values/articles-metadata':
+    get:
+      summary: articles-metadata
+      deprecated: false
+      description: 記事のメタデータを取得します。
+      operationId: articles-metadata
+      parameters:
+        - name: GOOGLE_SHEETS_ID
+          in: path
+          description: Sheet ID
+          required: true
+          example: ''
+          schema:
+            type: string
+        - name: GOOGLE_SHEETS_API_KEY
+          in: query
+          description: API Key
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SucceededProps'
+                  - type: object
+                    properties:
+                      values:
+                        type: array
+                        description: 記事のメタデータ
+                        items:
+                          type: array
+                          description: '[記事のID, タイトル, 冒頭部分, タグ, URL, いいね数, ストック数, コメント数, 作成日時, 更新日時]'
+                          items:
+                            type: string
+                    required:
+                      - values
+              examples:
+                '1':
+                  summary: example
+                  value:
+                    range: '''articles-metadata''!A1:Z1000'
+                    majorDimension: ROWS
+                    values:
+                      - - id
+                        - title
+                        - body
+                        - tags
+                        - url
+                        - likes_count
+                        - stocks_count
+                        - comments_count
+                        - created_at
+                        - updated_at
+                      - - 45b5969c49084bd34a91
+                        - WPF 開発が捗る 神７
+                        - '## はじめに 独学で習得してきた WPF ですが、決定的な指針が無く、開発が手探りになりがちでした。日本語の文献は少なく、ブログ等で有識者の手法を真似て実装しますが、流行り廃りが早いためなかなか環境...'
+                        - 'WPF, 雑記'
+                        - 'https://qiita.com/kawasawa/items/45b5969c49084bd34a91'
+                        - '117'
+                        - '118'
+                        - '3'
+                        - '2020-10-30T11:45:03+09:00'
+                        - '2021-01-18T21:30:28+09:00'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    allOf:
+                      - $ref: '#/components/schemas/FailedProps'
+                      - type: object
+                        properties:
+                          details:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                '@type':
+                                  type: string
+                                reason:
+                                  type: string
+                                domain:
+                                  type: string
+                                metadata:
+                                  type: object
+                                  required:
+                                    - service
+                                  properties:
+                                    service:
+                                      type: string
+                              required:
+                                - '@type'
+                                - reason
+                                - domain
+                                - metadata
+                        required:
+                          - details
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 400
+                      message: API key not valid. Please pass a valid API key.
+                      status: INVALID_ARGUMENT
+                      details:
+                        - '@type': type.googleapis.com/google.rpc.ErrorInfo
+                          reason: API_KEY_INVALID
+                          domain: googleapis.com
+                          metadata:
+                            service: sheets.googleapis.com
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/FailedProps'
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 403
+                      message: The request is missing a valid API key.
+                      status: PERMISSION_DENIED
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/FailedProps'
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 404
+                      message: Requested entity was not found.
+                      status: NOT_FOUND
+      tags:
+        - spreadsheets
+  '/spreadsheets/{GOOGLE_SHEETS_ID}/values/articles-pickups':
+    get:
+      summary: articles-pickups
+      deprecated: false
+      description: ピックアップ記事を取得します。
+      operationId: articles-pickups
+      parameters:
+        - name: GOOGLE_SHEETS_ID
+          in: path
+          description: Sheet ID
+          required: true
+          example: ''
+          schema:
+            type: string
+        - name: GOOGLE_SHEETS_API_KEY
+          in: query
+          description: API Key
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SucceededProps'
+                  - type: object
+                    properties:
+                      values:
+                        type: array
+                        description: ピックアップ記事の情報
+                        items:
+                          type: array
+                          description: '[記事のID, 記事のサムネイル画像 (webp;base64)]'
+                          items:
+                            type: string
+                    required:
+                      - values
+              examples:
+                '1':
+                  summary: example
+                  value:
+                    range: '''articles-pickup''!A1:Z1000'
+                    majorDimension: ROWS
+                    values:
+                      - - id
+                        - data
+                      - - 80960c415a972219d8e1
+                        - 'data:image/webp;base64,...'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    allOf:
+                      - $ref: '#/components/schemas/FailedProps'
+                      - type: object
+                        properties:
+                          details:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                '@type':
+                                  type: string
+                                reason:
+                                  type: string
+                                domain:
+                                  type: string
+                                metadata:
+                                  type: object
+                                  required:
+                                    - service
+                                  properties:
+                                    service:
+                                      type: string
+                              required:
+                                - '@type'
+                                - reason
+                                - domain
+                                - metadata
+                        required:
+                          - details
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 400
+                      message: API key not valid. Please pass a valid API key.
+                      status: INVALID_ARGUMENT
+                      details:
+                        - '@type': type.googleapis.com/google.rpc.ErrorInfo
+                          reason: API_KEY_INVALID
+                          domain: googleapis.com
+                          metadata:
+                            service: sheets.googleapis.com
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/FailedProps'
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 403
+                      message: The request is missing a valid API key.
+                      status: PERMISSION_DENIED
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/FailedProps'
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 404
+                      message: Requested entity was not found.
+                      status: NOT_FOUND
+      tags:
+        - spreadsheets
+  '/spreadsheets/{GOOGLE_SHEETS_ID}/values/version':
+    get:
+      summary: version
+      deprecated: false
+      description: 最後に記事の情報が正常取得された日時を取得します。
+      operationId: version
+      parameters:
+        - name: GOOGLE_SHEETS_ID
+          in: path
+          description: Sheet ID
+          required: true
+          example: ''
+          schema:
+            type: string
+        - name: GOOGLE_SHEETS_API_KEY
+          in: query
+          description: API Key
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SucceededProps'
+                  - type: object
+                    properties:
+                      values:
+                        type: array
+                        description: バージョン情報
+                        items:
+                          type: array
+                          description: '[最終更新日時]'
+                          items:
+                            type: string
+                    required:
+                      - values
+              examples:
+                '1':
+                  summary: example
+                  value:
+                    range: '''version''!A1:Z1000'
+                    majorDimension: ROWS
+                    values:
+                      - - last_update
+                      - - '2022/10/01 12:00:00'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    allOf:
+                      - $ref: '#/components/schemas/FailedProps'
+                      - type: object
+                        properties:
+                          details:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                '@type':
+                                  type: string
+                                reason:
+                                  type: string
+                                domain:
+                                  type: string
+                                metadata:
+                                  type: object
+                                  required:
+                                    - service
+                                  properties:
+                                    service:
+                                      type: string
+                              required:
+                                - '@type'
+                                - reason
+                                - domain
+                                - metadata
+                        required:
+                          - details
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 400
+                      message: API key not valid. Please pass a valid API key.
+                      status: INVALID_ARGUMENT
+                      details:
+                        - '@type': type.googleapis.com/google.rpc.ErrorInfo
+                          reason: API_KEY_INVALID
+                          domain: googleapis.com
+                          metadata:
+                            service: sheets.googleapis.com
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/FailedProps'
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 403
+                      message: The request is missing a valid API key.
+                      status: PERMISSION_DENIED
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/FailedProps'
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 404
+                      message: Requested entity was not found.
+                      status: NOT_FOUND
+      tags:
+        - spreadsheets
+components:
+  schemas:
+    SucceededProps:
+      type: object
+      properties:
+        range:
+          type: string
+        majorDimension:
+          type: string
+      required:
+        - range
+        - majorDimension
+      title: ''
+    FailedProps:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        status:
+          type: string
+      required:
+        - code
+        - message
+        - status

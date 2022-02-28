@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es2020", // トランスパイル後の JavaScript のバージョン
+    "lib": ["dom", "dom.iterable", "esnext"], // 明示的に使用するライブラリを指定
+    "allowJs": true, // JavaScript ファイルのインポートを許容
+    "skipLibCheck": true, // 型定義ファイルに対する型チェックを無効化
+    "esModuleInterop": true, // default export されていないモジュールの実行を許容
+    "allowSyntheticDefaultImports": true, // default export されていないモジュールのコンパイルエラーを無効化
+    "strict": true, // 厳密な型チェックを有効化
+    "forceConsistentCasingInFileNames": true, // 参照モジュールパスの大文字小文字を区別
+    "noFallthroughCasesInSwitch": true, // switch 文におけるフォールスルーの禁止
+    "module": "esnext", // モジュールの読み込み方法
+    "moduleResolution": "node", // モジュールの解決方法
+    "resolveJsonModule": true, // JSON モジュールを解決
+    "isolatedModules": true, // 独立したモジュールとしてコンパイル
+    "noEmit": true, // tsc の挙動を型チェックのみに制限
+    "jsx": "react-jsx", // tsx ファイルのトランスパイル形式
+    "incremental": true // 差分ファイルのみコンパイル
+  },
+  "include": ["src"],
+  "extends": "./tsconfig.base.json"
+}

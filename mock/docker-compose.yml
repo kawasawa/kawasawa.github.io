@@ -1,0 +1,102 @@
+# プロジェクト名
+#   未指定時は親ディレクトリ名が使用される
+#   生成されるコンテナは `${プロジェクト名}-${サービス名}-${インデックス}` の規則で命名される
+name: kawasawa
+
+services:
+  express:
+    # ビルドターゲット
+    #   Dockerfile が配置されたディレクトリを指定する
+    build: ./server
+    # イメージ
+    #   コンテナのベースイメージを指定する
+    #   Dockerfile からビルドする場合はビルド後の Docker イメージ名になる
+    image: kawasawa.github.io/express.js
+    # 環境変数ファイル
+    #   コンテナ起動時に設定される環境変数を外部ファイルから読み込む
+    env_file:
+      - ./server/.env
+    # 環境変数
+    #   コンテナに渡す環境変数を指定する
+    #   ここでは上記の .env に未定義の変数を宣言している (コンテナ内でのみ使用する変数とも言える)
+    environment:
+      - MYSQL_HOST=mysql
+    # ポート
+    #   ホストとバインドされるポートを指定する
+    #   `ホストのポート:コンテナのポート` の形式
+    #   ポートマッピングはホストがコンテナにアクセスするために必要な設定である
+    #   ホストが左側のポート番号でアクセスすると、右側のポート番号に転送され、コンテナに到達する
+    #   右側のポート番号はコンテナ内でアプリケーションがリッスンしている (ここでは Express.js が server.listen で設定している) ポート番号である
+    #   なお、コンテナ間通信の場合はコンテナ同士が同一 Docker ネットワークに所属していればポートマッピング無しで通信できる
+    #  NOTE: docker-compose.yml 内で異なるディレクトリにある .env を参照する場合は --env-file オプションでファイルを指定する (本プロダクトでは Makefile で指定)
+    ports:
+      - ${EXPRESS_PORT}:${EXPRESS_PORT}
+    # ボリューム
+    #   コンテナ内のディレクトリとホストのディレクトリまたは Docker ボリュームをバインドできる
+    #   `ホストのパス:コンテナのパス` または `ボリューム名(エイリアス):コンテナのパス` の形式で指定する
+    volumes:
+      - ./server/src:/usr/src/app/src/
+    # 依存関係
+    #   Docker コンテナの起動順序を制御する
+    #   このコンテナの起動は指定された依存コンテナの起動開始まで待機する
+    #   NOTE: depends_on は起動開始を待機するのみで、起動完了を保証するものではない
+    depends_on:
+      - mysql
+    # init プロセス
+    #   これを有効化することで子プロセスの適切なクリーンアップが行われる (ゾンビプロセスの発生を抑止する)
+    init: true
+    # 自動再起動
+    #   ホストマシンの起動時、Docker サービスの起動時、コンテナの異常終了時に自動でコンテナを再起動する
+    #   商用環境の常時起動サービス (Web サーバや DB サーバなど) では有効化する
+    #restart: always
+
+  mysql:
+    image: mysql:8.4 # LTS
+    platform: linux/amd64
+    env_file:
+      - ./server/.env
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql_volume:/var/lib/mysql
+      - ./docker/mysql/conf.d:/etc/mysql/conf.d
+      - ./docker/mysql/initdb.d:/docker-entrypoint-initdb.d
+
+  sonarqube:
+    image: sonarqube:community
+    environment:
+      # 起動時のエラーを回避する ("seccomp unavailable: CONFIG_SECCOMP not compiled into kernel, CONFIG_SECCOMP and CONFIG_SECCOMP_FILTER are needed")
+      # https://docs.sonarsource.com/sonarqube-server/latest/try-out-sonarqube/
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+    ports:
+      - 9000:9000
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - ./docker/sonarqube/logs:/opt/sonarqube/logs
+    init: true
+
+  sonarqube-init:
+    image: curlimages/curl:latest
+    environment:
+      - INIT_FLAG=/init/.init_done
+      - SONAR_QUBE_HOST=sonarqube
+      - SONAR_QUBE_PORT=9000
+      - PROJECT_NAME=kawasawa.github.io
+      - PROJECT_KEY=kawasawa
+    volumes:
+      - ./docker/sonarqube/init:/init
+    depends_on:
+      - sonarqube
+    entrypoint: ["/bin/sh", "/init/init.sh"]
+
+volumes:
+  # ボリューム名
+  #   ボリューム名のエイリアスに対して実際のボリューム名を指定する
+  #   未指定時は `${プロジェクト名}-${ボリューム名}` の規則で命名される
+  mysql_volume:
+    name: kawasawa_db
+  sonarqube_data:
+    name: kawasawa_sq_data
+  sonarqube_extensions:
+    name: kawasawa_sq_extensions

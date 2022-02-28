@@ -1,0 +1,8 @@
+/* istanbul ignore file */
+
+export const values = {
+  ARTICLES_LIKES_COUNT_THRESHOLD: 10,
+  ARTICLES_LIKES_COUNT_POPULAR: 100,
+  ARTICLES_SKELETON_DISPLAY_COUNT: 3,
+  PRODUCTS_ALWAYS_DISPLAY_COUNT: 3,
+} as const;
