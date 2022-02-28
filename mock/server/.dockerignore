@@ -1,0 +1,36 @@
+# git
+.git
+.gitignore
+
+# docker
+Dockerfile
+docker-compose.yml
+
+# dependencies
+node_modules/
+
+# testing
+coverage/
+
+# production
+build/
+dist/
+
+# config
+.jest.config.*
+.prettierignore
+.prettierrc
+.prettierrc.*
+.eslintignore
+.eslintrc
+.eslintrc.*
+eslint.config.*
+
+# log
+logs/
+*.log*
+
+# misc
+README.md
+Thumbs.db
+.DS_Store
