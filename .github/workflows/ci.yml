@@ -1,0 +1,257 @@
+on:
+  # 手動実行トリガー
+  workflow_dispatch:
+
+  # push (merge) トリガー
+  push:
+    branches:
+      - main
+      - master
+    paths-ignore:
+      - ".vscode/**"
+      - "docs/**"
+      - "**/*.md"
+      - "**/.env.development"
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ./.tool-versions
+
+      - name: Show Node.js Version
+        run: node --version
+
+      - name: Restore Packages
+        id: restore-packages
+        uses: actions/cache/restore@v4
+        with:
+          path: "**/node_modules"
+          key: packages-${{ hashFiles('yarn.lock') }}
+
+      - name: Install Packages
+        if: steps.restore-packages.outputs.cache-hit != 'true'
+        run: yarn install --frozen-lockfile --check-files
+
+      - name: Cache Packages
+        if: steps.restore-packages.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: "**/node_modules"
+          key: packages-${{ hashFiles('yarn.lock') }}
+
+  build:
+    needs: [setup]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ./.tool-versions
+
+      - name: Restore Packages
+        uses: actions/cache/restore@v4
+        with:
+          path: "**/node_modules"
+          key: packages-${{ hashFiles('yarn.lock') }}
+
+      - name: Docker Start
+        run: yarn start:mock
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Unit Test
+        run: yarn test:ut --ci
+
+      # - name: Integration Test A
+      #   run: yarn test:ita --ci
+
+      - name: Health Check
+        shell: bash
+        run: |
+          . ./app/.env.test && curl --silent --verbose --retry 3 $REACT_APP_GOOGLEAPIS_URL/health
+          . ./app/.env.test && curl --silent --verbose --retry 3 $REACT_APP_GOOGLEAPIS_URL/spreadsheets/$REACT_APP_GOOGLE_SHEETS_ID/values/version?key=$REACT_APP_GOOGLE_SHEETS_API_KEY
+          cd ./mock/server/
+          docker compose logs
+
+      - name: Integration Test B
+        run: yarn test:itb
+
+      - name: Performance Test
+        run: |
+          # k6 を取得
+          curl https://github.com/grafana/k6/releases/download/v0.42.0/k6-v0.42.0-linux-amd64.tar.gz -L | tar xvz --strip-components 1
+          export PATH=$PATH:`pwd`
+          # 負荷テストを実施
+          yarn test:pt
+
+      - name: License Scan
+        uses: fossas/fossa-action@main
+        with:
+          api-key: ${{ secrets.FOSSA_TOKEN }}
+
+      - name: Security Scan
+        uses: snyk/actions/node@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+      - name: Build Apps
+        env:
+          REACT_APP_COMMIT_SHA: ${{ github.sha }}
+          REACT_APP_GOOGLEAPIS_URL: ${{ vars.REACT_APP_GOOGLEAPIS_URL }}
+          REACT_APP_GOOGLE_ANALYTICS_ID: ${{ secrets.REACT_APP_GOOGLE_ANALYTICS_ID }}
+          REACT_APP_GOOGLE_SHEETS_API_KEY: ${{ secrets.REACT_APP_GOOGLE_SHEETS_API_KEY }}
+          REACT_APP_GOOGLE_SHEETS_ID: ${{ secrets.REACT_APP_GOOGLE_SHEETS_ID }}
+          REACT_APP_EMAILJS_PUBLIC_KEY: ${{ secrets.REACT_APP_EMAILJS_PUBLIC_KEY }}
+          REACT_APP_EMAILJS_SERVICE_ID: ${{ secrets.REACT_APP_EMAILJS_SERVICE_ID }}
+          REACT_APP_EMAILJS_TEMPLATE_ID: ${{ secrets.REACT_APP_EMAILJS_TEMPLATE_ID }}
+          GENERATE_SOURCEMAP: ${{ vars.GENERATE_SOURCEMAP }}
+        run: |
+          # tbls を取得
+          source <(curl https://raw.githubusercontent.com/k1LoW/tbls/main/use)
+          # ビルドを実施
+          yarn build
+
+      - name: Convert Documents
+        uses: baileyjm02/markdown-to-pdf@v1
+        with:
+          input_dir: tools/dist/er/
+          output_dir: tools/dist/er_html/
+          build_pdf: false
+
+      - name: Store Artifacts
+        run: |
+          # 成果物を格納
+          mkdir -p ./release/{app,coverage}
+          cp -rf ./app/build/*    ./release/app/
+          cp -rf ./app/coverage/* ./release/coverage/
+
+          # ドキュメントを格納
+          # 最終的に以下のディレクトリ構成となる
+          #
+          # +--release/
+          #    |
+          #    +--app/                  // アプリケーション
+          #    |  |
+          #    |  +--docs/              // ドキュメント
+          #    |     |
+          #    |     +--licenses.txt    // ライセンス情報
+          #    |     |
+          #    |     +--api/index.html  // API仕様書
+          #    |     |
+          #    |     +--er/index.html   // ER図
+          #    |     |
+          #    |     +--ut/index.html   // 単体試験レポート
+          #    |     |
+          #    |     +--itb/index.html  // 結合試験レポート
+          #    |     |
+          #    |     +--pt/index.html   // 性能試験レポート
+          #    |
+          #    +--coverage/             // カバレッジレポート
+          #
+          mkdir -p ./release/app/docs/{api,ut,itb,pt,er}
+          cp -rf ./app/coverage/lcov-report/*      ./release/app/docs/ut/
+          cp -f  ./app/dist/licenses.txt           ./release/app/docs/licenses.txt
+          cp -f  ./tools/dist/openapi.html         ./release/app/docs/api/index.html
+          cp -f  ./tools/dist/newman-report.html   ./release/app/docs/itb/index.html
+          cp -f  ./tools/dist/k6-report.html       ./release/app/docs/pt/index.html
+          cp -f  ./tools/dist/er/*.svg             ./release/app/docs/er/
+          cp -f  ./tools/dist/er_html/*.html       ./release/app/docs/er/
+          mv -f  ./release/app/docs/er/README.html ./release/app/docs/er/index.html
+
+          # ER 図のリンクを変換
+          # ER 図は Markdown から HTML に変換しているため、ファイル間でリンクの整合性が取れるように調整する必要がある
+          # markdown-to-pdf のステップで生成されたフォルダにはコマンドの実行権限が無いため、本プロセスで明示的に作成したフォルダ内で作業する
+          sed -i 's/\.md/\.html/g' ./release/app/docs/er/*.html
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: ./release/coverage
+
+      - name: Upload Pages Artifacts
+        uses: actions/upload-pages-artifact@v3
+        with:
+          name: app
+          path: ./release/app
+
+      - name: Notify Result
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: all
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: always()
+
+  deploy:
+    needs: [build]
+    runs-on: ubuntu-latest
+    # actions/deploy-pages で権限が要求される
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write # to deploy to Pages
+      id-token: write # to verify the deployment originates from an appropriate source
+    steps:
+      - name: Setup Timeline
+        uses: Kesin11/actions-timeline@v2
+
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: coverage
+          path: ./coverage
+
+      - name: Publish Coverage
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          directory: ./coverage
+          verbose: true
+          fail_ci_if_error: true
+
+      # GitHub Actions から直接デプロイするにあたり、事前にリポジトリの下記設定を付与しておく
+      #   Settings > Pages > Build and deployment
+      #     Source: `GitHub Actions`
+      - name: Deploy Pages
+        id: deploy_pages
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: app
+        env:
+          name: github-pages
+          url: ${{ steps.deploy_pages.outputs.page_url }}
+      #
+      # 上記への移行に伴い、従来の gh-pages ブランチを経由しないため pages build and deployment フローも作成されなくなる
+      # # 本ステップでデプロイするにあたり、事前にリポジトリの下記設定を付与しておく
+      # #   Settings > Pages > Build and deployment
+      # #     Source: `Deploy from a branch`
+      # #     Branch: `gh-pages`, `/(root)`
+      # - name: Deploy Pages
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: ./app
+
+      - name: Notify Result
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: all
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: always()

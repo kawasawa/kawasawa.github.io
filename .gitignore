@@ -1,1 +1,26 @@
+# パッケージ
+**/node_modules/
+
+# テスト
+**/coverage/
+
+# スキャン
+**/.scannerwork/
+
+# リリース
+**/build/
+**/dist/
+**/*.tsbuildinfo
+**/.terraform/
+
+# 環境変数
+**/.env.production
+**/.env.local
+**/.env.*.local
+
+# ログ
+**/*.log*
+
+# OS が生成するキャッシュファイル
+**/Thumbs.db
 **/.DS_Store
