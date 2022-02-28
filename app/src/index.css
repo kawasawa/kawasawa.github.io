@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  background-color: rgb(39, 39, 39);
+  /*
+    // NOTE: ブラウザ間差異と開発環境について
+    //  ブラウザごとに搭載しているエンジンが異なり、これがブラウザ間での表示差異を生む
+    //  エンジンは大きく分けて 2 つあり、それぞれレンダリング (HTML, CSS) と JavaScript を解釈する
+    //    Browser           | HTML     | JavaScript
+    //    ----------------- | -------- | --------------
+    //    Chromium          | Blink    | V8
+    //    Safari            | WebKit   | JavaScriptCore
+    //    Firefox           | Gecko    | SpiderMonkey
+    //    Edge Legacy       | EdgeHTML | Chakra
+    //    Internet Explorer | Trident  | Chakra
+    //    ※ Blink は WebKit から、EdgeHTML は Trident からフォークしている
+    //    ※ 現在の Edge は Chromium ベースに移行したため EdgeHTML は廃止された
+    //  iOS はいずれのブラウザを用いても内部的に Blink を用いてレンダリングされている
+    //  一方 Android にその制約はなく、Firefox は Gecko を使用する
+    //
+    //  上記のような背景から、現代の Web 開発では Blink, WebKit, Gecko の主要エンジンで動確でき、
+    //  かつ iOS と Android の両モバイル向け OS をエミュレート可能な macOS が開発環境として選択される
+   */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
