@@ -3,6 +3,21 @@ import axios, { AxiosError, AxiosInstance, Method } from 'axios';
 export const createInstance = <T>(retryLimit = 3) => {
   const client = axios.create();
 
+  // CSRF トークンを送受信する
+  if (process.env.NODE_ENV === 'development') {
+    // POST リクエスト時にも Cookie を送信する
+    client.defaults.withCredentials = true;
+    // Axios 1.6.2 以降で CSRF トークンを送信する場合は withCredentials に加え withXSRFToken も指定する
+    //   see: https://github.com/axios/axios/blob/v1.x/CHANGELOG.md#162-2023-11-14
+    //   1.6.2 (2023-11-14)
+    //   "withXSRFToken: added withXSRFToken option as a workaround to achieve the old withCredentials behavior"
+    client.defaults.withXSRFToken = true;
+    // サーバから受け取る CSRF トークンが格納されている Cookie 名とサーバに返却する際の HTTP ヘッダー名を指定する
+    // それぞれの名称はサーバ側の指定に従う
+    client.defaults.xsrfCookieName = 'csrf_token';
+    client.defaults.xsrfHeaderName = 'x-csrf-token';
+  }
+
   // リクエストの送受信時にログ出力する
   if (process.env.NODE_ENV === 'development') {
     client.interceptors.request.use((config) => {
