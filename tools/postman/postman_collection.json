@@ -217,7 +217,8 @@
 									"pm.test('エラーメッセージを取得できること', () => {",
 									"    const responseData = pm.response.json();",
 									"    pm.expect(responseData.error.code).to.eql(500);",
-									"    pm.expect(responseData.error.message).to.match(/^Internal Server Error:.+$/);",
+									"    pm.expect(responseData.error.message).not.to.empty;",
+									"    pm.expect(responseData.error.status).to.eql('Internal Server Error');",
 									"});"
 								],
 								"type": "text/javascript",
@@ -265,7 +266,8 @@
 									"pm.test('エラーメッセージを取得できること', () => {",
 									"    const responseData = pm.response.json();",
 									"    pm.expect(responseData.error.code).to.eql(500);",
-									"    pm.expect(responseData.error.message).to.match(/^Internal Server Error:.+$/);",
+									"    pm.expect(responseData.error.message).not.to.empty;",
+									"    pm.expect(responseData.error.status).to.eql('Internal Server Error');",
 									"});"
 								],
 								"type": "text/javascript",
@@ -314,7 +316,8 @@
 									"pm.test('エラーメッセージを取得できること', () => {",
 									"    const responseData = pm.response.json();",
 									"    pm.expect(responseData.error.code).to.eql(500);",
-									"    pm.expect(responseData.error.message).to.match(/^Internal Server Error:.+$/);",
+									"    pm.expect(responseData.error.message).not.to.empty;",
+									"    pm.expect(responseData.error.status).to.eql('Internal Server Error');",
 									"});"
 								],
 								"type": "text/javascript",
@@ -340,6 +343,383 @@
 								"dev",
 								"error",
 								"async"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "1: csrf-token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('ステータスコードが 200 であること', () => {",
+									"    pm.response.to.status(200);",
+									"});",
+									"",
+									"pm.test('Content-Type が \"application/json\" であること', () => {",
+									"    pm.expect(pm.response.headers.get('Content-Type').toLowerCase()).to.include('application/json');",
+									"});",
+									"",
+									"pm.test('CSRF トークンを取得できること', () => {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData.success).to.eql(true);",
+									"    pm.expect(typeof responseData.data).to.eql('string');",
+									"});",
+									"",
+									"pm.cookies.clear();"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{REACT_APP_GOOGLEAPIS_URL}}/dev/csrf-token",
+							"host": [
+								"{{REACT_APP_GOOGLEAPIS_URL}}"
+							],
+							"path": [
+								"dev",
+								"csrf-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2: send",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('ステータスコードが 200 であること', () => {",
+									"    pm.response.to.status(200);",
+									"});",
+									"",
+									"pm.test('Content-Type が \"application/json\" であること', () => {",
+									"    pm.expect(pm.response.headers.get('Content-Type').toLowerCase()).to.include('application/json');",
+									"});",
+									"",
+									"pm.test('レスポンスデータを取得できること', () => {",
+									"    const responseData = pm.response.json();",
+									"    const requestData = JSON.parse(pm.request.body.raw);",
+									"    pm.expect(responseData.success).to.eql(true);",
+									"    pm.expect(responseData.data).to.eql(requestData);",
+									"});",
+									"",
+									"pm.collectionVariables.clear();",
+									"pm.cookies.clear();"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const API_URL = pm.environment.get(\"REACT_APP_GOOGLEAPIS_URL\");",
+									"pm.sendRequest(`${API_URL}/dev/csrf-token`, (_, response) => {",
+									"    // CSRFトークンを取得",
+									"    const csrf_token = response.json().data;",
+									"    // Cookie から取得する場合",
+									"    // Pre-request が非同期処理をサポートしておらず Cookie を取得できないため Set-Cookie ヘッダーから直接取り出す",
+									"    // const csrf_token = response.headers.get(\"Set-Cookie\").split(';').find(c => c.startsWith('csrf_token'))?.split('=')[1];",
+									"    pm.collectionVariables.set(\"csrf_token\", csrf_token);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Referer",
+								"value": "{{REFERER}}",
+								"type": "text"
+							},
+							{
+								"key": "x-csrf-token",
+								"value": "{{csrf_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"name\",\n    \"email\": \"email@example.com\",\n    \"message\": \"message\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{REACT_APP_GOOGLEAPIS_URL}}/dev/send",
+							"host": [
+								"{{REACT_APP_GOOGLEAPIS_URL}}"
+							],
+							"path": [
+								"dev",
+								"send"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3: [Negative] send_invalidData",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('ステータスコードが 400 であること', () => {",
+									"    pm.response.to.status(400);",
+									"});",
+									"",
+									"pm.test('Content-Type が \"application/json\" であること', () => {",
+									"    pm.expect(pm.response.headers.get('Content-Type').toLowerCase()).to.include('application/json');",
+									"});",
+									"",
+									"pm.test('エラーメッセージを取得できること', () => {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData.error.code).to.eql(400);",
+									"    pm.expect(responseData.error.message).not.to.empty;",
+									"    pm.expect(responseData.error.status).to.eql('Bad Request');",
+									"});",
+									"",
+									"pm.collectionVariables.clear();",
+									"pm.cookies.clear();"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const API_URL = pm.environment.get(\"REACT_APP_GOOGLEAPIS_URL\");",
+									"pm.sendRequest(`${API_URL}/dev/csrf-token`, (_, response) => {",
+									"    const csrf_token = response.json().data;",
+									"    pm.collectionVariables.set(\"csrf_token\", csrf_token);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Referer",
+								"value": "{{REFERER}}",
+								"type": "text"
+							},
+							{
+								"key": "x-csrf-token",
+								"value": "{{csrf_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"name\",\n    \"email\": \"invalid-email\",\n    \"message\": \"message\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{REACT_APP_GOOGLEAPIS_URL}}/dev/send",
+							"host": [
+								"{{REACT_APP_GOOGLEAPIS_URL}}"
+							],
+							"path": [
+								"dev",
+								"send"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4: [Negative] send_formData",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('ステータスコードが 415 であること', () => {",
+									"    pm.response.to.status(415);",
+									"});",
+									"",
+									"pm.test('Content-Type が \"application/json\" であること', () => {",
+									"    pm.expect(pm.response.headers.get('Content-Type').toLowerCase()).to.include('application/json');",
+									"});",
+									"",
+									"pm.test('エラーメッセージを取得できること', () => {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData.error.code).to.eql(415);",
+									"    pm.expect(responseData.error.message).not.to.empty;",
+									"    pm.expect(responseData.error.status).to.eql('Unsupported Media Type');",
+									"});",
+									"",
+									"pm.collectionVariables.clear();",
+									"pm.cookies.clear();"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const API_URL = pm.environment.get(\"REACT_APP_GOOGLEAPIS_URL\");",
+									"pm.sendRequest(`${API_URL}/dev/csrf-token`, (_, response) => {",
+									"    const csrf_token = response.json().data;",
+									"    pm.collectionVariables.set(\"csrf_token\", csrf_token);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Referer",
+								"value": "{{REFERER}}",
+								"type": "text"
+							},
+							{
+								"key": "x-csrf-token",
+								"value": "{{csrf_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "name",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "email@example.com",
+									"type": "text"
+								},
+								{
+									"key": "message",
+									"value": "message",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{REACT_APP_GOOGLEAPIS_URL}}/dev/send",
+							"host": [
+								"{{REACT_APP_GOOGLEAPIS_URL}}"
+							],
+							"path": [
+								"dev",
+								"send"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5: [Negative] send_noCsrfToken",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('ステータスコードが 401 であること', () => {",
+									"    pm.response.to.status(401);",
+									"});",
+									"",
+									"pm.test('Content-Type が \"application/json\" であること', () => {",
+									"    pm.expect(pm.response.headers.get('Content-Type').toLowerCase()).to.include('application/json');",
+									"});",
+									"",
+									"pm.test('エラーメッセージを取得できること', () => {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData.error.code).to.eql(401);",
+									"    pm.expect(responseData.error.message).not.to.empty;",
+									"    pm.expect(responseData.error.status).to.eql('Unauthorized');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Referer",
+								"value": "{{REFERER}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"name\",\n    \"email\": \"email@example.com\",\n    \"message\": \"message\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{REACT_APP_GOOGLEAPIS_URL}}/dev/send",
+							"host": [
+								"{{REACT_APP_GOOGLEAPIS_URL}}"
+							],
+							"path": [
+								"dev",
+								"send"
 							]
 						}
 					},
@@ -411,7 +791,8 @@
 							"pm.test('エラーメッセージを取得できること', () => {",
 							"    const responseData = pm.response.json();",
 							"    pm.expect(responseData.error.code).to.eql(404);",
-							"    pm.expect(responseData.error.message).to.match(/^Not Found:.+$/);",
+							"    pm.expect(responseData.error.message).not.to.empty;",
+							"    pm.expect(responseData.error.status).to.eql('Not Found');",
 							"});"
 						],
 						"type": "text/javascript",

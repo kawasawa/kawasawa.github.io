@@ -60,6 +60,76 @@ CI/CD は GitHub Actions によって実現されており、パイプライン�
 
 ![workflow](./docs/images/workflow.drawio.png)
 
+### セキュリティ
+
+> [!WARNING]
+> バックエンドはモックであるため本番運用には使用しません。運用を想定したコードの作成のみになります。
+
+サーバでは CORS ポリシーや CSRF トークンによる検証が行われており、下記に処理の流れを示す。
+
+```mermaid
+sequenceDiagram
+    participant FE as Front-end<br/>[React.js]
+    participant BE as Back-end<br/>[Express.js]
+
+    %% 初期化処理
+    par
+      activate BE
+      BE->>BE: initialize<br/>Express.js
+      deactivate BE
+    and
+      activate FE
+      FE->>FE: initialize<br/>Axios (withCredentials)
+      deactivate FE
+    end
+
+    activate FE
+
+    %% CSRF トークン取得
+    rect rgba(0, 255, 255, 0.1)
+      note left of FE: get token
+      FE->>BE: GET /csrf-token<br/>[Axios]
+      activate BE
+      BE->>BE: create CSRF token<br/>[csurf]
+      BE->>FE: 200 OK<br/>Body: { csrf_token: "abc123..." }<br/>Set-Cookie: "csrf_secret=xyz789..."<br/>(httpOnly: true, secure: true, sameSite: lax)<br/>Access-Control-Allow-Credentials: true<br/>[Express.js]
+      deactivate BE
+      FE->>FE: save CSRF Secret from Cookie<br/>[Browser]
+      FE->>FE: save CSRF Token from Body<br/>[React.js]
+    end
+
+    %% CSRF トークン送信
+    rect rgba(255, 255, 0, 0.1)
+      note left of FE: send token
+      FE->>FE: set CSRF Token to Header<br/>[React.js]
+      FE->>FE: set CSRF Secret to Cookie<br/>[Browser]
+
+      %% プリフライトリクエスト
+      rect rgba(255, 255, 255, 0.1)
+        note left of FE: preflight request
+        FE->>BE: OPTIONS /send<br/>Access-Control-Request-Method: "POST"<br/>[Browser]
+        activate BE
+        BE->>FE: 204 NO CONTENT<br/>Access-Control-Allow-Origin: "https://example.com"<br/>Access-Control-Allow-Methods: "GET,POST,PUT,DELETE"<br/>Access-Control-Allow-Headers: "Content-Type,x-csrf-token"<br/>[cors]
+        deactivate BE
+        FE->>FE: check Access-Control<br/>[Browser]
+        opt not allowed
+            FE->>FE: Network Error<br/>[Browser]
+        end
+      end
+
+      FE->>BE: POST /send<br/>Content-Type: "application/json"<br>x-csrf-token: "abc123..."<br/>Cookie: "_csrf=xyz789..."<br/>[Axios]
+      activate BE
+      BE->>BE: verify CSRF Token<br/>with CSRF Secret<br/>[csurf]
+      opt invalid
+          BE->>FE: 403 Forbidden<br/>[csurf]
+      end
+      BE->>BE: run API process<br/>[Express.js]
+      BE->>FE: 200 OK<br/>Body: { success: true }<br/>[Express.js]
+      deactivate BE
+    end
+
+    deactivate FE
+```
+
 ## 開発情報
 
 ### 開発環境
@@ -159,9 +229,13 @@ app 配下がフロントエンド (React.js) 、mock 配下がバックエン�
 |  |  |  |
 |  |  |  +--db/                # DB 処理
 |  |  |  |
+|  |  |  +--middlewares/       # ミドルウェア
+|  |  |  |
 |  |  |  +--responses/         # レスポンス型定義
 |  |  |  |
 |  |  |  +--routes/            # ルーティング
+|  |  |  |
+|  |  |  +--schemas/           # バリデーション定義
 |  |
 |  +--docker-compose.yml       # モックサーバ用 Docker Compose 設定ファイル
 |  |

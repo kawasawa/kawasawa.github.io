@@ -6,15 +6,16 @@
 
 ### 技術スタック
 
-| 種別           | 使用技術                                       |
-| -------------- | ---------------------------------------------- |
-| 開発言語       | [TypeScript](https://www.typescriptlang.org/)  |
-| フレームワーク | [Express.js](https://expressjs.com/)           |
-| バリデーター   | [Yup](https://github.com/jquense/yup/)         |
-| ロガー         | [morgan](https://github.com/expressjs/morgan/) |
-| エラーハンドラ | [boom](https://github.com/hapijs/boom/)        |
-| OR マッパー    | [Sequelize](https://sequelize.org/)            |
-| データベース   | [MySQL](https://www.mysql.com/)                |
+| 種別             | 使用技術                                                                                    |
+| ---------------- | ------------------------------------------------------------------------------------------- |
+| 開発言語         | [TypeScript](https://www.typescriptlang.org/)                                               |
+| フレームワーク   | [Express.js](https://expressjs.com/)                                                        |
+| バリデーター     | [Yup](https://github.com/jquense/yup/)                                                      |
+| ロガー           | [morgan](https://github.com/expressjs/morgan/)                                              |
+| エラーハンドラ   | [boom](https://github.com/hapijs/boom/)                                                     |
+| セキュリティ対策 | [helmet](https://github.com/helmetjs/helmet/), [csurf](https://github.com/expressjs/csurf/) |
+| OR マッパー      | [Sequelize](https://sequelize.org/)                                                         |
+| データベース     | [MySQL](https://www.mysql.com/)                                                             |
 
 ## 開発情報
 

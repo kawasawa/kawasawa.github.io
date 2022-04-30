@@ -47,6 +47,7 @@ import { useInView } from 'react-intersection-observer';
 import { toast } from 'react-toastify';
 import { InferType } from 'yup';
 
+import { createInstance } from '@/api';
 import { extractAlt } from '@/assets';
 import imageProfile from '@/assets/profile.webp';
 import { ConfirmDialog, PrivacyPolicyDialog } from '@/components/dialogs';
@@ -342,7 +343,11 @@ const ContactArea = (props: { t: TFunction; section: string }) => {
           /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
           await send(process.env.REACT_APP_EMAILJS_SERVICE_ID!, process.env.REACT_APP_EMAILJS_TEMPLATE_ID!, params);
         } else {
-          window.alert(JSON.stringify(params));
+          const client = createInstance();
+          const response = await client.get(`${process.env.REACT_APP_GOOGLEAPIS_URL}/dev/csrf-token`);
+          await client.post(`${process.env.REACT_APP_GOOGLEAPIS_URL}/dev/send`, params, {
+            headers: { 'x-csrf-token': response.data.data },
+          });
         }
 
         toast.success(props.t('about__contact__send--succeeded'));
