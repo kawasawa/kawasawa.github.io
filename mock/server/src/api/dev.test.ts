@@ -1,7 +1,13 @@
 import boom from '@hapi/boom';
 import httpMocks from 'node-mocks-http';
 
-import { asyncError, boomError, error } from './dev';
+import { asyncError, boomError, csrfToken, error, send } from './dev';
+
+jest.mock('../schemas/dev', () => ({
+  __esModule: true,
+  ...jest.requireActual('../schemas/dev'),
+  createSchema: jest.fn().mockReturnValue({ validate: jest.fn().mockImplementation((args) => args) }),
+}));
 
 describe('dev', () => {
   describe('error', () => {
@@ -27,6 +33,39 @@ describe('dev', () => {
       // コールバック関数を確認
       expect(next).toBeCalledWith(expect.any(Error));
       expect(next.mock.calls[0][0].message).toBe('dummy async error');
+    });
+  });
+
+  describe('csrfToken', () => {
+    test('CSRF トークンが返却されること', () => {
+      // メソッドを実行
+      const req = httpMocks.createRequest({
+        csrfToken: () => 'dummy_csrf_token',
+      });
+      const res = httpMocks.createResponse();
+      csrfToken(req, res);
+
+      // レスポンスを確認
+      const data = res._getJSONData();
+      expect(res.statusCode).toBe(200);
+      expect(data).toEqual({ success: true, data: 'dummy_csrf_token' });
+    });
+  });
+
+  describe('send', () => {
+    test('リクエストボディと同値のオブジェクトが返却されること', async () => {
+      // メソッドを実行
+      const req = httpMocks.createRequest({
+        body: { key: 'value' },
+      });
+      const res = httpMocks.createResponse();
+      const next = jest.fn();
+      await send(req, res, next);
+
+      // レスポンスを確認
+      const data = res._getJSONData();
+      expect(res.statusCode).toBe(200);
+      expect(data).toEqual({ success: true, data: { key: 'value' } });
     });
   });
 });
