@@ -1,0 +1,36 @@
+{
+  "text.products__MyPad--name": "MyPad",
+  "text.products__MyPad--description": "\"毎日使うものこそ、美しく便利なものを...\" そんな想いで作られたテキストエディタが MyPad です。視認性に優れるモダンな外観に、使い慣れたクラシックな操作性を兼ね備え、様々な用途にご利用頂けます。",
+  "text.products__koyomi--name": "こよみ",
+  "text.products__koyomi--description": "暦の情報を一覧できる Web サイトです。旧暦や六曜のほか二十四節気、星座、干支、月相などの暦注を確認できます。",
+  "text.products__hiyori--name": "ひより",
+  "text.products__hiyori--description": "気象情報を一覧できる Web サイトです。現在位置における数日先までの気象予報をまとめて確認できます。",
+
+  "text.career__College--name": "山梨大学 工学部 卒業",
+  "text.career__College--summary": "コンピュータサイエンスを専攻",
+  "text.career__YSK--name": "株式会社 YSK e-com",
+  "text.career__YSK--summary": "民需系業務システム開発を担当",
+  "text.career__Compmind--name": "株式会社 コンピュータマインド",
+  "text.career__Compmind--summary": "製造系制御システム開発を担当",
+  "text.career__JCB--name": "株式会社 ジェーシービー",
+  "text.career__JCB--summary": "金融系マイクロサービス開発を担当",
+
+  "text.certification__FE--name": "基本情報技術者",
+  "text.certification__AP--name": "応用情報技術者",
+  "text.certification__FP3--name": "FP技能士 3級",
+  "text.certification__NB3--name": "日商簿記検定 3級",
+  "text.certification__PD--name": "個人情報取扱主任者",
+
+  "label.inquiry__name": "お名前",
+  "label.inquiry__email": "メールアドレス",
+  "label.inquiry__message": "お問い合わせの内容",
+  "label.inquiry__send": "送信する",
+  "label.privacyPolicy": "プライバシーポリシー",
+
+  "message.notify__banner--alert": "このサイトはどうやって動いているの？",
+  "message.confirm__sendInquiry": "問い合わせを送信します。よろしいですか？",
+  "message.notify__sendInquiry--attention": "サーバの都合でメールを送信できない場合がございます。その際はお手数ですが、SNS からお問い合わせください。",
+  "message.notify__sendInquiry--succeeded": "送信されました。",
+
+  "__EOF__": ""
+}
