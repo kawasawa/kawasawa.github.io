@@ -66,3 +66,51 @@ docker-compose-down:
 	@${INFO} 'docker compose down'
 	@docker compose --env-file ./server/.env down
 	@${INFO} 'completed'
+
+
+# ------------------------------------------------------------------------------
+# Dockerfile 脆弱性検証
+# ------------------------------------------------------------------------------
+
+.PHONY: dockerfile-scan
+dockerfile-scan:
+	@${INFO} 'trivy config'
+	@trivy config --severity=HIGH,CRITICAL ./server/Dockerfile
+	@${INFO} 'completed'
+
+
+# ------------------------------------------------------------------------------
+# Terraform フォーマット整形
+# ------------------------------------------------------------------------------
+
+.PHONY: terraform-format
+terraform-format:
+	@${INFO} 'terraform fmt'
+	@cd ./aws/terraform/ && terraform fmt -recursive
+	@${INFO} 'completed'
+
+
+# ------------------------------------------------------------------------------
+# Terraform 妥当性検証
+# ------------------------------------------------------------------------------
+
+.PHONY: terraform-validate
+terraform-validate:
+	@${INFO} 'tflint'
+	@tflint --init
+	@cd ./aws/terraform/environments/ && tflint --config=$$(pwd)/../.tflint.hcl --minimum-failure-severity=error --chdir=./local/
+	@cd ./aws/terraform/modules/      && tflint --config=$$(pwd)/../.tflint.hcl --minimum-failure-severity=error --recursive
+	@${INFO} 'terraform validate'
+	@terraform -chdir=./aws/terraform/environments/local/ validate
+	@${INFO} 'completed'
+
+
+# ------------------------------------------------------------------------------
+# Terraform 脆弱性検証
+# ------------------------------------------------------------------------------
+
+.PHONY: terraform-scan
+terraform-scan:
+	@${INFO} 'trivy config'
+	@trivy config --severity=HIGH,CRITICAL --ignorefile=./aws/terraform/.trivyignore ./aws/terraform/
+	@${INFO} 'completed'
