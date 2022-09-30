@@ -1,0 +1,5 @@
+# DEVの環境変数はコミットを許可
+!terraform.tfvars
+
+# LocalStack は毎回初期化されるためロックファイルはコミット不要
+.terraform.lock.hcl

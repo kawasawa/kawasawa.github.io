@@ -130,6 +130,16 @@ sequenceDiagram
     deactivate FE
 ```
 
+### クラウドインフラ
+
+> [!WARNING]
+> バックエンドはモックであるため本番運用には使用しません。運用を想定したコードの作成のみになります。
+
+IaC は Terraform による AWS デプロイを想定し構築しています。  
+Express.js で開発された Node.js サーバを ECS で運用し、データベースに RDS を用いた場合のクラウド環境です。
+
+![infrastructure](./docs/images/infrastructure.drawio.png)
+
 ## 開発情報
 
 ### 開発環境
@@ -149,6 +159,8 @@ VS Code でのコーディングとテストのほか、Sourcetree でのバー�
 | JS パッケージ管理   | [Yarn](https://yarnpkg.com/)                                      |
 | Web ブラウザ        | [Google Chrome](https://www.google.com/chrome/)                   |
 | Docker コンテナ管理 | [Docker Desktop](https://www.docker.com/products/docker-desktop/) |
+| IaC リソース管理    | [Terraform](https://www.terraform.io/)                            |
+| IaaS エミュレータ   | [LocalStack](https://www.localstack.cloud/)                       |
 | コードエディタ      | [Visual Studio Code](https://code.visualstudio.com/)              |
 | OpenAPI エディタ    | [Stoplight Studio](https://stoplight.io/)                         |
 | Git クライアント    | [Sourcetree](https://www.sourcetreeapp.com/)                      |
@@ -212,6 +224,34 @@ app 配下がフロントエンド (React.js) 、mock 配下がバックエン�
 |
 |
 +--mock/                       # モック
+|  |
+|  +--aws/                     # AWS 関連ファイル
+|  |  |
+|  |  +--localstack/           # LocalStack 関連ファイル
+|  |  |  |
+|  |  |  +--docker-compose.yml # LocalStack 用 Docker Compose 設定ファイル
+|  |  |
+|  |  +--terraform/            # Terraform 関連ファイル
+|  |  |  |
+|  |  |  +--environments/      # 環境別 Terraform 管理ファイル
+|  |  |  |  |
+|  |  |  |  +--dev/            # 開発環境
+|  |  |  |  |
+|  |  |  |  +--prd/            # 商用環境
+|  |  |  |  |
+|  |  |  |  +--stg/            # ステージング環境
+|  |  |  |
+|  |  |  +--modules/           # インフラモジュール
+|  |  |  |  |
+|  |  |  |  +--container/      # コンテナ関連 (ECS, ECR)
+|  |  |  |  |
+|  |  |  |  +--database/       # データベース関連 (RDS, bastion)
+|  |  |  |  |
+|  |  |  |  +--load_balancer/  # ロードバランサー関連 (ALB, WAF, DNS)
+|  |  |  |  |
+|  |  |  |  +--monitor/        # モニタリング関連 (CloudWatch, ChatOps)
+|  |  |  |  |
+|  |  |  |  +--network/        # ネットワーク関連 (VPC, Subnet, Endpoint)
 |  |
 |  +--docker/                  # Docker 関連ファイル
 |  |  |
