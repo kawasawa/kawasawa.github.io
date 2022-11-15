@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.dae2e48b.css",
-    "main.js": "/static/js/main.fde446fb.js",
+    "main.js": "/static/js/main.c77d9fe1.js",
     "static/js/27.5db2abe9.chunk.js": "/static/js/27.5db2abe9.chunk.js",
     "static/media/banner.webp": "/static/media/banner.727307d773edc0985245.webp",
     "static/media/products__MyPad--01.webp": "/static/media/products__MyPad--01.381a150f6d7c0182dedf.webp",
@@ -19,6 +19,6 @@
   },
   "entrypoints": [
     "static/css/main.dae2e48b.css",
-    "static/js/main.fde446fb.js"
+    "static/js/main.c77d9fe1.js"
   ]
 }
