@@ -35,6 +35,7 @@ Web サイトは GitHub Pages によってホスティングされています�
 また、問い合わせフォームによるメールの送信処理は、EmailJS によりフロントエンドから直接実行され SendGrid を利用し送信されます。
 
 ![overview](./.images/overview.drawio.png)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fkawasawa%2Fkawasawa.github.io.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fkawasawa%2Fkawasawa.github.io?ref=badge_shield)
 
 ### Workflow
 
@@ -44,3 +45,7 @@ master ブランチへの push / merge をトリガーに CI/CD パイプライ�
 ![workflow](./.images/workflow.drawio.png)
 
 以上
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fkawasawa%2Fkawasawa.github.io.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fkawasawa%2Fkawasawa.github.io?ref=badge_large)
