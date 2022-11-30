@@ -5,6 +5,7 @@
 {
   "recommendations": [
     // インフラ開発
+    "hashicorp.terraform",
     "ms-azuretools.vscode-docker",
     "mtxr.sqltools",
     "mtxr.sqltools-driver-mysql",
