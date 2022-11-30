@@ -1,0 +1,2 @@
+# DEVの環境変数はコミットを許可
+!terraform.tfvars
