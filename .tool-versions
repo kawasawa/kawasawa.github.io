@@ -1,1 +1,4 @@
 nodejs 18.14.2
+terraform 1.4.7
+tflint 0.50.3
+trivy 0.51.4
