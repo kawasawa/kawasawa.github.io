@@ -66,3 +66,61 @@ docker-compose-down:
 	@${INFO} 'docker compose down'
 	@docker compose --env-file ./server/.env down
 	@${INFO} 'completed'
+
+
+# ------------------------------------------------------------------------------
+# Terraform ローカル環境初期設定
+# ------------------------------------------------------------------------------
+
+.PHONY: terraform-init
+terraform-init:
+	@${INFO} 'terraform init'
+	@./terraform/environments/dev/init.sh
+	@${INFO} 'completed'
+
+
+# ------------------------------------------------------------------------------
+# Terraform フォーマット整形
+# ------------------------------------------------------------------------------
+
+.PHONY: terraform-format
+terraform-format:
+	@${INFO} 'terraform fmt'
+	@cd ./terraform/ && terraform fmt -recursive
+	@${INFO} 'completed'
+
+
+# ------------------------------------------------------------------------------
+# Terraform バリデーション
+# ------------------------------------------------------------------------------
+
+.PHONY: terraform-validate
+terraform-validate:
+	@${INFO} 'tflint'
+	@tflint --chdir=./terraform/environments/dev/ --minimum-failure-severity=error
+	@cd ./terraform/modules/ && TFLINT_CONFIG_FILE=$$(pwd)/../environments/dev/.tflint.hcl tflint --recursive --minimum-failure-severity=error
+	@${INFO} 'terraform validate'
+	@terraform -chdir=./terraform/environments/dev/ validate
+	@${INFO} 'completed'
+
+
+# ------------------------------------------------------------------------------
+# Terraform リソース作成
+# ------------------------------------------------------------------------------
+
+.PHONY: terraform-apply
+terraform-apply:
+	@${INFO} 'terraform apply'
+	@terraform -chdir=./terraform/environments/dev/ apply
+	@${INFO} 'completed'
+
+
+# ------------------------------------------------------------------------------
+# Terraform リソース削除
+# ------------------------------------------------------------------------------
+
+.PHONY: terraform-destroy
+terraform-destroy:
+	@${INFO} 'terraform destroy'
+	@terraform -chdir=./terraform/environments/dev/ destroy
+	@${INFO} 'completed'
