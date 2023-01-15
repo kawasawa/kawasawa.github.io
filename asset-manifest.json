@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.dae2e48b.css",
-    "main.js": "/static/js/main.ddbf0219.js",
-    "static/js/27.5db2abe9.chunk.js": "/static/js/27.5db2abe9.chunk.js",
+    "main.css": "/static/css/main.ee9d958a.css",
+    "main.js": "/static/js/main.b9891104.js",
+    "static/js/334.43639171.chunk.js": "/static/js/334.43639171.chunk.js",
     "static/media/banner.webp": "/static/media/banner.727307d773edc0985245.webp",
     "static/media/products__MyPad--01.webp": "/static/media/products__MyPad--01.381a150f6d7c0182dedf.webp",
     "static/media/products__hiyori--01.webp": "/static/media/products__hiyori--01.2b1884f3685baa479926.webp",
@@ -18,7 +18,7 @@
     "index.html": "/index.html"
   },
   "entrypoints": [
-    "static/css/main.dae2e48b.css",
-    "static/js/main.ddbf0219.js"
+    "static/css/main.ee9d958a.css",
+    "static/js/main.b9891104.js"
   ]
 }
