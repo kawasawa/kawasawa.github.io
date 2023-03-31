@@ -1,0 +1,12 @@
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile
+docker-compose.yml
+
+# release
+build/
+coverage/
+node_modules/

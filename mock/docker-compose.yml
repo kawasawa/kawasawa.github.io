@@ -1,0 +1,36 @@
+version: "3"
+name: kawasawa
+
+services:
+  kawasawa_db:
+    image: mysql:8-debian
+    platform: linux/amd64
+    env_file:
+      - ./server/.env
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql_volume:/var/lib/mysql
+      - ./docker/mysql/conf.d:/etc/mysql/conf.d
+      - ./docker/mysql/initdb.d:/docker-entrypoint-initdb.d
+    command: mysqld
+    init: true
+
+  kawasawa_server:
+    build: ./server
+    image: kawasawa.github.io/express.js
+    env_file:
+      - ./server/.env
+    environment:
+      - MYSQL_HOST=kawasawa_db
+    ports:
+      - ${EXPRESS_PORT}:${EXPRESS_PORT}
+    volumes:
+      - ./server/src:/app/src
+    depends_on:
+      - kawasawa_db
+    init: true
+
+volumes:
+  mysql_volume:
+    name: kawasawa_db
