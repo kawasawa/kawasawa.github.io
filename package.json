@@ -1,0 +1,34 @@
+{
+  "name": "kawasawa",
+  "version": "1.0.0",
+  "private": true,
+  "homepage": "https://kawasawa.github.io/",
+  "workspaces": [
+    "app",
+    "mock/*"
+  ],
+  "devDependencies": {
+    "newman": "^5.3.2",
+    "newman-reporter-htmlextra": "^1.22.11",
+    "npm-run-all": "^4.1.5",
+    "redoc-cli": "^0.13.20"
+  },
+  "scripts": {
+    "start": "run-s start:mock start:app",
+    "start:mock": "make -C ./mock docker-compose-up",
+    "start:mock:swagger": "rm -rf ./mock/dist/swagger && swagger-codegen generate -l nodejs-server -i ./tools/swagger/openapi.json -o ./mock/dist/swagger && npm run start --prefix ./mock/dist/swagger",
+    "start:app": "yarn workspace app start",
+    "stop": "make -C ./mock docker-compose-down",
+    "lint": "yarn workspace app lint",
+    "test:ut": "yarn workspace app test:ut",
+    "test:ita": "mkdir -p ./tools/dist && . ./app/.env.test && echo \"::add-mask::$REACT_APP_GOOGLE_SHEETS_API_KEY\" && echo \"::add-mask::$REACT_APP_GOOGLE_SHEETS_ID\" && newman run ./tools/postman/postman_collection.json --env-var \"REFERER=localhost/\" --env-var \"REACT_APP_GOOGLEAPIS_URL=$REACT_APP_GOOGLEAPIS_URL\" --env-var \"REACT_APP_GOOGLE_SHEETS_API_KEY=$REACT_APP_GOOGLE_SHEETS_API_KEY\" --env-var \"REACT_APP_GOOGLE_SHEETS_ID=$REACT_APP_GOOGLE_SHEETS_ID\" --reporters htmlextra,cli --reporter-htmlextra-skipSensitiveData --reporter-htmlextra-export ./tools/dist/newman-report.html && sed -e \"s/$REACT_APP_GOOGLE_SHEETS_API_KEY/_/g\" -e \"s/$REACT_APP_GOOGLE_SHEETS_ID/_/g\" -i ./tools/dist/newman-report.html",
+    "test:itb": "yarn workspace app test:it",
+    "test:pt": "mkdir -p ./tools/dist && . ./app/.env.test && echo \"::add-mask::$REACT_APP_GOOGLE_SHEETS_API_KEY\" && echo \"::add-mask::$REACT_APP_GOOGLE_SHEETS_ID\" && k6 run ./tools/k6/server.test.js --rps 30 --duration 30s --vus 5 --env REACT_APP_GOOGLEAPIS_URL=$REACT_APP_GOOGLEAPIS_URL --env REACT_APP_GOOGLE_SHEETS_API_KEY=$REACT_APP_GOOGLE_SHEETS_API_KEY --env REACT_APP_GOOGLE_SHEETS_ID=$REACT_APP_GOOGLE_SHEETS_ID --env ENABLE_REPORT=true --env REPORT_PATH=./tools/dist/k6-report.html && sed -e \"s/$REACT_APP_GOOGLE_SHEETS_API_KEY/_/g\" -e \"s/$REACT_APP_GOOGLE_SHEETS_ID/_/g\" -i ./tools/dist/k6-report.html",
+    "build": "run-s build:app build:licenses build:openapi build:er",
+    "build:app": "yarn workspace app build",
+    "build:licenses": "mkdir -p ./app/dist && yarn workspace app licenses generate-disclaimer > ./app/dist/licenses.txt",
+    "build:openapi": "redoc-cli build ./tools/swagger/openapi.yml -o ./tools/dist/openapi.html",
+    "build:openapi:swagger": "swagger-codegen generate -l html2 -i ./tools/swagger/openapi.yml -o ./tools/dist/swagger",
+    "build:er": "tbls doc -c ./tools/tbls/.tbls.yml --rm-dist"
+  }
+}
