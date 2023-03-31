@@ -1,0 +1,19 @@
+{
+  "recommendations": [
+    // 開発ツール
+    "ms-azuretools.vscode-docker",
+    "mtxr.sqltools",
+    "mtxr.sqltools-driver-mysql",
+    "hediet.vscode-drawio",
+
+    // コーディング補助
+    "streetsidesoftware.code-spell-checker",
+    "Gruntfuggly.todo-tree",
+
+    // React, TypeScript 関連
+    "ms-vscode.vscode-typescript-next",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "Orta.vscode-jest"
+  ]
+}
