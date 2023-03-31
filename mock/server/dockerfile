@@ -1,0 +1,36 @@
+# ------------------------------------------------------------
+# ビルド実行用ステージ
+# ------------------------------------------------------------
+
+FROM node:18.14.2-bullseye-slim AS builder
+
+WORKDIR /usr/src/app
+COPY ["package.json", ".yarnrc.yml", "./"]
+#RUN yarn install --production
+RUN yarn install
+
+#RUN yarn build
+
+
+# ------------------------------------------------------------
+# イメージ生成用ステージ
+#   この時点でビルドまで完了しているため、軽量なベースイメージを採用する
+#   このステージが最終であり、成果物がイメージとして生成される
+# ------------------------------------------------------------
+
+FROM node:18.14.2-alpine
+
+#ENV NODE_ENV production
+
+# rootless モードとして実行する
+USER node
+
+# 既定のフォルダをワークディレクトリとして使用する
+WORKDIR /usr/src/app
+
+# パッケージとソースファイルを複製し root 権限を剥奪する
+COPY --chown=node:node --from=builder /usr/src/app/node_modules ./node_modules
+COPY --chown=node:node . .
+
+#ENTRYPOINT ["yarn", "start"]
+ENTRYPOINT ["yarn", "dev"]

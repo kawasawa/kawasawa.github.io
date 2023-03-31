@@ -1,0 +1,50 @@
+version: "3"
+
+# プロジェクト名
+#   未指定時は親ディレクトリ名が使用される
+#   生成されるコンテナは `${プロジェクト名}-${サービス名}-${インデックス}` の規則で命名される
+name: kawasawa
+
+services:
+  kawasawa_db:
+    image: mysql:8-debian
+    platform: linux/amd64
+    env_file:
+      - ./server/.env
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql_volume:/var/lib/mysql
+      - ./docker/mysql/conf.d:/etc/mysql/conf.d
+      - ./docker/mysql/initdb.d:/docker-entrypoint-initdb.d
+    command: mysqld
+    init: true
+
+  kawasawa_server:
+    # ベースとなる Dockerfile が配置されたホスト端末のディレクトリ
+    build: ./server
+    # (build 指定時は) 生成される Docker イメージ名
+    image: kawasawa.github.io/express.js
+    # 参照される環境変数ファイル
+    env_file:
+      - ./server/.env
+    # 明示的に追加する環境変数 (.env に未定義のものなど)
+    environment:
+      - MYSQL_HOST=kawasawa_db
+    # ホスト端末とバインドされるポート
+    ports:
+      - ${EXPRESS_PORT}:${EXPRESS_PORT}
+    # Docker ボリュームまたはホスト端末とバインドされるディレクトリ
+    volumes:
+      - ./server/src:/usr/src/app/src/
+    # 依存先の Docker コンテナ (指定されたコンテナが起動するまで起動が待機される)
+    depends_on:
+      - kawasawa_db
+    # init プロセスの有効化 (子プロセスの適切なクリーンアップ管理)
+    init: true
+
+volumes:
+  mysql_volume:
+    # ボリューム名
+    #   未指定時は `${プロジェクト名}-${ボリューム名}` の規則で命名される
+    name: kawasawa_db

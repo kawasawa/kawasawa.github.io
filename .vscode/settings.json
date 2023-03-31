@@ -1,0 +1,77 @@
+{
+  // フォーマッターの設定
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+
+  // フォーマットルールを指定
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "[markdown]": { "files.trimTrailingWhitespace": false },
+
+  // フォーマットタイミングを指定
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": { "source.fixAll.eslint": "explicit" },
+
+  // テスターの設定
+  "jest.jestCommandLine": "yarn test:ut",
+  "jest.runMode": "on-demand",
+
+  // 拡張子の関連付け
+  "files.associations": {
+    "*.env.*": "properties",
+    "*.cnf": "properties",
+    "*.gs": "javascript"
+  },
+
+  // アノテーションコメントの定義
+  "todo-tree.regex.regexCaseSensitive": false,
+  "todo-tree.general.tags": [
+    "BUG",
+    "FIXME",
+    "HACK",
+    "OPTIMIZE",
+    "TODO",
+    "UNDONE",
+    "NOTE"
+  ],
+  "todo-tree.general.tagGroups": {
+    // (既定のグループ名と粒度には違和感があるが踏襲し、割振りだけ変更する)
+    // 対応が必要なもの
+    "BUG": ["BUG", "FIXME"],
+    // 改善の余地があるもの
+    "HACK": ["HACK", "OPTIMIZE"],
+    // 今後実装するもの
+    "FIXME": ["TODO", "UNDONE"]
+    // 上記のいずれにも該当しない場合はグループなし
+  },
+  "todo-tree.filtering.excludeGlobs": [
+    "**/.git/*",
+    // "**/.github/*",
+    "**/.vscode/*",
+    "**/build/*",
+    "**/coverage/*",
+    "**/dist/*",
+    "**/node_modules/*",
+    "yarn.lock"
+  ],
+
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default",
+        "enableSsl": "Disabled"
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 3306,
+      "driver": "MySQL",
+      "name": "kawasawa_db",
+      "database": "database",
+      "username": "user",
+      "password": "password"
+    }
+  ]
+}
