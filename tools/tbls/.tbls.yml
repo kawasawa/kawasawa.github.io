@@ -1,0 +1,2 @@
+dsn: mysql://root:root@localhost:3306/database
+docPath: tools/dist/er/
