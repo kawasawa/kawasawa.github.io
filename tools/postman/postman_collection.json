@@ -1,0 +1,212 @@
+{
+	"info": {
+		"_postman_id": "92e38658-08b3-4f49-bb8f-dff531077478",
+		"name": "kawasawa.github.io",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17647550"
+	},
+	"item": [
+		{
+			"name": "articles-metadata",
+			"item": [
+				{
+					"name": "データ照会",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('ステータスコードが 200 であること', () => {",
+									"    pm.response.to.status(200);",
+									"});",
+									"",
+									"pm.test('Content-Type が \"application/json; charset=utf-8\" であること', () => {",
+									"    pm.expect(pm.response.headers.get('Content-Type').toLowerCase()).to.eql('application/json; charset=utf-8');",
+									"});",
+									"",
+									"pm.test('記事のメタデータを取得できること', () => {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.values.length).to.gte(2)",
+									"    pm.expect(jsonData.values[0]).to.eql([",
+									"        'id', 'title', 'body', 'tags', 'url', 'likes_count', 'stocks_count', 'comments_count', 'created_at', 'updated_at'",
+									"    ]);",
+									"    for (let i = 1; i < jsonData.values.length; i++) {",
+									"        pm.expect(jsonData.values[i][0]).to.match(/^[0-9a-zA-Z]+$/);",
+									"        pm.expect(jsonData.values[i][1]).not.to.empty;",
+									"        pm.expect(jsonData.values[i][2]).not.to.empty;",
+									"        pm.expect(jsonData.values[i][4]).to.match(/^https?:\\/\\/[\\w/:%#\\$&\\?\\(\\)~\\.=\\+\\-]+$/);",
+									"        pm.expect(jsonData.values[i][5]).to.match(/^[0-9]+$/);",
+									"        pm.expect(jsonData.values[i][6]).to.match(/^[0-9]+$/);",
+									"        pm.expect(jsonData.values[i][7]).to.match(/^[0-9]+$/);",
+									"        pm.expect(jsonData.values[i][8]).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\+\\d{2}:\\d{2}$/);",
+									"        pm.expect(jsonData.values[i][9]).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\+\\d{2}:\\d{2}$/);",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Referer",
+								"value": "{{REFERER}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{REACT_APP_GOOGLEAPIS_URL}}/spreadsheets/{{REACT_APP_GOOGLE_SHEETS_ID}}/values/articles-metadata?key={{REACT_APP_GOOGLE_SHEETS_API_KEY}}",
+							"host": [
+								"{{REACT_APP_GOOGLEAPIS_URL}}"
+							],
+							"path": [
+								"spreadsheets",
+								"{{REACT_APP_GOOGLE_SHEETS_ID}}",
+								"values",
+								"articles-metadata"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{REACT_APP_GOOGLE_SHEETS_API_KEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "articles-pickup",
+			"item": [
+				{
+					"name": "データ照会",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('ステータスコードが 200 であること', () => {",
+									"    pm.response.to.status(200);",
+									"});",
+									"",
+									"pm.test('Content-Type が \"application/json; charset=utf-8\" であること', () => {",
+									"    pm.expect(pm.response.headers.get('Content-Type').toLowerCase()).to.eql('application/json; charset=utf-8');",
+									"});",
+									"",
+									"pm.test('ピックアップ記事を取得できること', () => {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.values.length).to.gte(2)",
+									"    pm.expect(jsonData.values[0]).to.eql([",
+									"        'id', 'data'",
+									"    ]);",
+									"    for (let i = 1; i < jsonData.values.length; i++) {",
+									"        pm.expect(jsonData.values[i][0]).to.match(/^[0-9a-zA-Z]+$/);",
+									"        pm.expect(jsonData.values[i][1]).to.match(/^data:image\\/webp;base64,.+$/);",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Referer",
+								"value": "{{REFERER}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{REACT_APP_GOOGLEAPIS_URL}}/spreadsheets/{{REACT_APP_GOOGLE_SHEETS_ID}}/values/articles-pickup?key={{REACT_APP_GOOGLE_SHEETS_API_KEY}}",
+							"host": [
+								"{{REACT_APP_GOOGLEAPIS_URL}}"
+							],
+							"path": [
+								"spreadsheets",
+								"{{REACT_APP_GOOGLE_SHEETS_ID}}",
+								"values",
+								"articles-pickup"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{REACT_APP_GOOGLE_SHEETS_API_KEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "version",
+			"item": [
+				{
+					"name": "データ照会",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('ステータスコードが 200 であること', () => {",
+									"    pm.response.to.status(200);",
+									"});",
+									"",
+									"pm.test('Content-Type が \"application/json; charset=utf-8\" であること', () => {",
+									"    pm.expect(pm.response.headers.get('Content-Type').toLowerCase()).to.eql('application/json; charset=utf-8');",
+									"});",
+									"",
+									"pm.test('最終更新日時を取得できること', () => {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.values.length).to.gte(2)",
+									"    pm.expect(jsonData.values[0]).to.eql(['last_update']);",
+									"    for (let i = 1; i < jsonData.values.length; i++) {",
+									"        pm.expect(jsonData.values[i][0]).to.match(/^\\d{4}\\/\\d{1,2}\\/\\d{1,2}\\s\\d{1,2}:\\d{1,2}:\\d{1,2}$/);",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Referer",
+								"value": "{{REFERER}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{REACT_APP_GOOGLEAPIS_URL}}/spreadsheets/{{REACT_APP_GOOGLE_SHEETS_ID}}/values/version?key={{REACT_APP_GOOGLE_SHEETS_API_KEY}}",
+							"host": [
+								"{{REACT_APP_GOOGLEAPIS_URL}}"
+							],
+							"path": [
+								"spreadsheets",
+								"{{REACT_APP_GOOGLE_SHEETS_ID}}",
+								"values",
+								"version"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{REACT_APP_GOOGLE_SHEETS_API_KEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
