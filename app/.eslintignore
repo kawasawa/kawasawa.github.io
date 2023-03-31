@@ -1,0 +1,12 @@
+.git/
+.github/
+.vscode/
+build/
+coverage/
+dist/
+node_modules/
+docs/
+public/
+tools/
+yarn.lock
+*.config.js

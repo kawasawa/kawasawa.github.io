@@ -1,0 +1,2 @@
+# HACK: .prettierignore はルートディレクトリに配置しないと適用されないようだ
+**/.yarnrc*
