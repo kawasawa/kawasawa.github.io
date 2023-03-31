@@ -1,0 +1,72 @@
+# ------------------------------------------------------------
+# ビルド実行用ステージ
+# ------------------------------------------------------------
+
+FROM node:18.14.2-bullseye-slim AS build
+
+WORKDIR /usr/src/app
+
+#COPY ["package.json", "yarn.lock", ".yarnrc", "./"]
+COPY ["package.json", "./"]
+# NOTE: tsocnfig.json の設定を反映させるため typescript が登録されている devDependencies まで含めてをインストールする
+#RUN yarn install --production
+RUN yarn install
+
+#COPY . .
+#RUN yarn build
+
+
+# ------------------------------------------------------------
+# イメージ生成用ステージ
+# ------------------------------------------------------------
+# このステージが最終であり、成果物がイメージとして生成される
+# ここまででビルドは完了しているため、このステージでは実行さえできれば良い
+#
+# NOTE: Docker のベースイメージは極力軽量なものを選ぶと良い
+# - BusyBox
+#     容量: 極小 (1~10 MB 程度)
+#     概要: 最小限の UNIX ツールのみで構成され、単一バイナリで動作する最小の Linux
+#     用途: 組み込みシステム
+#     補足: サーバと言うよりツール群に近い
+# - Alpine (BusyBox がベース)
+#     容量: 小規模 (10~30 MB 程度)
+#     概要: apk や musl 等を追加し最小限のサーバ環境を構成した軽量 Linux
+#     用途: マイクロサービス, 軽量サーバ
+# - Debian (Alpine がベース)
+#     容量: 中規模 (50~300 MB 程度)
+#     概要: フル機能の GNU ツール等を追加された多機能 Linux
+#     用途: 一般的な Linux サーバ
+#     補足: v10=buster, v11=bullseye
+# - Ubuntu (Debian がベース)
+#     容量: 大規模 (2~4 GB 程度)
+#     概要: GUI 及びデバイスドライバーまでサポートを拡充した大型 Linux
+#     用途: GUI 環境
+# - Distroless (Debian がベース)
+#     容量: 小規模 (10~30 MB 程度)
+#     概要: アプリの実行に必要な最小限のパッケージのみを抽出した Google 製の軽量 Linux
+#     用途: セキュリティ要件の高いサーバ
+#     補足: シェルも取り除かれているためデバッグは困難だが、攻撃点も少なく非常に強固で軽量
+# - ※ Slim (これは正確には OS ではなくタグ)
+#     概要: 指定の OS について同梱パッケージを使用頻度の高いものに限定した軽量版
+#     補足: 容量が削減される代わりに、アプリの実行に必要なパッケージが足りない場合もあり、動作検証が必要
+# ------------------------------------------------------------
+
+FROM node:18.14.2-alpine AS runtime
+
+#ENV NODE_ENV production
+
+# 既定のアプリケーション配置用ディレクトリをワークとして使用する
+#   NOTE: Linux では既定ディレクトリとして下記の使用を推奨している
+#   - /usr/src/app: アプリケーションの配置
+#   - /usr/local  : ツールやライブラリの配置
+WORKDIR /usr/src/app
+
+# rootless モードとして実行する
+USER node
+
+# パッケージとソースファイルを複製し root 権限を剥奪する
+COPY --chown=node:node --from=build /usr/src/app/node_modules ./node_modules
+COPY --chown=node:node . .
+
+#ENTRYPOINT ["yarn", "start"]
+ENTRYPOINT ["yarn", "dev"]

@@ -1,1 +1,21 @@
+# パッケージ
+**/node_modules/
+
+# テスト
+**/coverage/
+
+# リリース
+**/build/
+**/dist/
+**/*.tsbuildinfo
+
+# 環境変数
+**/.env.local
+**/.env.*.local
+
+# ログ
+**/*.log*
+
+# macOS 向けの設定
+**/Thumbs.db
 **/.DS_Store
