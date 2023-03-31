@@ -1,0 +1,49 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "eslint.packageManager": "yarn",
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "jest.jestCommandLine": "yarn test:ut",
+  "jest.autoRun": { "watch": false },
+
+  "todo-tree.filtering.excludeGlobs": [
+    "**/.git/*",
+    "**/.workspace/*",
+    "**/build/*",
+    "**/coverage/*",
+    "**/dist/*",
+    "**/node_modules/*",
+    "yarn.lock"
+  ],
+  "todo-tree.general.tags": [
+    "BUG",
+    "Bug",
+    "bug",
+    "FIXME",
+    "Fixme",
+    "fixme",
+    "HACK",
+    "Hack",
+    "hack",
+    "OPTIMIZE",
+    "Optimize",
+    "optimize",
+    "TODO",
+    "ToDo",
+    "Todo",
+    "todo",
+    "UNDONE",
+    "Undone",
+    "undone"
+  ],
+  "todo-tree.general.tagGroups": {
+    "BUG": ["Bug", "bug", "FIXME", "Fixme", "fixme"],
+    "HACK": ["Hack", "hack", "OPTIMIZE", "Optimize", "optimize"],
+    "TODO": ["ToDo", "Todo", "todo", "UNDONE", "Undone", "undone"]
+  },
+  "github-actions.workflows.pinned.workflows": []
+}
