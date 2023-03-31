@@ -1,1 +1,23 @@
+# パッケージ
+**/node_modules/
+
+# テスト
+**/coverage/
+
+# リリース
+**/build/
+**/dist/
+**/*.tsbuildinfo
+**/.terraform/
+
+# 環境変数
+**/.env.production
+**/.env.local
+**/.env.*.local
+
+# ログ
+**/*.log*
+
+# macOS 向けの設定
+**/Thumbs.db
 **/.DS_Store
