@@ -3,6 +3,16 @@ import axios, { AxiosError, AxiosInstance, Method } from 'axios';
 export const createInstance = <T>(retryLimit = 3) => {
   const client = axios.create();
 
+  // CSRF トークンを送受信する
+  if (process.env.NODE_ENV === 'development') {
+    // ブラウザの機能で Cookie を HTTP ヘッダーの項目に含める (CSRF シークレットを送信する)
+    client.defaults.withCredentials = true;
+    // サーバから受け取る CSRF トークンが格納されている Cookie 名とサーバに返却する際の HTTP ヘッダー名を指定する
+    // それぞれの名称はサーバ側の指定に従う
+    client.defaults.xsrfCookieName = 'csrf_token';
+    client.defaults.xsrfHeaderName = 'x-csrf-token';
+  }
+
   // リクエストの送受信時にログ出力する
   if (process.env.NODE_ENV === 'development') {
     client.interceptors.request.use((config) => {
