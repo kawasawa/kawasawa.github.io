@@ -136,3 +136,14 @@ terraform-destroy:
 	@${INFO} 'terraform destroy'
 	@terraform -chdir=./terraform/environments/dev/ destroy
 	@${INFO} 'completed'
+
+
+# ------------------------------------------------------------------------------
+# Prisma クライアント生成
+# ------------------------------------------------------------------------------
+
+.PHONY: prisma-generate
+prisma-generate:
+	@${INFO} 'prisma generate'
+	@cd ./server/ && yarn gen:db:client
+	@${INFO} 'completed'

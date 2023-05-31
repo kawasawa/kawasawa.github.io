@@ -35,7 +35,8 @@
     "build:openapi": "redoc-cli build ./tools/swagger/openapi.yml -o ./tools/dist/openapi.html",
     "build:openapi-swagger": "swagger-codegen generate -l html2 -i ./tools/swagger/openapi.yml -o ./tools/dist/swagger",
     "build:er": "tbls doc -c ./tools/tbls/.tbls.yml --rm-dist",
-    "build:mock": "yarn workspace server build"
+    "build:mock": "yarn workspace server build",
+    "build:mock:prisma": "yarn workspace server gen:db:client"
   },
   "__comments__": {
     "//": "パッケージ管理ファイル",
