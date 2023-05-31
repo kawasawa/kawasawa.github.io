@@ -60,6 +60,9 @@ COPY ["package.json", "./"]
 #RUN yarn install --production
 RUN yarn install
 
+COPY ["prisma/", "./"]
+RUN yarn gen:db:client
+
 # 今回は開発用サーバを起動するためビルドは不要
 #COPY . .
 #RUN yarn build
