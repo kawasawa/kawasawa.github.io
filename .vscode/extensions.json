@@ -16,6 +16,7 @@
     "Orta.vscode-jest",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
+    "Prisma.prisma",
 
     // その他
     "streetsidesoftware.code-spell-checker",
