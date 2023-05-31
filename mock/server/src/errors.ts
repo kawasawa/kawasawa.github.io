@@ -1,5 +1,5 @@
 import boom from '@hapi/boom';
-import { UniqueConstraintError } from 'sequelize';
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 import { ValidationError } from 'yup';
 
 /**
@@ -18,8 +18,11 @@ export const convertToBoomInstance = (err: any) => {
     return boom.badRequest(err.message ?? 'validation failed.');
   }
   // ユニーク制約エラーの場合は 409 として扱う
-  if (err instanceof UniqueConstraintError) {
-    return boom.conflict(err.message);
+  if (err instanceof PrismaClientKnownRequestError) {
+    switch (err.code) {
+      case 'P2002':
+        return boom.conflict(err.message);
+    }
   }
   // CSRF トークンエラーの場合は 401 として扱う
   if (err.code === 'EBADCSRFTOKEN') {

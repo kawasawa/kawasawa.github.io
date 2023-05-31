@@ -2,7 +2,6 @@ import dotenv from 'dotenv';
 import fs from 'fs';
 
 import { createApp } from './app';
-import { initializeAdapter } from './db';
 
 // OS のシグナルを捕捉する
 process.on('SIGHUP', (signal) => {
@@ -33,9 +32,6 @@ if (!fs.existsSync(envPath)) envPath = './.env';
 if (!fs.existsSync(envPath)) throw new Error(`.env does not exists. : path="${envPath}"`);
 dotenv.config({ path: envPath });
 console.log(`.env has been loaded. : path="${envPath}"`);
-
-// OR マッパーを初期化する
-initializeAdapter();
 
 // サーバを起動する
 const server = createApp();

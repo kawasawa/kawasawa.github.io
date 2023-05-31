@@ -57,6 +57,9 @@ COPY ["package.json", "./"]
 #RUN yarn install --production
 RUN yarn install
 
+COPY ["prisma/", "./"]
+RUN yarn gen:db:client
+
 # クリーンビルドにあたり .dockerignore で /node_modules を除外していること
 # ※今回は開発用サーバを起動するためビルドは不要
 #COPY . .

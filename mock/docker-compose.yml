@@ -20,7 +20,7 @@ services:
     #   コンテナに渡す環境変数を指定する
     #   ここでは上記の .env に未定義の変数を宣言している (コンテナ内でのみ使用する変数とも言える)
     environment:
-      - MYSQL_HOST=mysql
+      - MYSQL_URL=mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@mysql:${MYSQL_PORT}/${MYSQL_DATABASE}
     # ポート
     #   ホストとバインドされるポートを指定する
     #   `ホストのポート:コンテナのポート` の形式
@@ -56,7 +56,7 @@ services:
     env_file:
       - ./server/.env
     ports:
-      - 3306:3306
+      - ${MYSQL_PORT}:${MYSQL_PORT}
     volumes:
       - mysql_volume:/var/lib/mysql
       - ./docker/mysql/conf.d:/etc/mysql/conf.d

@@ -1,14 +1,19 @@
 import boom from '@hapi/boom';
 import httpMocks from 'node-mocks-http';
-import { Model } from 'sequelize';
 
+import * as Prisma from '../lib/prisma';
 import { articlesMetadata, articlesPickup, version } from './spreadsheets';
 
+// allow redefine
+jest.mock('../lib/prisma', () => ({
+  getDbClient: jest.fn(),
+}));
+
 describe('spreadsheets', () => {
-  const spy_findAll = jest.spyOn(Model, 'findAll');
+  const spy_getDbClient = jest.spyOn(Prisma, 'getDbClient');
 
   beforeEach(() => {
-    spy_findAll.mockClear();
+    spy_getDbClient.mockClear();
   });
 
   describe('articlesMetadata', () => {
@@ -28,15 +33,14 @@ describe('spreadsheets', () => {
       };
 
       // モック
-      spy_findAll.mockReturnValue(
-        Promise.resolve([
-          {
-            ...dummy_data,
-            created_at: new Date(dummy_data.created_at),
-            updated_at: new Date(dummy_data.updated_at),
-          },
-        ] as unknown as Model[])
-      );
+      const mock_findMany = jest.fn().mockResolvedValue([
+        {
+          ...dummy_data,
+          created_at: new Date(dummy_data.created_at),
+          updated_at: new Date(dummy_data.updated_at),
+        },
+      ]);
+      spy_getDbClient.mockReturnValue({ articles_metadata: { findMany: mock_findMany } } as unknown as any);
 
       // メソッドを実行
       const req = httpMocks.createRequest();
@@ -48,7 +52,7 @@ describe('spreadsheets', () => {
       expect(res.statusCode).toBe(200);
 
       // 外部メソッドの呼び出し状況を確認
-      expect(spy_findAll).toBeCalled();
+      expect(mock_findMany).toBeCalled();
 
       // レスポンスデータを確認
       const json = res._getJSONData();
@@ -62,7 +66,8 @@ describe('spreadsheets', () => {
 
     test('DBからレコードの取得に失敗した場合は例外をスローすること', async () => {
       // モック
-      spy_findAll.mockReturnValue(Promise.resolve(null as unknown as Model[]));
+      const mock_findMany = jest.fn().mockResolvedValue([]);
+      spy_getDbClient.mockReturnValue({ articles_metadata: { findMany: mock_findMany } } as unknown as any);
 
       // メソッドを実行
       const req = httpMocks.createRequest();
@@ -71,7 +76,7 @@ describe('spreadsheets', () => {
       await articlesMetadata(req, res, next);
 
       // 外部メソッドの呼び出し状況を確認
-      expect(spy_findAll).toBeCalled();
+      expect(mock_findMany).toBeCalled();
       expect(next).toBeCalledWith(boom.notFound());
     });
 
@@ -80,9 +85,10 @@ describe('spreadsheets', () => {
       const dummy_error = new Error('TEST_error');
 
       // モック
-      spy_findAll.mockImplementation(() => {
+      const mock_findMany = jest.fn().mockImplementation(() => {
         throw dummy_error;
       });
+      spy_getDbClient.mockReturnValue({ articles_metadata: { findMany: mock_findMany } } as unknown as any);
 
       // メソッドを実行
       const req = httpMocks.createRequest();
@@ -91,7 +97,7 @@ describe('spreadsheets', () => {
       await articlesMetadata(req, res, next);
 
       // 外部メソッドの呼び出し状況を確認
-      expect(spy_findAll).toBeCalled();
+      expect(mock_findMany).toBeCalled();
       expect(next).toBeCalledWith(dummy_error);
     });
   });
@@ -105,7 +111,8 @@ describe('spreadsheets', () => {
       };
 
       // モック
-      spy_findAll.mockReturnValue(Promise.resolve([dummy_data] as unknown as Model[]));
+      const mock_findMany = jest.fn().mockResolvedValue([dummy_data]);
+      spy_getDbClient.mockReturnValue({ articles_pickup: { findMany: mock_findMany } } as unknown as any);
 
       // メソッドを実行
       const req = httpMocks.createRequest();
@@ -117,7 +124,7 @@ describe('spreadsheets', () => {
       expect(res.statusCode).toBe(200);
 
       // 外部メソッドの呼び出し状況を確認
-      expect(spy_findAll).toBeCalled();
+      expect(mock_findMany).toBeCalled();
 
       // レスポンスデータを確認
       const json = res._getJSONData();
@@ -131,7 +138,8 @@ describe('spreadsheets', () => {
 
     test('DBからレコードの取得に失敗した場合は例外をスローすること', async () => {
       // モック
-      spy_findAll.mockReturnValue(Promise.resolve(null as unknown as Model[]));
+      const mock_findMany = jest.fn().mockResolvedValue([]);
+      spy_getDbClient.mockReturnValue({ articles_pickup: { findMany: mock_findMany } } as unknown as any);
 
       // メソッドを実行
       const req = httpMocks.createRequest();
@@ -140,7 +148,7 @@ describe('spreadsheets', () => {
       await articlesPickup(req, res, next);
 
       // 外部メソッドの呼び出し状況を確認
-      expect(spy_findAll).toBeCalled();
+      expect(mock_findMany).toBeCalled();
       expect(next).toBeCalledWith(boom.notFound());
     });
 
@@ -149,9 +157,10 @@ describe('spreadsheets', () => {
       const dummy_error = new Error('TEST_error');
 
       // モック
-      spy_findAll.mockImplementation(() => {
+      const mock_findMany = jest.fn().mockImplementation(() => {
         throw dummy_error;
       });
+      spy_getDbClient.mockReturnValue({ articles_pickup: { findMany: mock_findMany } } as unknown as any);
 
       // メソッドを実行
       const req = httpMocks.createRequest();
@@ -160,7 +169,7 @@ describe('spreadsheets', () => {
       await articlesPickup(req, res, next);
 
       // 外部メソッドの呼び出し状況を確認
-      expect(spy_findAll).toBeCalled();
+      expect(mock_findMany).toBeCalled();
       expect(next).toBeCalledWith(dummy_error);
     });
   });
@@ -173,7 +182,8 @@ describe('spreadsheets', () => {
       };
 
       // モック
-      spy_findAll.mockReturnValue(Promise.resolve([dummy_data] as unknown as Model[]));
+      const mock_findMany = jest.fn().mockResolvedValue([dummy_data]);
+      spy_getDbClient.mockReturnValue({ version: { findMany: mock_findMany } } as unknown as any);
 
       // メソッドを実行
       const req = httpMocks.createRequest();
@@ -185,7 +195,7 @@ describe('spreadsheets', () => {
       expect(res.statusCode).toBe(200);
 
       // 外部メソッドの呼び出し状況を確認
-      expect(spy_findAll).toBeCalled();
+      expect(mock_findMany).toBeCalled();
 
       // レスポンスデータを確認
       const json = res._getJSONData();
@@ -199,7 +209,8 @@ describe('spreadsheets', () => {
 
     test('DBからレコードの取得に失敗した場合は例外をスローすること', async () => {
       // モック
-      spy_findAll.mockReturnValue(Promise.resolve(null as unknown as Model[]));
+      const mock_findMany = jest.fn().mockResolvedValue([]);
+      spy_getDbClient.mockReturnValue({ version: { findMany: mock_findMany } } as unknown as any);
 
       // メソッドを実行
       const req = httpMocks.createRequest();
@@ -208,7 +219,7 @@ describe('spreadsheets', () => {
       await version(req, res, next);
 
       // 外部メソッドの呼び出し状況を確認
-      expect(spy_findAll).toBeCalled();
+      expect(mock_findMany).toBeCalled();
       expect(next).toBeCalledWith(boom.notFound());
     });
 
@@ -217,9 +228,10 @@ describe('spreadsheets', () => {
       const dummy_error = new Error('TEST_error');
 
       // モック
-      spy_findAll.mockImplementation(() => {
+      const mock_findMany = jest.fn().mockImplementation(() => {
         throw dummy_error;
       });
+      spy_getDbClient.mockReturnValue({ version: { findMany: mock_findMany } } as unknown as any);
 
       // メソッドを実行
       const req = httpMocks.createRequest();
@@ -228,7 +240,7 @@ describe('spreadsheets', () => {
       await version(req, res, next);
 
       // 外部メソッドの呼び出し状況を確認
-      expect(spy_findAll).toBeCalled();
+      expect(mock_findMany).toBeCalled();
       expect(next).toBeCalledWith(dummy_error);
     });
   });

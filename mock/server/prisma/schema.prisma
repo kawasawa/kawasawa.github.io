@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+
+  // バイナリの出力形式をベースイメージに応じて指定する
+  // bullseye-slim では特段指定不要
+  // alpine において GitHub Actions とローカルの両方で動作させるには下記を指定する
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x", "linux-musl-arm64-openssl-3.0.x"]
+}
+
+generator markdown {
+  provider = "prisma-markdown"
+  output   = "../dist/ERD.md"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("MYSQL_URL")
+}
+
+model articles_metadata {
+  id             String   @id @db.Char(20)
+  title          String   @db.VarChar(255)
+  body           String   @db.Text
+  tags           String   @db.VarChar(255)
+  url            String   @db.Text
+  likes_count    Int
+  stocks_count   Int
+  comments_count Int
+  created_at     DateTime @db.Timestamp(0)
+  updated_at     DateTime @db.Timestamp(0)
+}
+
+model articles_pickup {
+  id   String @id @db.Char(20)
+  data String @db.Text
+}
+
+model version {
+  last_update String @id @db.VarChar(20)
+}
