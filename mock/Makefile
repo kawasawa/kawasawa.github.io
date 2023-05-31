@@ -114,3 +114,14 @@ terraform-scan:
 	@${INFO} 'trivy config'
 	@trivy config --severity=HIGH,CRITICAL --ignorefile=./aws/terraform/.trivyignore ./aws/terraform/
 	@${INFO} 'completed'
+
+
+# ------------------------------------------------------------------------------
+# Prisma クライアント生成
+# ------------------------------------------------------------------------------
+
+.PHONY: prisma-generate
+prisma-generate:
+	@${INFO} 'prisma generate'
+	@cd ./server/ && yarn gen:db:client
+	@${INFO} 'completed'

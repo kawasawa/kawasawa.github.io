@@ -5,6 +5,7 @@
 {
   // フォーマッターの設定
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[prisma]": { "editor.defaultFormatter": "Prisma.prisma" },
   "[sql]": { "editor.defaultFormatter": "mtxr.sqltools" },
   "eslint.workingDirectories": [{ "mode": "auto" }],
   "javascript.updateImportsOnFileMove.enabled": "always",
