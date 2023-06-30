@@ -1,0 +1,88 @@
+# ------------------------------------------------------------------------------
+# ロードバランサー
+# ------------------------------------------------------------------------------
+
+resource "aws_lb" "main" {
+  load_balancer_type = "application" # ALB
+  name               = "${var.prefix}-alb"
+  tags               = { Name = "${var.prefix}-alb" }
+
+  subnets = [
+    # ALB は最低 2 つ以上のサブネットに配置する
+    # 内部的には各サブネットに ALB のリスナーが配置され、これによりトラフィックが受信できる状態になる
+    var.subnet_public_a_id,
+    var.subnet_public_c_id
+  ]
+
+  security_groups = [
+    aws_security_group.alb.id,
+  ]
+}
+
+# ------------------------------------------------------------------------------
+# リスナー
+# ------------------------------------------------------------------------------
+
+resource "aws_lb_listener" "main" {
+  load_balancer_arn = aws_lb.main.arn # リスナーが適用されるロードバランサー
+  protocol          = "HTTP"          # 通信に使用するプロトコル (※セキュリティグループはトランスポート層だがロードバランサーではアプリケーション層で通信する)
+  port              = 80              # リッスンするポート番号
+  tags              = { Name = "${var.prefix}-alb-listener" }
+
+  # デフォルトアクション (後続のリスナールールにマッチしなかった場合)
+  default_action {
+    type = "fixed-response"       # リクエストに対して固定のレスポンスを返却
+    fixed_response {              # レスポンスの内容
+      content_type = "text/plain" # コンテンツタイプ
+      status_code  = "404"        # HTTP ステータスコード
+    }
+  }
+}
+
+resource "aws_lb_listener_rule" "app" {
+  listener_arn = aws_lb_listener.main.arn # ルールを適用するリスナー
+  priority     = 1                        # ルールの優先順位 (数値が小さいほど優先度が高い)
+  tags         = { Name = "${var.prefix}-alb-app-listener-rule" }
+
+
+  # ルールが適用される条件
+  condition {
+    path_pattern { # リクエストのパスが指定のパターンに一致する場合
+      values = ["/*"]
+    }
+  }
+
+  # 条件に一致した場合の処理
+  action {
+    type             = "forward"                   # リクエストを指定のターゲットグループに転送
+    target_group_arn = aws_lb_target_group.app.arn # 転送先のターゲットグループ
+  }
+}
+
+# ------------------------------------------------------------------------------
+# ターゲットグループ
+# ------------------------------------------------------------------------------
+
+resource "aws_lb_target_group" "app" {
+  vpc_id      = var.vpc_main_id # 配置される VPC
+  protocol    = "HTTP"          # 通信に使用するプロトコル
+  port        = var.app_port    # リッスンするポート番号
+  target_type = "ip"            # ターゲットのリソースタイプ (IP アドレスを指定する ※ECS タスクのネットワークモードが awsvpc であること) [ip, instance, lambda]
+  name        = "${var.prefix}-alb-app-tg"
+  tags        = { Name = "${var.prefix}-alb-app-tg" }
+
+  # ヘルスチェックの設定
+  health_check {
+    enabled             = true           # ヘルスチェックの有効化
+    port                = "traffic-port" # ターゲットグループで指定したポート番号をヘルスチェックでも使用
+    protocol            = "HTTP"         # ヘルスチェックに使用する通信プロトコル
+    matcher             = "200"          # 正常応答として扱われる HTTP ステータスコード
+    interval            = 30             # リクエストの間隔
+    timeout             = 5              # タイムアウト時間
+    healthy_threshold   = 3              # ヘルスチェックを成功と判定するまでに必要な正常応答の連続回数
+    unhealthy_threshold = 3              # ヘルスチェックを失敗と判定するまでに必要な異常応答の連続回数
+
+    # 末尾がスラッシュだとリダイレクト[3XX]するので付けないように
+    path = "/api/health"
+  }
+}
