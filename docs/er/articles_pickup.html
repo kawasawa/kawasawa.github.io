@@ -1111,10 +1111,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 <details>
 <summary><strong>Table Definition</strong></summary>
 <pre><code class="language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> `articles_pickup` (
-  `id` <span class="hljs-type">char</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">COLLATE</span> utf8mb4_general_ci <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
-  `data` text <span class="hljs-keyword">COLLATE</span> utf8mb4_general_ci <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
+  `id` <span class="hljs-type">char</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">COLLATE</span> utf8mb4_bin <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
+  `data` text <span class="hljs-keyword">COLLATE</span> utf8mb4_bin <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
   <span class="hljs-keyword">PRIMARY</span> KEY (`id`)
-) ENGINE<span class="hljs-operator">=</span>InnoDB <span class="hljs-keyword">DEFAULT</span> CHARSET<span class="hljs-operator">=</span>utf8mb4 <span class="hljs-keyword">COLLATE</span><span class="hljs-operator">=</span>utf8mb4_general_ci
+) ENGINE<span class="hljs-operator">=</span>InnoDB <span class="hljs-keyword">DEFAULT</span> CHARSET<span class="hljs-operator">=</span>utf8mb4 <span class="hljs-keyword">COLLATE</span><span class="hljs-operator">=</span>utf8mb4_bin
 </code></pre>
 </details>
 <h2 id="columns" tabindex="-1"><a class="anchor" href="#columns" aria-hidden="true"><span class="octicon octicon-link"></span></a> Columns</h2>
