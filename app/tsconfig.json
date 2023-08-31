@@ -15,8 +15,13 @@
     "isolatedModules": true, // 独立したモジュールとしてコンパイル
     "noEmit": true, // tsc の挙動を型チェックのみに制限
     "jsx": "react-jsx", // tsx ファイルのトランスパイル形式
-    "incremental": true // 差分ファイルのみコンパイル
+    "incremental": true, // 差分ファイルのみコンパイル
+    "baseUrl": ".", // 相対パスの解決に使用する起点ディレクトリ
+    "paths": {
+      // エイリアスの設定
+      // ルートディレクトリを '@' で呼び出せるようにする
+      "@/*": ["src/*"]
+    }
   },
-  "include": ["src"],
-  "extends": "./tsconfig.base.json"
+  "include": ["src"]
 }
