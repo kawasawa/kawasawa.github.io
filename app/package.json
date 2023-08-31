@@ -20,7 +20,6 @@
     "react-hook-form": "^7.28.0",
     "react-i18next": "^11.15.5",
     "react-intersection-observer": "^8.33.1",
-    "react-scripts": "^5.0.1",
     "react-toastify": "^8.2.0",
     "react-tsparticles": "^1.42.1",
     "react-typed": "^1.2.0",
@@ -29,7 +28,6 @@
     "yup": "^1.4.0"
   },
   "devDependencies": {
-    "@craco/craco": "^7.1.0",
     "@secretlint/secretlint-rule-preset-recommend": "^8.1.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -40,30 +38,32 @@
     "@types/react-dom": "18.3.1",
     "@typescript-eslint/eslint-plugin": "^5.13.0",
     "@typescript-eslint/parser": "^5.13.0",
+    "@vitejs/plugin-react": "^4.2.1",
     "eslint": "^8.31.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.29.2",
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
+    "jest": "^29.7.0",
     "jest-canvas-mock": "^2.4.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jsonc-parser": "^3.2.1",
     "prettier": "^2.5.1",
     "secretlint": "^8.1.0",
     "ts-jest": "^29.1.2",
-    "typescript": "^4.5.5"
+    "typescript": "^4.5.5",
+    "vite": "^5.1.1",
+    "vite-plugin-env-compatible": "^2.0.1",
+    "vite-tsconfig-paths": "^4.3.1"
   },
   "scripts": {
-    "start": "craco start",
+    "dev": "vite",
     "lint": "yarn lint:es && yarn lint:secret",
     "lint:es": "eslint . --ext=js,jsx,ts,tsx --max-warnings=0 --report-unused-disable-directives",
     "lint:secret": "secretlint --maskSecrets --secretlintignore .gitignore '**/*'",
-    "test:ut": "craco test --coverage --silent --verbose --colors --watchAll=false --testPathIgnorePatterns=__it__",
-    "test:it": "craco test --silent --verbose --colors --watchAll=false --testPathPattern=__it__",
-    "build": "craco build"
-  },
-  "jest": {
-    "coveragePathIgnorePatterns": [
-      "__it__"
-    ]
+    "test:ut": "jest --coverage --silent --verbose --colors --watchAll=false --testPathIgnorePatterns=__it__",
+    "test:it": "jest --silent --verbose --colors --watchAll=false --testPathPattern=__it__",
+    "build": "tsc --noEmit && vite build"
   },
   "browserslist": {
     "production": [
