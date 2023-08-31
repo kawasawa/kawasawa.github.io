@@ -65,7 +65,7 @@ jobs:
           key: packages-${{ hashFiles('yarn.lock') }}
 
       - name: Docker Start
-        run: yarn start:mock
+        run: yarn dev:mock
 
       - name: Lint
         run: yarn lint

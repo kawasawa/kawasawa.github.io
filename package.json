@@ -2,7 +2,6 @@
   "name": "kawasawa",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://kawasawa.github.io/",
   "workspaces": [
     "app",
     "mock/server"
@@ -17,11 +16,11 @@
     "@redocly/openapi-core": "1.27.2"
   },
   "scripts": {
-    "start": "run-s start:mock start:app",
-    "start:mock": "make -C ./mock docker-compose-up",
-    "start:mock:down": "make -C ./mock docker-compose-down",
-    "start:mock-swagger": "rm -rf ./mock/dist/swagger && swagger-codegen generate -l nodejs-server -i ./tools/swagger/openapi.json -o ./mock/dist/swagger && npm run start --prefix ./mock/dist/swagger",
-    "start:app": "yarn workspace app start",
+    "dev": "run-s dev:mock dev:app",
+    "dev:mock": "make -C ./mock docker-compose-up",
+    "dev:mock:down": "make -C ./mock docker-compose-down",
+    "dev:mock-swagger": "rm -rf ./mock/dist/swagger && swagger-codegen generate -l nodejs-server -i ./tools/swagger/openapi.json -o ./mock/dist/swagger && npm run start --prefix ./mock/dist/swagger",
+    "dev:app": "yarn workspace app dev",
     "lint": "yarn workspace app lint",
     "lint:mock": "yarn workspace server lint",
     "test:ut": "yarn workspace app test:ut",
