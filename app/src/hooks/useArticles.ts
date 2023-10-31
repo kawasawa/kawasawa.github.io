@@ -5,8 +5,10 @@ import { createInstance, GoogleSheetsApiResponse } from '@/lib';
 import { handleError } from '@/utils/errors';
 
 export type ArticleData = {
-  title?: string;
-  body?: string;
+  'title_ja-JP'?: string;
+  'title_en-US'?: string;
+  'body_ja-JP'?: string;
+  'body_en-US'?: string;
   url?: string;
   tags?: string[];
   likesCount?: number;
@@ -31,8 +33,10 @@ const fetchData = async () => {
 
   const metadataHeader = metadataResponse.data.values[0];
   const metadata_id = metadataHeader.indexOf('id');
-  const metadata_title = metadataHeader.indexOf('title');
-  const metadata_body = metadataHeader.indexOf('body');
+  const metadata_titleJaJp = metadataHeader.indexOf('title_ja-JP');
+  const metadata_titleEnUs = metadataHeader.indexOf('title_en-US');
+  const metadata_bodyJaJp = metadataHeader.indexOf('body_ja-JP');
+  const metadata_bodyEnUs = metadataHeader.indexOf('body_en-US');
   const metadata_tags = metadataHeader.indexOf('tags');
   const metadata_url = metadataHeader.indexOf('url');
   const metadata_likesCount = metadataHeader.indexOf('likes_count');
@@ -42,8 +46,10 @@ const fetchData = async () => {
   metadataResponse.data.values.forEach((row) => {
     const id = row[metadata_id];
     if (!Object.keys(buffer).includes(id)) return;
-    buffer[id].title = row[metadata_title];
-    buffer[id].body = row[metadata_body];
+    buffer[id]['title_ja-JP'] = row[metadata_titleJaJp];
+    buffer[id]['title_en-US'] = row[metadata_titleEnUs];
+    buffer[id]['body_ja-JP'] = row[metadata_bodyJaJp];
+    buffer[id]['body_en-US'] = row[metadata_bodyEnUs];
     buffer[id].url = row[metadata_url];
     buffer[id].tags = row[metadata_tags].split(',').map((t) => t.trim());
     buffer[id].likesCount = Number(row[metadata_likesCount]);

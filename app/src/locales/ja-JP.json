@@ -44,5 +44,20 @@
   "about__contact__attention": "サーバの都合でメールを送信できない場合がございます。その際はお手数ですが、SNS からお問い合わせください。",
   "about__contact__privacyPolicy": "プライバシーポリシー",
 
+  "privacyPolicy": "プライバシーポリシー",
+  "privacyPolicy__summary": "{{title}}（以下「当サイト」）の個人情報の取得、利用について、以下の通り個人情報保護方針（プライバシーポリシー）を定義し、厳正に管理いたします。",
+  "privacyPolicy__acquisition__title": "個人情報の取得",
+  "privacyPolicy__acquisition__body": "当サイトでは、下記の場合に個人情報を取得します。\n\n\t・お問い合わせを送信された場合",
+  "privacyPolicy__purpose__title": "個人情報の利用目的",
+  "privacyPolicy__purpose__body": "当サイトでは、取得した個人情報を以下の目的で利用いたします。\n\n\t・お問い合わせへの対応のため",
+  "privacyPolicy__thirdParty__title": "個人情報の第三者提供",
+  "privacyPolicy__thirdParty__body": "法令に基づく場合等正当な理由に拠らない限り、事前に本人の同意を得ることなく、個人情報を第三者に開示、提供することはありません。",
+  "privacyPolicy__analysis__title": "アクセス解析ツールについて",
+  "privacyPolicy__analysis__body": "当サイトでは、サービス向上のため Google アナリティクス を利用し、アクセス情報の解析を行います。\nGoogle アナリティクス はアクセス情報を収集するために Cookie を使用します。情報は匿名で収集されており、個人を特定するものではありません。\nこの機能は、お使いのブラウザの設定で Cookie を無効にすることで拒否できます。\n規約の詳細は Google アナリティクス利用規約をご確認ください。",
+  "privacyPolicy__disclaimer__title": "免責事項",
+  "privacyPolicy__disclaimer__body": "当サイトの掲載内容によって生じた損害に対する一切の責任を負わないものとします。\nリンク先の他サイトで提供される情報、サービスについても、その責任を負いかねます。",
+  "privacyPolicy__copyright__title": "著作権",
+  "privacyPolicy__copyright__body": "当サイトに掲載される文章、画像、その他のコンテンツは著作権により保護されています。\n法的に認められた範囲を超えての引用、無断での使用や転載を禁止します。",
+
   "__EOF__": ""
 }

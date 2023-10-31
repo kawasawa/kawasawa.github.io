@@ -5,8 +5,29 @@ import React from 'react';
 
 import { Header } from '@/components/layouts/Header';
 import { meta, sections } from '@/constants';
+import * as Config from '@/utils/config';
+import { localeCodes, localeNames } from '@/utils/localization';
+import * as Localization from '@/utils/localization';
+
+jest.mock('@/utils/localization', () => ({
+  ...jest.requireActual('@/utils/localization'),
+  changeLocale: jest.fn(),
+}));
+
+jest.mock('@/utils/config', () => ({
+  ...jest.requireActual('@/utils/config'),
+  setConfig: jest.fn(),
+}));
 
 describe('Header', () => {
+  const spy_setConfig = jest.spyOn(Config, 'setConfig');
+  const spy_changeYupLocale = jest.spyOn(Localization, 'changeLocale');
+
+  beforeEach(() => {
+    spy_setConfig.mockClear();
+    spy_changeYupLocale.mockClear();
+  });
+
   describe('Narrowメニュー', () => {
     test('初期状態のコンポーネントが表示されること', () => {
       render(<Header />);
@@ -19,9 +40,49 @@ describe('Header', () => {
         expect(screen.getByTestId(`Header__NarrowMenu__${section}`)).toBeDefined();
         expect(screen.getByTestId(`Header__NarrowMenu__${section}`)).toHaveTextContent(section);
       });
+      Object.keys(localeNames).map((locale) => {
+        expect(screen.getByTestId(`Header__NarrowMenu__CultureList--${locale}`)).not.toBeVisible();
+        expect(screen.getByTestId(`Header__NarrowMenu__CultureList--${locale}`)).toBeDefined();
+        expect(screen.getByTestId(`Header__NarrowMenu__CultureList--${locale}`)).toHaveTextContent(localeNames[locale]);
+      });
     });
 
-    test('ハンバーガーメニューを押下しメニューアイテムが表示されること', () => {
+    test('言語選択メニューを押下し言語選択メニューアイテムが表示されること', () => {
+      render(<Header />);
+
+      Object.keys(localeNames).map((locale) => {
+        expect(screen.getByTestId(`Header__NarrowMenu__CultureList--${locale}`)).not.toBeVisible();
+      });
+
+      userEvent.click(screen.getByTestId('Header__NarrowMenu__CultureList'));
+
+      Object.keys(localeNames).map((locale) => {
+        expect(screen.getByTestId(`Header__NarrowMenu__CultureList--${locale}`)).toBeVisible();
+      });
+    });
+
+    test('言語選択メニューアイテムを押下し言語選択メニューが閉じること', () => {
+      render(<Header />);
+
+      userEvent.click(screen.getByTestId('Header__NarrowMenu__CultureList'));
+      userEvent.click(screen.getByTestId(`Header__NarrowMenu__CultureList--${localeCodes.jaJp}`));
+
+      Object.keys(localeNames).map((locale) => {
+        expect(screen.getByTestId(`Header__NarrowMenu__CultureList--${locale}`)).not.toBeVisible();
+      });
+    });
+
+    test('言語選択メニューアイテムを押下し言語設定が変更されること', async () => {
+      render(<Header />);
+
+      userEvent.click(screen.getByTestId('Header__NarrowMenu__CultureList'));
+      userEvent.click(screen.getByTestId(`Header__NarrowMenu__CultureList--${localeCodes.jaJp}`));
+
+      await waitFor(() => expect(spy_setConfig).toBeCalled());
+      await waitFor(() => expect(spy_changeYupLocale).toBeCalled());
+    });
+
+    test('ナビゲーションメニューを押下しナビゲーションメニューアイテムが表示されること', () => {
       render(<Header />);
 
       Object.values(sections).map((section) => {
@@ -35,7 +96,7 @@ describe('Header', () => {
       });
     });
 
-    test('メニューアイテムを押下しハンバーガーメニューが閉じること', () => {
+    test('ナビゲーションメニューアイテムを押下しナビゲーションメニューが閉じること', () => {
       render(
         <>
           <Header />
@@ -59,7 +120,7 @@ describe('Header', () => {
       await waitFor(() => expect(window.screenY).toBe(0));
     });
 
-    test('メニューアイテムを押下し特定の位置までスクロールされること', async () => {
+    test('ナビゲーションメニューアイテムを押下し特定の位置までスクロールされること', async () => {
       const mockScrollTo = jest.fn();
       window.scrollTo = mockScrollTo;
 
@@ -87,6 +148,46 @@ describe('Header', () => {
         expect(screen.getByTestId(`Header__WideMenu__${section}`)).toBeInTheDocument();
         expect(screen.getByTestId(`Header__WideMenu__${section}`)).toHaveTextContent(section);
       });
+      Object.keys(localeNames).map((locale) => {
+        expect(screen.getByTestId(`Header__WideMenu__CultureList--${locale}`)).not.toBeVisible();
+        expect(screen.getByTestId(`Header__WideMenu__CultureList--${locale}`)).toBeDefined();
+        expect(screen.getByTestId(`Header__WideMenu__CultureList--${locale}`)).toHaveTextContent(localeNames[locale]);
+      });
+    });
+
+    test('言語選択メニューを押下し言語選択メニューアイテムが表示されること', () => {
+      render(<Header />);
+
+      Object.keys(localeNames).map((locale) => {
+        expect(screen.getByTestId(`Header__WideMenu__CultureList--${locale}`)).not.toBeVisible();
+      });
+
+      userEvent.click(screen.getByTestId('Header__WideMenu__CultureList'));
+
+      Object.keys(localeNames).map((locale) => {
+        expect(screen.getByTestId(`Header__WideMenu__CultureList--${locale}`)).toBeVisible();
+      });
+    });
+
+    test('言語選択メニューアイテムを押下し言語選択メニューが閉じること', () => {
+      render(<Header />);
+
+      userEvent.click(screen.getByTestId('Header__WideMenu__CultureList'));
+      userEvent.click(screen.getByTestId(`Header__WideMenu__CultureList--${localeCodes.jaJp}`));
+
+      Object.keys(localeNames).map((locale) => {
+        expect(screen.getByTestId(`Header__WideMenu__CultureList--${locale}`)).not.toBeVisible();
+      });
+    });
+
+    test('言語選択メニューアイテムを押下し言語設定が変更されること', async () => {
+      render(<Header />);
+
+      userEvent.click(screen.getByTestId('Header__WideMenu__CultureList'));
+      userEvent.click(screen.getByTestId(`Header__WideMenu__CultureList--${localeCodes.jaJp}`));
+
+      await waitFor(() => expect(spy_setConfig).toBeCalled());
+      await waitFor(() => expect(spy_changeYupLocale).toBeCalled());
     });
 
     test('タイトルを押下しページトップ位置までスクロールされること', async () => {
@@ -97,7 +198,7 @@ describe('Header', () => {
       await waitFor(() => expect(window.screenY).toBe(0));
     });
 
-    test('メニューアイテムを押下し特定の位置までスクロールされること', async () => {
+    test('ナビゲーションメニューアイテムを押下し特定の位置までスクロールされること', async () => {
       const mock_ScrollTo = jest.fn();
       window.scrollTo = mock_ScrollTo;
 

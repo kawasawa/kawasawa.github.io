@@ -36,8 +36,10 @@ describe('useArticles', () => {
         values: [
           [
             'id',
-            'title',
-            'body',
+            'title_ja-JP',
+            'title_en-US',
+            'body_ja-JP',
+            'body_en-US',
             'tags',
             'url',
             'likes_count',
@@ -49,7 +51,9 @@ describe('useArticles', () => {
           [
             dummy_pickup.data.values[1][0],
             'タイトル１',
+            'title1',
             'テキスト１',
+            'text1',
             'タグ1_1',
             'https://example.com/article_1',
             '100',
@@ -61,7 +65,9 @@ describe('useArticles', () => {
           [
             dummy_pickup.data.values[2][0],
             'タイトル２',
+            'title2',
             'テキスト２',
+            'text2',
             'タグ2_1, タグ2_2',
             'https://example.com/article_2',
             '200',
@@ -73,7 +79,9 @@ describe('useArticles', () => {
           [
             dummy_pickup.data.values[3][0],
             'タイトル３',
+            'title3',
             'テキスト３',
+            'text3',
             'タグ3_1, タグ3_2, タグ3_3',
             'https://example.com/article_3',
             '300',
@@ -85,7 +93,9 @@ describe('useArticles', () => {
           [
             'HOGE_HOGE_HOGE_HOGE_',
             'タイトル４',
+            'title4',
             'テキスト４',
+            'text4',
             'タグ4_1, タグ4_2, タグ4_3, タグ4_4',
             'https://example.com/article_4',
             '400',
@@ -97,7 +107,9 @@ describe('useArticles', () => {
           [
             'FUGA_FUGA_FUGA_FUGA_',
             'タイトル５',
+            'title5',
             'テキスト５',
+            'text5',
             'タグ5_1, タグ5_2, タグ5_3,タグ5_4, タグ5_5',
             'https://example.com/article_5',
             '500',
@@ -113,8 +125,10 @@ describe('useArticles', () => {
     const expect_articles: { [key: string]: ArticleData } = {
       [dummy_pickup.data.values[1][0]]: {
         image: 'data:image/webp;base64,aaa',
-        title: 'タイトル１',
-        body: 'テキスト１',
+        'title_ja-JP': 'タイトル１',
+        'title_en-US': 'title1',
+        'body_ja-JP': 'テキスト１',
+        'body_en-US': 'text1',
         url: 'https://example.com/article_1',
         tags: ['タグ1_1'],
         likesCount: 100,
@@ -123,8 +137,10 @@ describe('useArticles', () => {
       },
       [dummy_pickup.data.values[2][0]]: {
         image: 'data:image/webp;base64,bbb',
-        title: 'タイトル２',
-        body: 'テキスト２',
+        'title_ja-JP': 'タイトル２',
+        'title_en-US': 'title2',
+        'body_ja-JP': 'テキスト２',
+        'body_en-US': 'text2',
         url: 'https://example.com/article_2',
         tags: ['タグ2_1', 'タグ2_2'],
         likesCount: 200,
@@ -133,8 +149,10 @@ describe('useArticles', () => {
       },
       [dummy_pickup.data.values[3][0]]: {
         image: 'data:image/webp;base64,ccc',
-        title: 'タイトル３',
-        body: 'テキスト３',
+        'title_ja-JP': 'タイトル３',
+        'title_en-US': 'title3',
+        'body_ja-JP': 'テキスト３',
+        'body_en-US': 'text3',
         url: 'https://example.com/article_3',
         tags: ['タグ3_1', 'タグ3_2', 'タグ3_3'],
         likesCount: 300,

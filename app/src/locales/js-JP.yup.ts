@@ -1,9 +1,9 @@
 /* istanbul ignore file */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import * as Yup from 'yup';
+import { LocaleObject } from 'yup';
 
-Yup.setLocale({
+export const locale: LocaleObject = {
   mixed: {
     default: '入力された内容にエラーがあります。',
     required: '入力が必須の項目です。',
@@ -48,6 +48,4 @@ Yup.setLocale({
   object: {
     noUnknown: '有効なキーを持ったデータを入力してください。',
   },
-});
-
-export default Yup;
+} as const;

@@ -19,8 +19,10 @@ datasource db {
 
 model articles_metadata {
   id             String   @id @db.Char(20)
-  title          String   @db.VarChar(255)
-  body           String   @db.Text
+  title_ja_jp    String   @db.VarChar(255)
+  title_en_us    String   @db.VarChar(255)
+  body_ja_jp     String   @db.Text
+  body_en_us     String   @db.Text
   tags           String   @db.VarChar(255)
   url            String   @db.Text
   likes_count    Int
