@@ -1,10 +1,71 @@
-import { Close as CloseIcon, Menu as MenuIcon } from '@mui/icons-material';
-import { AppBar, Box, Button, Container, Fade, IconButton, Link, Menu, MenuItem, Toolbar } from '@mui/material';
+import { Close as CloseIcon, Menu as MenuIcon, Translate as TranslateIcon } from '@mui/icons-material';
+import {
+  AppBar,
+  Box,
+  Button,
+  Container,
+  Fade,
+  IconButton,
+  Link,
+  Menu,
+  MenuItem,
+  Toolbar,
+  Tooltip,
+} from '@mui/material';
 import React from 'react';
 
 import { HideOnScroll } from '@/components/elements';
 import { meta, sections } from '@/constants';
+import { configKeys, getConfig, setConfig } from '@/utils/config';
 import { scrollToElement, scrollToTop } from '@/utils/elements';
+import { changeLocale, LocaleCodes, localeCodes, localeNames } from '@/utils/localization';
+
+const CultureMenu = (props: { parent: 'NarrowMenu' | 'WideMenu' }) => {
+  const [localeCode, setLocaleCode] = React.useState<LocaleCodes>(
+    (getConfig(configKeys.locale) ?? localeCodes.jaJp) as LocaleCodes
+  );
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>();
+  const onMenuClick = React.useCallback((e: React.MouseEvent<HTMLButtonElement>) => setAnchorEl(e.currentTarget), []);
+  const onMenuClose = React.useCallback(() => setAnchorEl(null), []);
+  const onSelected = React.useCallback(
+    (locale: LocaleCodes) => {
+      setLocaleCode(locale);
+      changeLocale(locale);
+      setConfig(configKeys.locale, locale);
+      onMenuClose();
+    },
+    [setLocaleCode, onMenuClose]
+  );
+
+  return (
+    <>
+      <Tooltip title="Select Language">
+        <IconButton onClick={onMenuClick} data-testid={`Header__${props.parent}__CultureList`}>
+          <TranslateIcon />
+        </IconButton>
+      </Tooltip>
+      <Menu
+        open={Boolean(anchorEl)}
+        onClose={onMenuClose}
+        anchorEl={anchorEl}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'left' }}
+        keepMounted
+      >
+        {Object.keys(localeNames).map((locale) => (
+          <MenuItem
+            key={`Header__${props.parent}__CultureList--${locale}`}
+            selected={locale === localeCode}
+            onClick={() => onSelected(locale as LocaleCodes)}
+            data-testid={`Header__${props.parent}__CultureList--${locale}`}
+          >
+            {localeNames[locale]}
+          </MenuItem>
+        ))}
+      </Menu>
+    </>
+  );
+};
 
 const NarrowMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>();
@@ -29,6 +90,10 @@ const NarrowMenu = () => {
       </Link>
       <Box sx={{ display, flexGrow: 1 }} />
       <Box sx={{ display, m: 0 }}>
+        {/* 言語設定 */}
+        <CultureMenu parent="NarrowMenu" />
+
+        {/* ナビゲーション */}
         <IconButton onClick={onMenuClick} data-testid="Header__NarrowMenu__Hamburger">
           {
             // NOTE: CSS で中央寄せレイアウトを構築する
@@ -136,6 +201,10 @@ const WideMenu = () => {
       </Link>
       <Box sx={{ display, flexGrow: 1 }} />
       <Box sx={{ display }}>
+        {/* 言語設定 */}
+        <CultureMenu parent="WideMenu" />
+
+        {/* ナビゲーション */}
         {Object.values(sections).map((section) => (
           <Button
             key={`Header__WideMenu__${section}`}
