@@ -46,8 +46,10 @@ function getQiitaArticles() {
   console.info("JSON を変換します。");
   const header = [
     "id",
-    "title",
-    "body",
+    "title_ja-JP",
+    "title_en-US",
+    "body_ja-JP",
+    "body_en-US",
     "tags",
     "url",
     "likes_count",
@@ -58,13 +60,18 @@ function getQiitaArticles() {
   ];
   const values = JSON.parse(response).map((article) => {
     // 本文は既定の長さで切り取る
-    let body = article["body"].replace(/[\r\n]+/g, " ");
-    if (BODY_LENGTH_LIMIT < body.length)
-      body = `${body.slice(0, BODY_LENGTH_LIMIT)}...`;
+    let body_ja = article["body"].replace(/[\r\n]+/g, " ");
+    if (BODY_LENGTH_LIMIT < body_ja.length)
+      body_ja = `${body_ja.slice(0, BODY_LENGTH_LIMIT)}...`;
 
     // (一応)レスポンスをログ出力する
     const { rendered_body, user, ...other } = article;
-    console.log({ ...other, body });
+    console.log({ ...other, body_ja });
+
+    // テキストを翻訳する
+    const title_ja = article["title"];
+    const title_en = LanguageApp.translate(title_ja, "ja", "en");
+    const body_en = LanguageApp.translate(body_ja, "ja", "en");
 
     // タグはカンマ区切りで連結する
     const tags = article["tags"].map((tag) => tag["name"]).join(", ");
@@ -72,8 +79,10 @@ function getQiitaArticles() {
     // レコードを構築する
     return [
       article["id"],
-      article["title"],
-      body,
+      title_ja,
+      title_en,
+      body_ja,
+      body_en,
       tags,
       article["url"],
       article["likes_count"],
