@@ -7647,7 +7647,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 -----
 
-The following software may be included in this product: component-emitter. A copy of the source code may be downloaded from https://github.com/component/emitter.git. This software contains the following license and notice below:
+The following software may be included in this product: component-emitter. A copy of the source code may be downloaded from https://github.com/sindresorhus/component-emitter.git. This software contains the following license and notice below:
 
 (The MIT License)
 
@@ -8244,7 +8244,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 -----
 
-The following software may be included in this product: css-select, css-what, domelementtype, domhandler, domutils, entities, nth-check. A copy of the source code may be downloaded from git://github.com/fb55/css-select.git (css-select), https://github.com/fb55/css-what (css-what), git://github.com/fb55/domelementtype.git (domelementtype), git://github.com/fb55/domhandler.git (domhandler), git://github.com/fb55/domutils.git (domutils), git://github.com/fb55/entities.git (entities), https://github.com/fb55/nth-check (nth-check). This software contains the following license and notice below:
+The following software may be included in this product: css-select, css-what, domelementtype, domhandler, domutils, entities, nth-check. A copy of the source code may be downloaded from git://github.com/fb55/css-select.git (css-select), https://github.com/fb55/css-what (css-what), git://github.com/fb55/domelementtype.git (domelementtype), git://github.com/fb55/domhandler.git (domhandler), git://github.com/FB55/domutils.git (domutils), git://github.com/fb55/entities.git (entities), https://github.com/fb55/nth-check (nth-check). This software contains the following license and notice below:
 
 Copyright (c) Felix Böhm
 All rights reserved.
@@ -30719,7 +30719,7 @@ THE SOFTWARE.
 
 -----
 
-The following software may be included in this product: workspace-aggregator-700f73ae-afca-49ab-937f-32fb34e312f8. This software contains the following license and notice below:
+The following software may be included in this product: workspace-aggregator-bf08708b-6b9b-4e2e-a786-a66d98f4f121. This software contains the following license and notice below:
 
 MIT License
 
