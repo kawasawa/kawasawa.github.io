@@ -1,10 +1,8 @@
 import { Box, FadeProps } from '@mui/material';
-import { render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
 
 import { Banner } from '@/components/layouts/Banner';
-import { endpoints } from '@/constants';
 import * as Strings from '@/utils/strings';
 
 jest.mock('react-intersection-observer', () => ({
@@ -72,17 +70,6 @@ describe('Banner', () => {
     expect(screen.getByTestId('Banner__Particles')).toBeVisible();
     expect(screen.getByTestId('Banner__Text')).toBeVisible();
     expect(screen.getByTestId('Banner__ScrollArrow')).toBeVisible();
-    expect(screen.getByTestId('Banner__Alert')).toBeVisible();
     expect(spy_stringFormat).toBeCalled();
-  });
-
-  test('アラートを押下し指定されたURLが読み込まれること', async () => {
-    const mock_Open = jest.fn();
-    window.open = mock_Open;
-
-    render(<Banner />);
-
-    userEvent.click(screen.getByTestId('Banner__Alert'));
-    await waitFor(() => expect(mock_Open).toBeCalledWith(endpoints.readme, '_blank'));
   });
 });

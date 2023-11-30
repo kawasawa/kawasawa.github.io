@@ -1,5 +1,6 @@
 {
-  "banner__message": "How does this website work?",
+  "installer__cancel": "Close",
+  "installer__alternative": "You can install this website by \"Add to Home Screen\" from your browser.",
 
   "products__mypad__name": "MyPad",
   "products__mypad__description": "\"Something you use every day should be beautiful and useful...\" MyPad is a text editor created with this in mind. MyPad combines a modern, highly readable appearance with familiar, classic operability, and can be used for a variety of purposes.",

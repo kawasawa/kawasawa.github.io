@@ -1,14 +1,13 @@
-import { Help as HelpIcon, KeyboardDoubleArrowDown as KeyboardDoubleArrowDownIcon } from '@mui/icons-material';
-import { Alert, Box, Container, Grow, styled, Typography } from '@mui/material';
+import { KeyboardDoubleArrowDown as KeyboardDoubleArrowDownIcon } from '@mui/icons-material';
+import { Box, Container, styled, Typography } from '@mui/material';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { useInView } from 'react-intersection-observer';
 import Particles from 'react-tsparticles';
 import Typed from 'react-typed';
 
 import imageBanner from '@/assets/banner.webp';
 import { SectionFadeIn } from '@/components/elements';
-import { endpoints, meta, sections, styles } from '@/constants';
+import { meta, sections, styles } from '@/constants';
 import { stringFormat } from '@/utils/strings';
 
 const Image = styled(Box)(({ theme }) =>
@@ -70,7 +69,6 @@ const FreezableParticles = React.memo(function _({ inView }: { inView: boolean }
 
 export const Banner = () => {
   const { ref, inView } = useInView(styles.intersectionOptions);
-  const [t] = useTranslation();
 
   const handleScrollClick = React.useCallback(() => {
     const element = document.getElementById(sections.products);
@@ -97,8 +95,6 @@ export const Banner = () => {
   const strings = [];
   for (let i = 0; i < bannerFormats.length * bannerTexts.length; i++)
     strings.push(stringFormat(bannerFormats[i % bannerFormats.length], bannerTexts[i % bannerTexts.length]));
-
-  const onAlertClick = React.useCallback(() => window.open(endpoints.readme, '_blank'), []);
 
   return (
     <SectionFadeIn in={inView} ref={ref}>
@@ -178,32 +174,6 @@ export const Banner = () => {
             }}
             data-testid="Banner__ScrollArrow"
           />
-        </Box>
-
-        {
-          // ------------------------------------------------------------------------------
-          // アラート
-          // ------------------------------------------------------------------------------
-        }
-        <Box
-          sx={{
-            position: 'absolute',
-            bottom: '10px',
-            left: '10px',
-            ...styles.hoverOptions,
-          }}
-        >
-          <Grow in={inView} {...(inView ? { timeout: 1200 } : /* istanbul ignore next */ {})}>
-            <Alert
-              severity="info"
-              icon={<HelpIcon fontSize="inherit" />}
-              sx={{ cursor: 'pointer', fontWeight: 'bold', border: '1.5px solid #27A5DF' }}
-              onClick={onAlertClick}
-              data-testid="Banner__Alert"
-            >
-              {t('banner__message')}
-            </Alert>
-          </Grow>
         </Box>
       </Box>
     </SectionFadeIn>
