@@ -9,6 +9,8 @@ COPY ["package.json", ".yarnrc.yml", "./"]
 #RUN yarn install --production
 RUN yarn install
 
+COPY [".env", "prisma/", "./"]
+RUN yarn gen:client
 #RUN yarn build
 
 
