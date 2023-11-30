@@ -1,7 +1,7 @@
 import { Backdrop, Box, CircularProgress } from '@mui/material';
 import React from 'react';
 
-import { BackToTopButton } from '@/components/elements';
+import { BackToTopButton, Installer } from '@/components/elements';
 import { About, Articles, Banner, Footer, Header, Products } from '@/components/layouts';
 
 // NOTE: React Context でグローバルに状態を保持できる
@@ -121,6 +121,7 @@ export const Top = () => {
         <Articles data-testid="Top__Articles" />
         <About data-testid="Top__About" />
         <Footer data-testid="Top__Footer" />
+        <Installer data-testid="Top__InstallButton" />
         <BackToTopButton isVisible={isVisible} data-testid="Top__BackToTopButton" />
         <Backdrop
           open={isPending}
