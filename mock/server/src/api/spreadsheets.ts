@@ -1,11 +1,11 @@
 import Boom from '@hapi/boom';
+import { PrismaClient } from '@prisma/client';
 import { NextFunction, Request, Response } from 'express';
-
-import { ArticlesMetadata, ArticlesPickup, Version } from '../db/models';
 
 export const articlesMetadata = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const records = await ArticlesMetadata.findAll();
+    const prisma = new PrismaClient();
+    const records = await prisma.articles_metadata.findMany();
     if (!records?.length) {
       next(Boom.notFound());
       return;
@@ -45,7 +45,8 @@ export const articlesMetadata = async (req: Request, res: Response, next: NextFu
 
 export const articlesPickup = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const records = await ArticlesPickup.findAll();
+    const prisma = new PrismaClient();
+    const records = await prisma.articles_pickup.findMany();
     if (!records?.length) {
       next(Boom.notFound());
       return;
@@ -60,7 +61,8 @@ export const articlesPickup = async (req: Request, res: Response, next: NextFunc
 
 export const version = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const records = await Version.findAll();
+    const prisma = new PrismaClient();
+    const records = await prisma.version.findMany();
     if (!records?.length) {
       next(Boom.notFound());
       return;
