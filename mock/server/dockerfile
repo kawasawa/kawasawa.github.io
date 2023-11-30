@@ -9,6 +9,7 @@ COPY --chown=node:node ["package.json", ".yarnrc.yml", "./"]
 RUN yarn install
 
 COPY --chown=node:node . .
+RUN yarn gen:client
 # RUN yarn build
 
 USER node
