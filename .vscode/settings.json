@@ -9,6 +9,7 @@
   "eslint.workingDirectories": [{ "mode": "auto" }],
   "jest.jestCommandLine": "yarn test:ut",
   "jest.autoRun": { "watch": false },
+  "[prisma]": { "editor.defaultFormatter": "Prisma.prisma" },
 
   "todo-tree.filtering.excludeGlobs": [
     "**/.git/*",
