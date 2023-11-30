@@ -14,6 +14,7 @@
     "ms-vscode.vscode-typescript-next",
     "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint",
-    "Orta.vscode-jest"
+    "Orta.vscode-jest",
+    "Prisma.prisma"
   ]
 }
