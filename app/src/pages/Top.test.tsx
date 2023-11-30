@@ -16,6 +16,7 @@ jest.mock('@/components/elements', () => ({
   BackToTopButton: (props: any) => (
     <div data-testid={props['data-testid']} style={{ visibility: props.isVisible() ? 'visible' : 'hidden' }}></div>
   ),
+  Installer: (props: any) => <div data-testid={props['data-testid']}></div>,
 }));
 
 describe('Top', () => {
@@ -28,6 +29,7 @@ describe('Top', () => {
     expect(screen.getByTestId('Top__Articles')).toBeVisible();
     expect(screen.getByTestId('Top__About')).toBeVisible();
     expect(screen.getByTestId('Top__Footer')).toBeVisible();
+    expect(screen.getByTestId('Top__InstallButton')).toBeVisible();
     expect(screen.getByTestId('Top__BackToTopButton')).not.toBeVisible();
   });
 
