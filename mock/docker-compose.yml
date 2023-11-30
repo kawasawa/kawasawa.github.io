@@ -8,7 +8,7 @@ services:
     env_file:
       - ./server/.env
     ports:
-      - 3306:3306
+      - ${MYSQL_PORT}:${MYSQL_PORT}
     volumes:
       - mysql_volume:/var/lib/mysql
       - ./docker/mysql/conf.d:/etc/mysql/conf.d
@@ -22,7 +22,7 @@ services:
     env_file:
       - ./server/.env
     environment:
-      - MYSQL_HOST=kawasawa_db
+      - MYSQL_URL=mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@kawasawa_db:${MYSQL_PORT}/${MYSQL_DATABASE}
     ports:
       - ${EXPRESS_PORT}:${EXPRESS_PORT}
     volumes:
