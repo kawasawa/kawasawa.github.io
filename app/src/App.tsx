@@ -5,7 +5,7 @@ import React from 'react';
 import ga from 'react-ga4';
 import { ToastContainer } from 'react-toastify';
 
-import { endpoints } from '@/constants';
+import { links } from '@/constants';
 import { Top } from '@/pages';
 
 const AppTheme = createTheme({
@@ -40,7 +40,7 @@ const App = () => {
     if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
       /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
       ga.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_ID!);
-      ga.send({ hitType: 'pageview', page: endpoints.self });
+      ga.send({ hitType: 'pageview', page: links.self });
     }
   }, []);
 
