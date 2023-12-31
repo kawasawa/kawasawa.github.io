@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS icons CASCADE;
+
+CREATE TABLE icons (
+  id   VARCHAR(255) NOT NULL,
+  data TEXT         NOT NULL,
+  PRIMARY KEY (id)
+);

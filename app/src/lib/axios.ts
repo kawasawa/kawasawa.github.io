@@ -2,6 +2,7 @@ import axios, { AxiosError, AxiosInstance, Method } from 'axios';
 
 export const createInstance = <T>(retryLimit = 3) => {
   const client = axios.create();
+  client.defaults.baseURL = process.env.REACT_APP_GOOGLEAPIS_URL;
 
   // CSRF トークンを送受信する
   if (process.env.NODE_ENV === 'development') {

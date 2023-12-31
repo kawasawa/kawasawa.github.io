@@ -1,64 +1,37 @@
 {
-  "installer__cancel": "閉じる",
-  "installer__alternative": "ブラウザから「ホーム画面に追加」をするとアプリをインストールできます。",
-
-  "products__mypad__name": "MyPad",
-  "products__mypad__description": "\"毎日使うものこそ、美しく便利なものを...\" そんな想いで作られたテキストエディタが MyPad です。視認性に優れるモダンな外観に、使い慣れたクラシックな操作性を兼ね備え、様々な用途にご利用頂けます。",
-  "products__hiyori__name": "ひより",
-  "products__hiyori__description": "気象情報を一覧できる Web サイトです。現在位置における直近から数日先までの三時間ごとの天気、気温、湿度、風の情報をまとめて確認できます。",
-  "products__toolbox__name": "工具箱",
-  "products__toolbox__description": "開発者向けの簡易ツールです。文字列のケース変換やハッシュ化、Base変換などに対応しています。すべての処理はブラウザ内で行われ、データは外部に送信されません。",
-  "products__koyomi__name": "こよみ",
-  "products__koyomi__description": "暦の情報を一覧できる Web サイトです。旧暦や六曜のほか二十四節気、星座、干支、月相などの暦注を確認できます。",
-  "products__mybase__name": "MyBase",
-  "products__mybase__description": "MyBase は .NET Framework, .NET Core による WPF アプリケーションの開発をサポートするためのライブラリです。Prism と連携し標準機能を拡張する処理や、最新の Prism では廃止されてしまった実装の一部が移植されています。",
-
-  "about__author__job": "Software Engineer",
-  "about__career__college__name": "山梨大学 工学部 卒業",
-  "about__career__college__body": "コンピュータサイエンスを専攻",
-  "about__career__ysk__name": "株式会社 YSK e-com",
-  "about__career__ysk__body": "民需系業務システム開発を担当",
-  "about__career__compmind__name": "株式会社 コンピュータマインド",
-  "about__career__compmind__body": "製造系制御システム開発を担当",
-  "about__career__jcb__name": "株式会社 ジェーシービー",
-  "about__career__jcb__body": "金融系マイクロサービス開発を担当",
-  "about__career__freelance__name": "個人事業主として開業",
-  "about__career__freelance__body": "Web/オープン系を中心とした開発に従事",
-
-  "about__certification__FE__name": "基本情報技術者",
-  "about__certification__FE__body": "情報処理推進機構",
-  "about__certification__AP__name": "応用情報技術者",
-  "about__certification__AP__body": "情報処理推進機構",
-  "about__certification__FP3__name": "3級 ファイナンシャル・プラニング技能士",
-  "about__certification__FP3__body": "日本FP協会",
-  "about__certification__NB3__name": "日商簿記検定試験 3級",
-  "about__certification__NB3__body": "日本商工会議所",
-  "about__certification__PD__name": "個人情報取扱主任者",
-  "about__certification__PD__body": "日本クレジット協会",
-
-  "about__contact__name": "お名前",
-  "about__contact__email": "メールアドレス",
-  "about__contact__message": "お問い合わせの内容",
-  "about__contact__send": "送信する",
-  "about__contact__send--confirm": "問い合わせを送信します。よろしいですか？",
-  "about__contact__send--succeeded": "送信されました。",
-  "about__contact__attention": "サーバの都合でメールを送信できない場合がございます。その際はお手数ですが、SNS からお問い合わせください。",
-  "about__contact__privacyPolicy": "プライバシーポリシー",
-
-  "privacyPolicy": "プライバシーポリシー",
-  "privacyPolicy__summary": "{{title}}（以下「当サイト」）の個人情報の取得、利用について、以下の通り個人情報保護方針（プライバシーポリシー）を定義し、厳正に管理いたします。",
-  "privacyPolicy__acquisition__title": "個人情報の取得",
-  "privacyPolicy__acquisition__body": "当サイトでは、下記の場合に個人情報を取得します。\n\n\t・お問い合わせを送信された場合",
-  "privacyPolicy__purpose__title": "個人情報の利用目的",
-  "privacyPolicy__purpose__body": "当サイトでは、取得した個人情報を以下の目的で利用いたします。\n\n\t・お問い合わせへの対応のため",
-  "privacyPolicy__thirdParty__title": "個人情報の第三者提供",
-  "privacyPolicy__thirdParty__body": "法令に基づく場合等正当な理由に拠らない限り、事前に本人の同意を得ることなく、個人情報を第三者に開示、提供することはありません。",
-  "privacyPolicy__analysis__title": "アクセス解析ツールについて",
-  "privacyPolicy__analysis__body": "当サイトでは、サービス向上のため Google アナリティクス を利用し、アクセス情報の解析を行います。\nGoogle アナリティクス はアクセス情報を収集するために Cookie を使用します。情報は匿名で収集されており、個人を特定するものではありません。\nこの機能は、お使いのブラウザの設定で Cookie を無効にすることで拒否できます。\n規約の詳細は Google アナリティクス利用規約をご確認ください。",
-  "privacyPolicy__disclaimer__title": "免責事項",
-  "privacyPolicy__disclaimer__body": "当サイトの掲載内容によって生じた損害に対する一切の責任を負わないものとします。\nリンク先の他サイトで提供される情報、サービスについても、その責任を負いかねます。",
-  "privacyPolicy__copyright__title": "著作権",
-  "privacyPolicy__copyright__body": "当サイトに掲載される文章、画像、その他のコンテンツは著作権により保護されています。\n法的に認められた範囲を超えての引用、無断での使用や転載を禁止します。",
-
-  "__EOF__": ""
+  "installer": {
+    "cancel": "閉じる",
+    "alternative": "ブラウザから「ホーム画面に追加」をするとアプリをインストールできます。"
+  },
+  "about": {
+    "author": {
+      "job": "Software Engineer"
+    },
+    "contact": {
+      "name": "お名前",
+      "email": "メールアドレス",
+      "message": "お問い合わせの内容",
+      "send": "送信する",
+      "send_confirm": "問い合わせを送信します。よろしいですか？",
+      "send_succeeded": "送信されました。",
+      "attention": "サーバの都合でメールを送信できない場合がございます。その際はお手数ですが、SNS からお問い合わせください。",
+      "privacyPolicy": "$t(privacyPolicy.title)"
+    }
+  },
+  "privacyPolicy": {
+    "title": "プライバシーポリシー",
+    "summary": "{{title}}（以下「当サイト」）の個人情報の取得、利用について、以下の通り個人情報保護方針（プライバシーポリシー）を定義し、厳正に管理いたします。",
+    "title_acquisition": "個人情報の取得",
+    "body_acquisition": "当サイトでは、下記の場合に個人情報を取得します。\n\n\t・お問い合わせを送信された場合",
+    "title_purpose": "個人情報の利用目的",
+    "body_purpose": "当サイトでは、取得した個人情報を以下の目的で利用いたします。\n\n\t・お問い合わせへの対応のため",
+    "title_thirdParty": "個人情報の第三者提供",
+    "body_thirdParty": "法令に基づく場合等正当な理由に拠らない限り、事前に本人の同意を得ることなく、個人情報を第三者に開示、提供することはありません。",
+    "title_analysis": "アクセス解析ツール",
+    "body_analysis": "当サイトでは、サービス向上のため Google アナリティクス を利用し、アクセス情報の解析を行います。\nGoogle アナリティクス はアクセス情報を収集するために Cookie を使用します。情報は匿名で収集されており、個人を特定するものではありません。\nこの機能は、お使いのブラウザの設定で Cookie を無効にすることで拒否できます。\n規約の詳細は Google アナリティクス利用規約をご確認ください。",
+    "title_disclaimer": "免責事項",
+    "body_disclaimer": "当サイトの掲載内容によって生じた損害に対する一切の責任を負わないものとします。\nリンク先の他サイトで提供される情報、サービスについても、その責任を負いかねます。",
+    "title_copyright": "著作権",
+    "body_copyright": "当サイトに掲載される文章、画像、その他のコンテンツは著作権により保護されています。\n法的に認められた範囲を超えての引用、無断での使用や転載を禁止します。"
+  }
 }
