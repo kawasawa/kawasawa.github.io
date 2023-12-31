@@ -1,0 +1,3 @@
+INSERT INTO version VALUES
+  ('2020/01/01 3:00:00')
+;

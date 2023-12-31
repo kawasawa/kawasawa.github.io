@@ -30,10 +30,10 @@ export const Installer = () => {
       )}
       <Snackbar
         open={!!showAlternativeMessage}
-        message={t('installer__alternative')}
+        message={t('installer.alternative')}
         action={
           <Button onClick={() => setShowAlternativeMessage(false)} size="small">
-            {t('installer__cancel')}
+            {t('installer.cancel')}
           </Button>
         }
         onClose={() => setShowAlternativeMessage(false)}

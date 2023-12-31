@@ -69,7 +69,7 @@ export const PrivacyPolicyDialog = React.memo(function _(props: PrivacyPolicyDia
         <Container maxWidth="xl">
           <Toolbar sx={{ justifyContent: 'space-between' }} disableGutters>
             <Typography variant="h6" data-testid="PrivacyPolicyDialog__Title">
-              {t('privacyPolicy')}
+              {t('privacyPolicy.title')}
             </Typography>
             <IconButton onClick={handleClose} data-testid="PrivacyPolicyDialog__Close">
               <CloseIcon />
@@ -79,15 +79,15 @@ export const PrivacyPolicyDialog = React.memo(function _(props: PrivacyPolicyDia
       </AppBar>
       <Container sx={{ pb: 10 }} data-testid="PrivacyPolicyDialog__Body">
         <Box sx={{ my: 5 }}>
-          <Typography variant="subtitle1">{t('privacyPolicy__summary', { title: meta.title })}</Typography>
+          <Typography variant="subtitle1">{t('privacyPolicy.summary', { title: meta.title })}</Typography>
         </Box>
         {titleKeys.map((key) => (
           <Box key={`PrivacyPolicyDialog__Body--${key}`} sx={{ my: 5 }}>
             <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
-              {t(`privacyPolicy__${key}__title`)}
+              {t('privacyPolicy.title', { context: key })}
             </Typography>
             <Typography variant="body1" sx={{ color: 'text.secondary', mt: 2 }}>
-              {t(`privacyPolicy__${key}__body`)}
+              {t('privacyPolicy.body', { context: key })}
             </Typography>
           </Box>
         ))}

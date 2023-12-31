@@ -11,6 +11,1290 @@ servers:
 tags:
   - name: spreadsheets
 paths:
+  '/spreadsheets/{GOOGLE_SHEETS_ID}/values/icons':
+    get:
+      summary: icons
+      deprecated: false
+      description: アイコンデータを取得します。
+      operationId: icons
+      parameters:
+        - name: GOOGLE_SHEETS_ID
+          in: path
+          description: Sheet ID
+          required: true
+          example: ''
+          schema:
+            type: string
+        - name: GOOGLE_SHEETS_API_KEY
+          in: query
+          description: API Key
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SucceededProps'
+                  - type: object
+                    properties:
+                      values:
+                        type: array
+                        description: 記事のメタデータ
+                        items:
+                          type: array
+                          description: '[記事のID, タイトル, 冒頭部分, タグ, URL, いいね数, ストック数, コメント数, 作成日時, 更新日時]'
+                          items:
+                            type: string
+                    required:
+                      - values
+              examples:
+                '1':
+                  value:
+                    range: 'icons!A1:Z1007'
+                    majorDimension: ROWS
+                    values:
+                      - - id
+                        - data
+                      - - apache
+                        - 'https://img.shields.io/badge/-Apache-D12027.svg?logo=apache&style=flat'
+                      - - aws
+                        - 'https://img.shields.io/badge/-AWS-232F3E.svg?logo=amazonaws&style=flat'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    allOf:
+                      - $ref: '#/components/schemas/FailedProps'
+                      - type: object
+                        properties:
+                          details:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                '@type':
+                                  type: string
+                                reason:
+                                  type: string
+                                domain:
+                                  type: string
+                                metadata:
+                                  type: object
+                                  required:
+                                    - service
+                                  properties:
+                                    service:
+                                      type: string
+                              required:
+                                - '@type'
+                                - reason
+                                - domain
+                                - metadata
+                        required:
+                          - details
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 400
+                      message: API key not valid. Please pass a valid API key.
+                      status: INVALID_ARGUMENT
+                      details:
+                        - '@type': type.googleapis.com/google.rpc.ErrorInfo
+                          reason: API_KEY_INVALID
+                          domain: googleapis.com
+                          metadata:
+                            service: sheets.googleapis.com
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/FailedProps'
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 403
+                      message: The request is missing a valid API key.
+                      status: PERMISSION_DENIED
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/FailedProps'
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 404
+                      message: Requested entity was not found.
+                      status: NOT_FOUND
+      tags:
+        - spreadsheets
+    parameters:
+      - schema:
+          type: string
+        name: GOOGLE_SHEETS_ID
+        in: path
+        required: true
+  '/spreadsheets/{GOOGLE_SHEETS_ID}/values/products':
+    get:
+      summary: products
+      deprecated: false
+      description: プロダクトの情報を取得します。
+      operationId: products
+      parameters:
+        - name: GOOGLE_SHEETS_ID
+          in: path
+          description: Sheet ID
+          required: true
+          example: ''
+          schema:
+            type: string
+        - name: GOOGLE_SHEETS_API_KEY
+          in: query
+          description: API Key
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SucceededProps'
+                  - type: object
+                    properties:
+                      values:
+                        type: array
+                        description: 記事のメタデータ
+                        items:
+                          type: array
+                          description: '[記事のID, タイトル, 冒頭部分, タグ, URL, いいね数, ストック数, コメント数, 作成日時, 更新日時]'
+                          items:
+                            type: string
+                    required:
+                      - values
+              examples:
+                '1':
+                  value:
+                    range: 'products!A1:AC1000'
+                    majorDimension: ROWS
+                    values:
+                      - - id
+                        - title_ja-JP
+                        - title_en-US
+                        - subject_ja-JP
+                        - subject_en-US
+                        - body_ja-JP
+                        - body_en-US
+                        - skills
+                        - url_code
+                        - url_home
+                        - downloads
+                        - pickup
+                        - visible
+                      - - '1'
+                        - MyPad
+                        - MyPad
+                        - Modern Text Editor
+                        - Modern Text Editor
+                        - '"毎日使うものこそ、美しく便利なものを..." そんな想いで作られたテキストエディタが MyPad です。視認性に優れるモダンな外観に、使い慣れたクラシックな操作性を兼ね備え、様々な用途にご利用頂けます。'
+                        - '"Something you use every day should be beautiful and useful..." MyPad is a text editor created with this in mind. MyPad combines a modern, highly readable appearance with familiar, classic operability, and can be used for a variety of purposes.'
+                        - 'csharp, dotnet, wpf, prism, mahapps, win32, wap'
+                        - 'https://github.com/kawasawa/MyPad'
+                        - 'https://apps.microsoft.com/store/detail/9PP2600ZM2JD'
+                        - '6000'
+                        - 'true'
+                        - 'true'
+                      - - '2'
+                        - ひより
+                        - HIYORI
+                        - Weather Forecast
+                        - Weather Forecast
+                        - 気象情報を一覧できる Web サイトです。現在位置における直近から数日先までの三時間ごとの天気、気温、湿度、風の情報をまとめて確認できます。
+                        - 'This Web site provides a list of weather information. You can check the weather, temperature, humidity, and wind information for the last three hours at your current location and for the next few days.'
+                        - 'typescript, reactjs, mui, pwa, leaflet'
+                        - 'https://github.com/kawasawa/hiyori'
+                        - 'https://kawasawa.github.io/hiyori'
+                        - ''
+                        - 'true'
+                        - 'true'
+                      - - '3'
+                        - 工具箱
+                        - Toolbox
+                        - Development Toolkit
+                        - Development Toolkit
+                        - 開発者向けの簡易ツールです。文字列のケース変換やハッシュ化、Base変換などに対応しています。すべての処理はブラウザ内で行われ、データは外部に送信されません。
+                        - 'This is a simple tool for developers. It supports string case conversion, hashing, Base conversion, etc. All processing is done within the browser and no data is sent externally.'
+                        - 'go, wasm, javascript'
+                        - 'https://github.com/kawasawa/go-wasm-toys'
+                        - 'https://kawasawa.github.io/go-wasm-toys'
+                        - ''
+                        - 'true'
+                        - 'true'
+                      - - '4'
+                        - こよみ
+                        - KOYOMI
+                        - Japanese Calendar
+                        - Japanese Calendar
+                        - 暦の情報を一覧できる Web サイトです。旧暦や六曜のほか二十四節気、星座、干支、月相などの暦注を確認できます。
+                        - 'This Web site provides a list of calendar information. In addition to the lunar calendar and the six days of the week, you can check the 24 solar terms, zodiac signs, zodiac signs, lunar phases, and other calendar notes.'
+                        - 'typescript, reactjs, mui, pwa'
+                        - 'https://github.com/kawasawa/koyomi'
+                        - 'https://kawasawa.github.io/koyomi'
+                        - ''
+                        - 'false'
+                        - 'true'
+                      - - '5'
+                        - MyBase
+                        - MyBase
+                        - Development Library
+                        - Development Library
+                        - 'MyBase は .NET Framework, .NET Core による WPF アプリケーションの開発をサポートするためのライブラリです。Prism と連携し標準機能を拡張する処理や、最新の Prism では廃止されてしまった実装の一部が移植されています。'
+                        - 'MyBase is a library to support the development of WPF applications with .NET Framework, .NET Core, and includes a process to extend the standard functionality in conjunction with Prism, as well as a port of some implementations that are deprecated in the latest version of Prism.'
+                        - 'csharp, dotnetcore, prism, nuget'
+                        - 'https://github.com/kawasawa/MyBase'
+                        - 'https://www.nuget.org/packages/MyBase'
+                        - '1800'
+                        - 'false'
+                        - 'true'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    allOf:
+                      - $ref: '#/components/schemas/FailedProps'
+                      - type: object
+                        properties:
+                          details:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                '@type':
+                                  type: string
+                                reason:
+                                  type: string
+                                domain:
+                                  type: string
+                                metadata:
+                                  type: object
+                                  required:
+                                    - service
+                                  properties:
+                                    service:
+                                      type: string
+                              required:
+                                - '@type'
+                                - reason
+                                - domain
+                                - metadata
+                        required:
+                          - details
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 400
+                      message: API key not valid. Please pass a valid API key.
+                      status: INVALID_ARGUMENT
+                      details:
+                        - '@type': type.googleapis.com/google.rpc.ErrorInfo
+                          reason: API_KEY_INVALID
+                          domain: googleapis.com
+                          metadata:
+                            service: sheets.googleapis.com
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/FailedProps'
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 403
+                      message: The request is missing a valid API key.
+                      status: PERMISSION_DENIED
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/FailedProps'
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 404
+                      message: Requested entity was not found.
+                      status: NOT_FOUND
+      tags:
+        - spreadsheets
+    parameters:
+      - schema:
+          type: string
+        name: GOOGLE_SHEETS_ID
+        in: path
+        required: true
+  '/spreadsheets/{GOOGLE_SHEETS_ID}/values/product-images':
+    get:
+      summary: product-images
+      deprecated: false
+      description: プロダクトのイメージデータを取得します。
+      operationId: product-images
+      parameters:
+        - name: GOOGLE_SHEETS_ID
+          in: path
+          description: Sheet ID
+          required: true
+          example: ''
+          schema:
+            type: string
+        - name: GOOGLE_SHEETS_API_KEY
+          in: query
+          description: API Key
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SucceededProps'
+                  - type: object
+                    properties:
+                      values:
+                        type: array
+                        description: 記事のメタデータ
+                        items:
+                          type: array
+                          description: '[記事のID, タイトル, 冒頭部分, タグ, URL, いいね数, ストック数, コメント数, 作成日時, 更新日時]'
+                          items:
+                            type: string
+                    required:
+                      - values
+              examples:
+                '1':
+                  value:
+                    range: '''product-images''!A1:Z1000'
+                    majorDimension: ROWS
+                    values:
+                      - - product_id
+                        - row_no
+                        - data
+                      - - '1'
+                        - '1'
+                        - 'data:image/webp;base64,...'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    allOf:
+                      - $ref: '#/components/schemas/FailedProps'
+                      - type: object
+                        properties:
+                          details:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                '@type':
+                                  type: string
+                                reason:
+                                  type: string
+                                domain:
+                                  type: string
+                                metadata:
+                                  type: object
+                                  required:
+                                    - service
+                                  properties:
+                                    service:
+                                      type: string
+                              required:
+                                - '@type'
+                                - reason
+                                - domain
+                                - metadata
+                        required:
+                          - details
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 400
+                      message: API key not valid. Please pass a valid API key.
+                      status: INVALID_ARGUMENT
+                      details:
+                        - '@type': type.googleapis.com/google.rpc.ErrorInfo
+                          reason: API_KEY_INVALID
+                          domain: googleapis.com
+                          metadata:
+                            service: sheets.googleapis.com
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/FailedProps'
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 403
+                      message: The request is missing a valid API key.
+                      status: PERMISSION_DENIED
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/FailedProps'
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 404
+                      message: Requested entity was not found.
+                      status: NOT_FOUND
+      tags:
+        - spreadsheets
+    parameters:
+      - schema:
+          type: string
+        name: GOOGLE_SHEETS_ID
+        in: path
+        required: true
+  '/spreadsheets/{GOOGLE_SHEETS_ID}/values/careers':
+    get:
+      summary: careers
+      deprecated: false
+      description: キャリアの情報を取得します。
+      operationId: careers
+      parameters:
+        - name: GOOGLE_SHEETS_ID
+          in: path
+          description: Sheet ID
+          required: true
+          example: ''
+          schema:
+            type: string
+        - name: GOOGLE_SHEETS_API_KEY
+          in: query
+          description: API Key
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SucceededProps'
+                  - type: object
+                    properties:
+                      values:
+                        type: array
+                        description: 記事のメタデータ
+                        items:
+                          type: array
+                          description: '[記事のID, タイトル, 冒頭部分, タグ, URL, いいね数, ストック数, コメント数, 作成日時, 更新日時]'
+                          items:
+                            type: string
+                    required:
+                      - values
+              examples:
+                '1':
+                  value:
+                    range: 'careers!A1:AB1000'
+                    majorDimension: ROWS
+                    values:
+                      - - id
+                        - date
+                        - place
+                        - title_ja-JP
+                        - title_en-US
+                        - favicon
+                        - url
+                        - visible
+                      - - '1'
+                        - 2014-03
+                        - Yamanashi
+                        - 山梨大学 工学部 卒業
+                        - University of Yamanashi
+                        - 'https://www.yamanashi.ac.jp/favicon.ico'
+                        - 'https://www.yamanashi.ac.jp/'
+                        - 'true'
+                      - - '2'
+                        - 2014-04
+                        - Yamanashi
+                        - 株式会社 YSK e-com
+                        - 'YSK e-com Co., Ltd.'
+                        - 'https://www.ysk.co.jp/favicon.ico'
+                        - 'https://www.ysk.co.jp/'
+                        - 'true'
+                      - - '3'
+                        - 2020-04
+                        - Yamanashi
+                        - 株式会社 コンピュータマインド
+                        - Computermind Corp.
+                        - 'https://www.compmind.co.jp/favicon.ico'
+                        - 'https://www.compmind.co.jp/'
+                        - 'false'
+                      - - '4'
+                        - 2020-11
+                        - Tokyo
+                        - 株式会社 ジェーシービー
+                        - 'JCB Co., Ltd.'
+                        - 'https://www.jcb.co.jp/images/favicon.ico'
+                        - 'https://www.jcb.co.jp/'
+                        - 'true'
+                      - - '5'
+                        - 2023-06
+                        - Tokyo
+                        - 個人事業主として開業
+                        - Sole Proprietor
+                        - ''
+                        - ''
+                        - 'true'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    allOf:
+                      - $ref: '#/components/schemas/FailedProps'
+                      - type: object
+                        properties:
+                          details:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                '@type':
+                                  type: string
+                                reason:
+                                  type: string
+                                domain:
+                                  type: string
+                                metadata:
+                                  type: object
+                                  required:
+                                    - service
+                                  properties:
+                                    service:
+                                      type: string
+                              required:
+                                - '@type'
+                                - reason
+                                - domain
+                                - metadata
+                        required:
+                          - details
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 400
+                      message: API key not valid. Please pass a valid API key.
+                      status: INVALID_ARGUMENT
+                      details:
+                        - '@type': type.googleapis.com/google.rpc.ErrorInfo
+                          reason: API_KEY_INVALID
+                          domain: googleapis.com
+                          metadata:
+                            service: sheets.googleapis.com
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/FailedProps'
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 403
+                      message: The request is missing a valid API key.
+                      status: PERMISSION_DENIED
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/FailedProps'
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 404
+                      message: Requested entity was not found.
+                      status: NOT_FOUND
+      tags:
+        - spreadsheets
+    parameters:
+      - schema:
+          type: string
+        name: GOOGLE_SHEETS_ID
+        in: path
+        required: true
+  '/spreadsheets/{GOOGLE_SHEETS_ID}/values/career-details':
+    get:
+      summary: career-details
+      deprecated: false
+      description: キャリアの詳細情報を取得します。
+      operationId: career-details
+      parameters:
+        - name: GOOGLE_SHEETS_ID
+          in: path
+          description: Sheet ID
+          required: true
+          example: ''
+          schema:
+            type: string
+        - name: GOOGLE_SHEETS_API_KEY
+          in: query
+          description: API Key
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SucceededProps'
+                  - type: object
+                    properties:
+                      values:
+                        type: array
+                        description: 記事のメタデータ
+                        items:
+                          type: array
+                          description: '[記事のID, タイトル, 冒頭部分, タグ, URL, いいね数, ストック数, コメント数, 作成日時, 更新日時]'
+                          items:
+                            type: string
+                    required:
+                      - values
+              examples:
+                '1':
+                  value:
+                    range: '''career-details''!A1:Z1001'
+                    majorDimension: ROWS
+                    values:
+                      - - career_id
+                        - row_no
+                        - subject_ja-JP
+                        - subject_en-US
+                        - skills
+                      - - '1'
+                        - '1'
+                        - コンピュータサイエンスを専攻
+                        - Majoring in Computer Science
+                        - 'cpp, csharp, dotnetfw, mono, gtkmm, opengl, emacs, xampp'
+                        - '''1'',''1'',''コンピュータサイエンスを専攻'',''Majoring in Computer Science'',''cpp, csharp, dotnetfw, mono, gtkmm, opengl, emacs, xampp'
+                      - - '2'
+                        - '1'
+                        - 民需系業務システム開発を担当
+                        - Development of Civilian Requirements
+                        - 'vb, dotnetfw, javascript, jquery, php, laravel, svn'
+                        - '''2'',''1'',''民需系業務システム開発を担当'',''Development of Civilian Requirements'',''vb, dotnetfw, javascript, jquery, php, laravel, svn'
+                      - - '2'
+                        - '2'
+                        - 先端技術及び研究開発分野を担当
+                        - Development of Advanced Technology and R&D
+                        - 'csharp, dotnetcore, wpf, prism, python, flask, opencv, docker, git'
+                        - '''2'',''2'',''先端技術及び研究開発分野を担当'',''Development of Advanced Technology and R&D'',''csharp, dotnetcore, wpf, prism, python, flask, opencv, docker, git'
+                      - - '3'
+                        - '1'
+                        - 製造系制御システム開発を担当
+                        - Development of Control Systems
+                        - 'c, vba, svn, redmine'
+                        - '''3'',''1'',''製造系制御システム開発を担当'',''Development of Control Systems'',''c, vba, svn, redmine'
+                      - - '4'
+                        - '1'
+                        - 金融系マイクロサービス開発を担当
+                        - Development of Microservices for Financial
+                        - 'typescript, reactjs, expressjs, python, go, docker, swagger, newman, gitlab, jira, metabase, datadog, pagerduty, gcp, gcpgke'
+                        - '''4'',''1'',''金融系マイクロサービス開発を担当'',''Development of Microservices for Financial'',''typescript, reactjs, expressjs, python, go, docker, swagger, newman, gitlab, jira, metabase, datadog, pagerduty, gcp, gcpgke'
+                      - - '5'
+                        - '1'
+                        - Webシステム開発に従事
+                        - Development of Web Systems
+                        - 'typescript, mui, nextjs, docker, github, aws, awsecs, awsfargate'
+                        - '''5'',''1'',''Webシステム開発に従事'',''Development of Web Systems'',''typescript, mui, nextjs, docker, github, aws, awsecs, awsfargate'
+                      - - '5'
+                        - '2'
+                        - クラウドシステム開発に従事
+                        - Development of Cloud Systems
+                        - 'javascript, csharp, azure, azureadx, azurefunctions, azureapim'
+                        - '''5'',''2'',''クラウドシステム開発に従事'',''Development of Cloud Systems'',''javascript, csharp, azure, azureadx, azurefunctions, azureapim'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    allOf:
+                      - $ref: '#/components/schemas/FailedProps'
+                      - type: object
+                        properties:
+                          details:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                '@type':
+                                  type: string
+                                reason:
+                                  type: string
+                                domain:
+                                  type: string
+                                metadata:
+                                  type: object
+                                  required:
+                                    - service
+                                  properties:
+                                    service:
+                                      type: string
+                              required:
+                                - '@type'
+                                - reason
+                                - domain
+                                - metadata
+                        required:
+                          - details
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 400
+                      message: API key not valid. Please pass a valid API key.
+                      status: INVALID_ARGUMENT
+                      details:
+                        - '@type': type.googleapis.com/google.rpc.ErrorInfo
+                          reason: API_KEY_INVALID
+                          domain: googleapis.com
+                          metadata:
+                            service: sheets.googleapis.com
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/FailedProps'
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 403
+                      message: The request is missing a valid API key.
+                      status: PERMISSION_DENIED
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/FailedProps'
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 404
+                      message: Requested entity was not found.
+                      status: NOT_FOUND
+      tags:
+        - spreadsheets
+    parameters:
+      - schema:
+          type: string
+        name: GOOGLE_SHEETS_ID
+        in: path
+        required: true
+  '/spreadsheets/{GOOGLE_SHEETS_ID}/values/certifications':
+    get:
+      summary: certifications
+      deprecated: false
+      description: 資格の情報を取得します。
+      operationId: certifications
+      parameters:
+        - name: GOOGLE_SHEETS_ID
+          in: path
+          description: Sheet ID
+          required: true
+          example: ''
+          schema:
+            type: string
+        - name: GOOGLE_SHEETS_API_KEY
+          in: query
+          description: API Key
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SucceededProps'
+                  - type: object
+                    properties:
+                      values:
+                        type: array
+                        description: 記事のメタデータ
+                        items:
+                          type: array
+                          description: '[記事のID, タイトル, 冒頭部分, タグ, URL, いいね数, ストック数, コメント数, 作成日時, 更新日時]'
+                          items:
+                            type: string
+                    required:
+                      - values
+              examples:
+                '1':
+                  value:
+                    range: 'certifications!A1:AB1000'
+                    majorDimension: ROWS
+                    values:
+                      - - id
+                        - date
+                        - title_ja-JP
+                        - title_en-US
+                        - subject_ja-JP
+                        - subject_en-US
+                        - favicon
+                        - url
+                        - visible
+                      - - '1'
+                        - 2012-05
+                        - 基本情報技術者
+                        - Fundamental Information Technology Engineer
+                        - 情報処理推進機構
+                        - Information-technology Promotion Agency
+                        - 'https://www.ipa.go.jp/favicon.ico'
+                        - 'https://www.ipa.go.jp/shiken/kubun/fe.html'
+                        - 'true'
+                      - - '2'
+                        - 2014-12
+                        - 応用情報技術者
+                        - Applied Information Technology Engineer
+                        - 情報処理推進機構
+                        - Information-technology Promotion Agency
+                        - 'https://www.ipa.go.jp/favicon.ico'
+                        - 'https://www.ipa.go.jp/shiken/kubun/ap.html'
+                        - 'true'
+                      - - '3'
+                        - 2020-03
+                        - 3級 ファイナンシャル・プラニング技能士
+                        - 3rd grade Certified Skilled Professional of Financial Planning
+                        - 日本FP協会
+                        - Japan Association for Financial Planners
+                        - 'https://www.jafp.or.jp/shared/img/favicon.ico'
+                        - 'https://www.jafp.or.jp/exam/about/'
+                        - 'true'
+                      - - '4'
+                        - 2021-05
+                        - 日商簿記検定試験 3級
+                        - 'The Official Business Skills Test in Bookkeeping, 3rd grade'
+                        - 日本商工会議所
+                        - The Japan Chamber of Commerce and Industry
+                        - 'https://www.kentei.ne.jp/wp/wp-content/themes/kentei/favicon.ico'
+                        - 'https://www.kentei.ne.jp/bookkeeping/class3'
+                        - 'true'
+                      - - '5'
+                        - 2022-10
+                        - 個人情報取扱主任者
+                        - Certified Chief Handler of Personal Information
+                        - 日本クレジット協会
+                        - Japan Consumer Credit Association
+                        - 'https://www.j-credit.or.jp/favicon.ico'
+                        - 'https://www.j-credit.or.jp/license/license/personal_data.html'
+                        - 'true'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    allOf:
+                      - $ref: '#/components/schemas/FailedProps'
+                      - type: object
+                        properties:
+                          details:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                '@type':
+                                  type: string
+                                reason:
+                                  type: string
+                                domain:
+                                  type: string
+                                metadata:
+                                  type: object
+                                  required:
+                                    - service
+                                  properties:
+                                    service:
+                                      type: string
+                              required:
+                                - '@type'
+                                - reason
+                                - domain
+                                - metadata
+                        required:
+                          - details
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 400
+                      message: API key not valid. Please pass a valid API key.
+                      status: INVALID_ARGUMENT
+                      details:
+                        - '@type': type.googleapis.com/google.rpc.ErrorInfo
+                          reason: API_KEY_INVALID
+                          domain: googleapis.com
+                          metadata:
+                            service: sheets.googleapis.com
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/FailedProps'
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 403
+                      message: The request is missing a valid API key.
+                      status: PERMISSION_DENIED
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/FailedProps'
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 404
+                      message: Requested entity was not found.
+                      status: NOT_FOUND
+      tags:
+        - spreadsheets
+    parameters:
+      - schema:
+          type: string
+        name: GOOGLE_SHEETS_ID
+        in: path
+        required: true
+  '/spreadsheets/{GOOGLE_SHEETS_ID}/values/sns':
+    get:
+      summary: sns
+      deprecated: false
+      description: ソーシャルメディアの情報を取得します。
+      operationId: sns
+      parameters:
+        - name: GOOGLE_SHEETS_ID
+          in: path
+          description: Sheet ID
+          required: true
+          example: ''
+          schema:
+            type: string
+        - name: GOOGLE_SHEETS_API_KEY
+          in: query
+          description: API Key
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/SucceededProps'
+                  - type: object
+                    properties:
+                      values:
+                        type: array
+                        description: 記事のメタデータ
+                        items:
+                          type: array
+                          description: '[記事のID, タイトル, 冒頭部分, タグ, URL, いいね数, ストック数, コメント数, 作成日時, 更新日時]'
+                          items:
+                            type: string
+                    required:
+                      - values
+              examples:
+                '1':
+                  value:
+                    range: 'sns!A1:AA1000'
+                    majorDimension: ROWS
+                    values:
+                      - - id
+                        - title_ja-JP
+                        - title_en-US
+                        - favicon
+                        - url
+                        - visible
+                      - - '1'
+                        - Twitter
+                        - Twitter
+                        - 'https://abs.twimg.com/favicons/twitter.2.ico'
+                        - 'https://twitter.com/k_awasawa'
+                        - 'true'
+                      - - '2'
+                        - LinkedIn
+                        - LinkedIn
+                        - 'https://www.linkedin.com/favicon.ico'
+                        - 'https://www.linkedin.com/in/kawasawa'
+                        - 'true'
+                      - - '3'
+                        - GitHub
+                        - GitHub
+                        - 'https://github.githubassets.com/favicons/favicon-dark.svg'
+                        - 'https://github.com/kawasawa'
+                        - 'true'
+                      - - '4'
+                        - Qiita
+                        - Qiita
+                        - 'https://cdn.qiita.com/assets/favicons/public/production-c620d3e403342b1022967ba5e3db1aaa.ico'
+                        - 'https://qiita.com/kawasawa'
+                        - 'true'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    allOf:
+                      - $ref: '#/components/schemas/FailedProps'
+                      - type: object
+                        properties:
+                          details:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                '@type':
+                                  type: string
+                                reason:
+                                  type: string
+                                domain:
+                                  type: string
+                                metadata:
+                                  type: object
+                                  required:
+                                    - service
+                                  properties:
+                                    service:
+                                      type: string
+                              required:
+                                - '@type'
+                                - reason
+                                - domain
+                                - metadata
+                        required:
+                          - details
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 400
+                      message: API key not valid. Please pass a valid API key.
+                      status: INVALID_ARGUMENT
+                      details:
+                        - '@type': type.googleapis.com/google.rpc.ErrorInfo
+                          reason: API_KEY_INVALID
+                          domain: googleapis.com
+                          metadata:
+                            service: sheets.googleapis.com
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/FailedProps'
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 403
+                      message: The request is missing a valid API key.
+                      status: PERMISSION_DENIED
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/FailedProps'
+                required:
+                  - error
+              examples:
+                '1':
+                  summary: 異常例
+                  value:
+                    error:
+                      code: 404
+                      message: Requested entity was not found.
+                      status: NOT_FOUND
+      tags:
+        - spreadsheets
+    parameters:
+      - schema:
+          type: string
+        name: GOOGLE_SHEETS_ID
+        in: path
+        required: true
   '/spreadsheets/{GOOGLE_SHEETS_ID}/values/articles-metadata':
     get:
       summary: articles-metadata

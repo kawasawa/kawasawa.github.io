@@ -37,6 +37,81 @@ model articles_pickup {
   data String @db.Text
 }
 
+model career_details {
+  career_id     Int
+  row_no        Int
+  subject_ja_jp String  @db.VarChar(255)
+  subject_en_us String  @db.VarChar(255)
+  skills        String? @db.Text
+  careers       careers @relation(fields: [career_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "career_details_ibfk_1")
+
+  @@id([career_id, row_no])
+}
+
+model careers {
+  id             Int              @id @default(autoincrement())
+  date           String           @db.VarChar(255)
+  place          String           @db.VarChar(255)
+  title_ja_jp    String           @db.VarChar(255)
+  title_en_us    String           @db.VarChar(255)
+  favicon        String?          @db.Text
+  url            String?          @db.Text
+  visible        Boolean
+  career_details career_details[]
+}
+
+model certifications {
+  id            Int     @id @default(autoincrement())
+  date          String  @db.VarChar(255)
+  title_ja_jp   String  @db.VarChar(255)
+  title_en_us   String  @db.VarChar(255)
+  subject_ja_jp String  @db.VarChar(255)
+  subject_en_us String  @db.VarChar(255)
+  favicon       String? @db.Text
+  url           String? @db.Text
+  visible       Boolean
+}
+
+model icons {
+  id   String @id @db.VarChar(255)
+  data String @db.Text
+}
+
+model product_images {
+  product_id Int
+  row_no     Int
+  data       String   @db.Text
+  products   products @relation(fields: [product_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "product_images_ibfk_1")
+
+  @@id([product_id, row_no])
+}
+
+model products {
+  id             Int              @id @default(autoincrement())
+  title_ja_jp    String           @db.VarChar(255)
+  title_en_us    String           @db.VarChar(255)
+  subject_ja_jp  String           @db.VarChar(255)
+  subject_en_us  String           @db.VarChar(255)
+  body_ja_jp     String           @db.Text
+  body_en_us     String           @db.Text
+  skills         String           @db.Text
+  url_code       String           @db.Text
+  url_home       String           @db.Text
+  downloads      Int?
+  pickup         Boolean
+  visible        Boolean
+  product_images product_images[]
+}
+
+model sns {
+  id          Int     @id @default(autoincrement())
+  title_ja_jp String  @db.VarChar(255)
+  title_en_us String  @db.VarChar(255)
+  favicon     String? @db.Text
+  url         String? @db.Text
+  visible     Boolean
+}
+
 model version {
   last_update String @id @db.VarChar(20)
 }

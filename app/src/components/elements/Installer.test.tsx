@@ -89,7 +89,7 @@ describe('Installer', () => {
     });
     render(<Installer />);
     userEvent.click(screen.getByTestId('Installer__Fab'));
-    userEvent.click(screen.getByText('installer__cancel'));
+    userEvent.click(screen.getByText('installer.cancel'));
     await waitFor(() => expect(screen.queryByTestId('Installer__Snackbar')).not.toBeInTheDocument());
   });
 

@@ -1,8 +1,17 @@
 /* istanbul ignore file */
 
 export const values = {
-  ARTICLES_LIKES_COUNT_THRESHOLD: 10,
-  ARTICLES_LIKES_COUNT_POPULAR: 100,
-  ARTICLES_SKELETON_DISPLAY_COUNT: 3,
-  PRODUCTS_ALWAYS_DISPLAY_COUNT: 3,
+  likesCountThreshold: {
+    visible: 10,
+    popular: 100,
+  },
+  skeltonCount: {
+    products: 3,
+    articles: 3,
+    about: {
+      career: 5,
+      certification: 5,
+      sns: 4,
+    },
+  },
 } as const;
