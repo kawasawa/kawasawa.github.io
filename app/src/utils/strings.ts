@@ -9,3 +9,10 @@ export const stringFormat = (str: string, ...args: string[]) => {
   for (let i = 0; i < args.length; i++) result = result.replace(`{${i}}`, args[i]);
   return result;
 };
+
+/**
+ * 指定されたイメージソースから img タグの alt 属性に設定するテキストを推定します。
+ * @param source イメージソース
+ * @returns イメージソースが shields.io のものである場合はその status 部に相当する文字列を、それ例外は場合イメージソースをそのまま返却します。
+ */
+export const extractAltText4ShieldsIo = (source: string) => source.match(/^.*\/-(.+)-.*$/)?.[1] ?? source;
