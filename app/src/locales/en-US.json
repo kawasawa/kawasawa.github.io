@@ -1,64 +1,37 @@
 {
-  "installer__cancel": "Close",
-  "installer__alternative": "You can install this website by \"Add to Home Screen\" from your browser.",
-
-  "products__mypad__name": "MyPad",
-  "products__mypad__description": "\"Something you use every day should be beautiful and useful...\" MyPad is a text editor created with this in mind. MyPad combines a modern, highly readable appearance with familiar, classic operability, and can be used for a variety of purposes.",
-  "products__hiyori__name": "HIYORI",
-  "products__hiyori__description": "This Web site provides a list of weather information. You can check the weather, temperature, humidity, and wind information for the last three hours at your current location and for the next few days.",
-  "products__toolbox__name": "Toolbox",
-  "products__toolbox__description": "This is a simple tool for developers. It supports string case conversion, hashing, Base conversion, etc. All processing is done within the browser and no data is sent externally.",
-  "products__koyomi__name": "KOYOMI",
-  "products__koyomi__description": "This Web site provides a list of calendar information. In addition to the lunar calendar and the six days of the week, you can check the 24 solar terms, zodiac signs, zodiac signs, lunar phases, and other calendar notes.",
-  "products__mybase__name": "MyBase",
-  "products__mybase__description": "MyBase is a library to support the development of WPF applications with .NET Framework, .NET Core, and includes a process to extend the standard functionality in conjunction with Prism, as well as a port of some implementations that are deprecated in the latest version of Prism.",
-
-  "about__author__job": "Software Engineer",
-  "about__career__college__name": "University of Yamanashi",
-  "about__career__college__body": "Majoring in Computer Science",
-  "about__career__ysk__name": "YSK e-com Co., Ltd.",
-  "about__career__ysk__body": "Development of Civilian Requirements",
-  "about__career__compmind__name": "Computermind Corp.",
-  "about__career__compmind__body": "Development of Control Systems",
-  "about__career__jcb__name": "JCB Co., Ltd.",
-  "about__career__jcb__body": "Development of Microservices for Financial",
-  "about__career__freelance__name": "Sole Proprietor",
-  "about__career__freelance__body": "Development of Web and Open Systems",
-
-  "about__certification__FE__name": "Fundamental Information Technology Engineer",
-  "about__certification__FE__body": "Information-technology Promotion Agency",
-  "about__certification__AP__name": "Applied Information Technology Engineer",
-  "about__certification__AP__body": "Information-technology Promotion Agency",
-  "about__certification__FP3__name": "3rd grade Certified Skilled Professional of Financial Planning",
-  "about__certification__FP3__body": "Japan Association for Financial Planners",
-  "about__certification__NB3__name": "The Official Business Skills Test in Bookkeeping, 3rd grade",
-  "about__certification__NB3__body": "The Japan Chamber of Commerce and Industry",
-  "about__certification__PD__name": "Certified Chief Handler of Personal Information",
-  "about__certification__PD__body": "Japan Consumer Credit Association",
-
-  "about__contact__name": "name",
-  "about__contact__email": "email",
-  "about__contact__message": "inquiry",
-  "about__contact__send": "SUBMIT",
-  "about__contact__send--confirm": "Are you sure you want to submit inquiry?",
-  "about__contact__send--succeeded": "Your inquiry has been successfully submitted.",
-  "about__contact__attention": "We may not be able to send you an email due to server reasons. In that cases, please contact us via SNS.",
-  "about__contact__privacyPolicy": "Privacy Policy",
-
-  "privacyPolicy": "PRIVACY POLICY",
-  "privacyPolicy__summary": "Regarding the acquisition and use of personal information by {{title}} (hereinafter referred to as \"this site\"), the following privacy policy is defined and strictly managed.",
-  "privacyPolicy__acquisition__title": "Acquisition of Personal Information",
-  "privacyPolicy__acquisition__body": "This site acquires personal information in the following cases.\n\n\t- When you submit an inquiry",
-  "privacyPolicy__purpose__title": "Purpose of use of personal information",
-  "privacyPolicy__purpose__body": "This site will use the acquired personal information for the following purposes.\n\n\t- To respond to inquiries",
-  "privacyPolicy__thirdParty__title": "Provision of personal information to third parties",
-  "privacyPolicy__thirdParty__body": "We will not disclose or provide personal information to third parties without prior consent of the individual, unless required by law or for other legitimate reasons.",
-  "privacyPolicy__analysis__title": "Access Analysis Tools",
-  "privacyPolicy__analysis__body": "This site uses Google Analytics to analyze access information in order to improve our services.\nGoogle Analytics uses cookies to collect access information. The information is collected anonymously and does not personally identify you.\nYou can opt out of this feature by disabling cookies in your browser settings.\nPlease see the Google Analytics Terms of Use for more information on the terms and conditions.",
-  "privacyPolicy__disclaimer__title": "Disclaimer",
-  "privacyPolicy__disclaimer__body": "We assume no responsibility for any damages caused by the content of this site.\nWe are also not responsible for the information and services provided on other sites linked to this site.",
-  "privacyPolicy__copyright__title": "Copyright",
-  "privacyPolicy__copyright__body": "All text, images, and other content on this site are protected by copyright.\nQuotation, unauthorized use or reproduction beyond the legally permitted scope is prohibited.",
-
-  "__EOF__": ""
+  "installer": {
+    "cancel": "Close",
+    "alternative": "You can install this website by \"Add to Home Screen\" from your browser."
+  },
+  "about": {
+    "author": {
+      "job": "Software Engineer"
+    },
+    "contact": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Inquiry",
+      "send": "SUBMIT",
+      "send_confirm": "Are you sure you want to submit inquiry?",
+      "send_succeeded": "Your inquiry has been successfully submitted.",
+      "attention": "We may not be able to send you an email due to server reasons. In that cases, please contact us via SNS.",
+      "privacyPolicy": "$t(privacyPolicy.title)"
+    }
+  },
+  "privacyPolicy": {
+    "title": "Privacy Policy",
+    "summary": "Regarding the acquisition and use of personal information by {{title}} (hereinafter referred to as \"this site\"), the following privacy policy is defined and strictly managed.",
+    "title_acquisition": "Acquisition of Personal Information",
+    "body_acquisition": "This site acquires personal information in the following cases.\n\n\t- When you submit an inquiry",
+    "title_purpose": "Purpose of use of personal information",
+    "body_purpose": "This site will use the acquired personal information for the following purposes.\n\n\t- To respond to inquiries",
+    "title_thirdParty": "Provision of personal information to third parties",
+    "body_thirdParty": "We will not disclose or provide personal information to third parties without prior consent of the individual, unless required by law or for other legitimate reasons.",
+    "title_analysis": "Access Analysis Tools",
+    "body_analysis": "This site uses Google Analytics to analyze access information in order to improve our services.\nGoogle Analytics uses cookies to collect access information. The information is collected anonymously and does not personally identify you.\nYou can opt out of this feature by disabling cookies in your browser settings.\nPlease see the Google Analytics Terms of Use for more information on the terms and conditions.",
+    "title_disclaimer": "Disclaimer",
+    "body_disclaimer": "We assume no responsibility for any damages caused by the content of this site.\nWe are also not responsible for the information and services provided on other sites linked to this site.",
+    "title_copyright": "Copyright",
+    "body_copyright": "All text, images, and other content on this site are protected by copyright.\nQuotation, unauthorized use or reproduction beyond the legally permitted scope is prohibited."
+  }
 }
