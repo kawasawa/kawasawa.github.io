@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import React from 'react';
 
 import { Footer } from '@/components/layouts/Footer';
-import { endpoints, meta } from '@/constants';
+import { links, meta } from '@/constants';
 
 jest.mock('@/components/elements', () => ({
   ChipList: (props: any) => <div data-testid={props['data-testid']}>{props.children}</div>,
@@ -22,6 +22,6 @@ describe('Footer', () => {
   test('READMEのリンク先がリポジトリのREADMEに設定されていること', async () => {
     render(<Footer />);
 
-    expect(screen.getByRole('link').getAttribute('href')).toBe(endpoints.readme);
+    expect(screen.getByRole('link').getAttribute('href')).toBe(links.readme);
   });
 });

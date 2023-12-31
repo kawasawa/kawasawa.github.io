@@ -103,7 +103,7 @@ describe('Articles', () => {
 
     expect(screen.getByTestId('Articles__SectionTitle')).toBeVisible();
     await Promise.all(
-      [...Array(values.ARTICLES_SKELETON_DISPLAY_COUNT).keys()].map(async (i) => {
+      [...Array(values.skeltonCount.articles).keys()].map(async (i) => {
         await waitFor(() => expect(screen.getByTestId(`Articles__Card${i}--Loading`)).toBeVisible());
         expect(screen.getByTestId(`Articles__Card${i}__SkeletonBody0`)).toBeVisible();
         expect(screen.getByTestId(`Articles__Card${i}__SkeletonBody1`)).toBeVisible();
