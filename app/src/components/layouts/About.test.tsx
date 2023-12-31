@@ -7,7 +7,8 @@ import * as ReactToastify from 'react-toastify';
 
 import { ConfirmDialogProps, PrivacyPolicyDialogProps } from '@/components/dialogs';
 import { About } from '@/components/layouts/About';
-import { career, certification, sns } from '@/entities';
+import { values } from '@/constants';
+import * as Hooks from '@/hooks';
 import * as AppError from '@/utils/errors';
 
 jest.mock('@emailjs/browser', () => ({
@@ -28,11 +29,17 @@ jest.mock('react-intersection-observer', () => ({
 }));
 
 jest.mock('react-i18next', () => ({
-  useTranslation: () => [jest.fn()],
+  useTranslation: () => [jest.fn(), { language: 'ja-JP' }],
 }));
 
 jest.mock('react-toastify', () => ({
   toast: { success: jest.fn() },
+}));
+
+jest.mock('@/hooks', () => ({
+  useCareers: jest.fn(),
+  useCertifications: jest.fn(),
+  useSns: jest.fn(),
 }));
 
 jest.mock('@/utils/errors', () => ({
@@ -77,6 +84,98 @@ jest.mock('@/pages', () => ({
   PendingContext: React.createContext<[boolean, React.Dispatch<React.SetStateAction<boolean>>]>([false, jest.fn()]),
 }));
 
+const dummy_careers = [
+  {
+    id: 1,
+    date: '年月1',
+    place: '場所1',
+    'title_ja-JP': 'タイトル1',
+    'title_en-US': 'title1',
+    favicon: 'https://example.com/career_1/favicon.ico',
+    url: 'https://example.com/career_1',
+    visible: true,
+    details: [
+      {
+        rowNo: 1,
+        'subject_ja-JP': 'サブジェクト1_1',
+        'subject_en-US': 'subject1_1',
+        skills: [{ key: 'icon1', icon: 'data1' }],
+      },
+    ],
+  },
+  {
+    id: 2,
+    date: '年月2',
+    place: '場所2',
+    'title_ja-JP': 'タイトル2',
+    'title_en-US': 'title2',
+    favicon: 'https://example.com/career_2/favicon.ico',
+    url: 'https://example.com/career_2',
+    visible: false,
+    details: [
+      {
+        rowNo: 1,
+        'subject_ja-JP': 'サブジェクト2_1',
+        'subject_en-US': 'subject2_1',
+        skills: [
+          { key: 'icon1', icon: 'data1' },
+          { key: 'icon2', icon: 'data2' },
+        ],
+      },
+      {
+        rowNo: 2,
+        'subject_ja-JP': 'サブジェクト2_2',
+        'subject_en-US': 'subject2_2',
+        skills: [{ key: 'icon3', icon: '' }],
+      },
+    ],
+  },
+];
+
+const dummy_certifications = [
+  {
+    id: 1,
+    date: '年月1',
+    'title_ja-JP': 'タイトル1',
+    'title_en-US': 'title1',
+    'subject_ja-JP': 'サブジェクト1',
+    'subject_en-US': 'subject1',
+    favicon: 'https://example.com/certification_1/favicon.ico',
+    url: 'https://example.com/certification_1',
+    visible: true,
+  },
+  {
+    id: 2,
+    date: '年月2',
+    'title_ja-JP': 'タイトル2',
+    'title_en-US': 'title2',
+    'subject_ja-JP': 'サブジェクト2',
+    'subject_en-US': 'subject2',
+    favicon: 'https://example.com/certification_2/favicon.ico',
+    url: 'https://example.com/certification_2',
+    visible: false,
+  },
+];
+
+const dummy_sns = [
+  {
+    id: 1,
+    'title_ja-JP': 'タイトル1',
+    'title_en-US': 'title1',
+    favicon: 'https://example.com/sns_1/favicon.ico',
+    url: 'https://example.com/sns_1',
+    visible: true,
+  },
+  {
+    id: 2,
+    'title_ja-JP': 'タイトル2',
+    'title_en-US': 'title2',
+    favicon: 'https://example.com/sns_2/favicon.ico',
+    url: 'https://example.com/sns_2',
+    visible: false,
+  },
+];
+
 const dummy_contactData = {
   name: 'ichiro suzuki',
   email: 'test@example.com',
@@ -87,6 +186,9 @@ describe('About', () => {
   const spy_init = jest.spyOn(EmailJs, 'init');
   const spy_send = jest.spyOn(EmailJs, 'send');
   const spy_toastSuccess = jest.spyOn(ReactToastify.toast, 'success');
+  const spy_useCareers = jest.spyOn(Hooks, 'useCareers');
+  const spy_useCertifications = jest.spyOn(Hooks, 'useCertifications');
+  const spy_useSns = jest.spyOn(Hooks, 'useSns');
   const spy_handleError = jest.spyOn(AppError, 'handleError');
 
   const original_IntersectionObserver = window.IntersectionObserver;
@@ -100,6 +202,9 @@ describe('About', () => {
     spy_init.mockClear();
     spy_send.mockClear();
     spy_toastSuccess.mockClear();
+    spy_useCareers.mockClear();
+    spy_useCertifications.mockClear();
+    spy_useSns.mockClear();
     spy_handleError.mockClear();
     window.IntersectionObserver = jest.fn().mockImplementation(mock_IntersectionObserver);
   });
@@ -108,35 +213,62 @@ describe('About', () => {
     window.IntersectionObserver = original_IntersectionObserver;
   });
 
-  test('初期状態のコンポーネントが表示されること（スマートフォンサイズ）', () => {
+  test('キャリアと資格情報が存在する場合、コンポーネントが表示されること（スマートフォンサイズ）', async () => {
     (useMediaQuery as unknown as jest.Mock).mockReturnValue(true);
+    spy_useCareers.mockImplementation(() => dummy_careers);
+    spy_useCertifications.mockImplementation(() => dummy_certifications);
+    spy_useSns.mockImplementation(() => dummy_sns);
 
     render(<About />);
 
     expect(screen.getByTestId('About__SectionTitle')).toBeVisible();
     expect(screen.getAllByTestId('About__Author__Name').length).toBe(2);
     expect(screen.getAllByTestId('About__Author__Job').length).toBe(2);
-    sns.map((_, i) => {
-      expect(screen.getByTestId(`About__SNS${i}`)).toBeVisible();
-    });
-    career.map((career, i) => {
-      expect(screen.getAllByTestId(`About__Career${i}`).length).toBe(2);
-      expect(screen.getAllByTestId(`About__Career${i}__Date`).length).toBe(2);
-      expect(screen.getAllByTestId(`About__Career${i}__Place`).length).toBe(2);
-      expect(screen.getAllByTestId(`About__Career${i}__Favicon`).length).toBe(2);
-      expect(screen.getAllByTestId(`About__Career${i}__Name`).length).toBe(2);
-      expect(screen.getAllByTestId(`About__Career${i}__Body`).length).toBe(2);
-      career.skills.map((_, j) => {
-        expect(screen.getAllByTestId(`About__Career${i}__Skill${j}`).length).toBe(2);
-      });
-    });
-    certification.map((_, i) => {
-      expect(screen.getAllByTestId(`About__Certification${i}`).length).toBe(2);
-      expect(screen.getAllByTestId(`About__Certification${i}__Date`).length).toBe(2);
-      expect(screen.getAllByTestId(`About__Certification${i}__Favicon`).length).toBe(2);
-      expect(screen.getAllByTestId(`About__Certification${i}__Name`).length).toBe(2);
-      expect(screen.getAllByTestId(`About__Certification${i}__Body`).length).toBe(2);
-    });
+    const visibleCareerCount = dummy_careers?.filter((career) => career.visible).length;
+    await Promise.all(
+      dummy_careers.map(async (career, i) => {
+        if (i < visibleCareerCount) {
+          await waitFor(() => expect(screen.getAllByTestId(`About__Career${i}`).length).toBe(2));
+          expect(screen.getAllByTestId(`About__Career${i}__Date`).length).toBe(2);
+          expect(screen.getAllByTestId(`About__Career${i}__Place`).length).toBe(2);
+          expect(screen.getAllByTestId(`About__Career${i}__Favicon`).length).toBe(2);
+          expect(screen.getAllByTestId(`About__Career${i}__Name`).length).toBe(2);
+          career.details.map((careerDetail, j) => {
+            expect(screen.getAllByTestId(`About__Career${i}__Body${j}`).length).toBe(2);
+            careerDetail.skills.map((skill, k) => {
+              expect(screen.getAllByTestId(`About__Career${i}__Body${j}__Skill${k}`).length).toBe(2);
+            });
+          });
+        } else {
+          await waitFor(() => expect(screen.queryByTestId(`About__Career${i}`)).toBeNull());
+        }
+      })
+    );
+    const visibleCertificationCount = dummy_certifications?.filter((certification) => certification.visible).length;
+    await Promise.all(
+      dummy_certifications.map(async (_, i) => {
+        if (i < visibleCertificationCount) {
+          await waitFor(() => expect(screen.getAllByTestId(`About__Certification${i}`).length).toBe(2));
+          expect(screen.getAllByTestId(`About__Certification${i}__Date`).length).toBe(2);
+          expect(screen.getAllByTestId(`About__Certification${i}__Favicon`).length).toBe(2);
+          expect(screen.getAllByTestId(`About__Certification${i}__Name`).length).toBe(2);
+          expect(screen.getAllByTestId(`About__Certification${i}__Body`).length).toBe(2);
+        } else {
+          await waitFor(() => expect(screen.queryByTestId(`About__Certification${i}`)).toBeNull());
+        }
+      })
+    );
+    const visibleSnsCount = dummy_sns?.filter((sns) => sns.visible).length;
+    await Promise.all(
+      dummy_sns.map(async (_, i) => {
+        if (i < visibleSnsCount) {
+          await waitFor(() => expect(screen.getByTestId(`About__SNS${i}`)).toBeVisible());
+          expect(screen.getByTestId(`About__SNS${i}__Favicon`)).toBeVisible();
+        } else {
+          await waitFor(() => expect(screen.queryByTestId(`About__SNS${i}`)).toBeNull());
+        }
+      })
+    );
     expect(screen.getByTestId('About__Contact__Name')).toBeVisible();
     expect(screen.getByTestId('About__Contact__Email')).toBeVisible();
     expect(screen.getByTestId('About__Contact__Message')).toBeVisible();
@@ -145,41 +277,105 @@ describe('About', () => {
     expect(screen.getByTestId('About__Contact__PrivacyPolicy')).toBeVisible();
   });
 
-  test('初期状態のコンポーネントが表示されること（PCサイズ）', () => {
+  test('キャリアと資格情報が存在する場合、コンポーネントが表示されること（PCサイズ）', async () => {
     (useMediaQuery as unknown as jest.Mock).mockReturnValue(false);
+    spy_useCareers.mockImplementation(() => dummy_careers);
+    spy_useCertifications.mockImplementation(() => dummy_certifications);
+    spy_useSns.mockImplementation(() => dummy_sns);
 
     render(<About />);
 
     expect(screen.getByTestId('About__SectionTitle')).toBeVisible();
     expect(screen.getAllByTestId('About__Author__Name').length).toBe(2);
     expect(screen.getAllByTestId('About__Author__Job').length).toBe(2);
-    sns.map((_, i) => {
-      expect(screen.getByTestId(`About__SNS${i}`)).toBeVisible();
-    });
-    career.map((career, i) => {
-      expect(screen.getAllByTestId(`About__Career${i}`).length).toBe(2);
-      expect(screen.getAllByTestId(`About__Career${i}__Date`).length).toBe(2);
-      expect(screen.getAllByTestId(`About__Career${i}__Place`).length).toBe(2);
-      expect(screen.getAllByTestId(`About__Career${i}__Favicon`).length).toBe(2);
-      expect(screen.getAllByTestId(`About__Career${i}__Name`).length).toBe(2);
-      expect(screen.getAllByTestId(`About__Career${i}__Body`).length).toBe(2);
-      career.skills.map((_, j) => {
-        expect(screen.getAllByTestId(`About__Career${i}__Skill${j}`).length).toBe(2);
-      });
-    });
-    certification.map((_, i) => {
-      expect(screen.getAllByTestId(`About__Certification${i}`).length).toBe(2);
-      expect(screen.getAllByTestId(`About__Certification${i}__Date`).length).toBe(2);
-      expect(screen.getAllByTestId(`About__Certification${i}__Favicon`).length).toBe(2);
-      expect(screen.getAllByTestId(`About__Certification${i}__Name`).length).toBe(2);
-      expect(screen.getAllByTestId(`About__Certification${i}__Body`).length).toBe(2);
-    });
+    const visibleCareerCount = dummy_careers?.filter((career) => career.visible).length;
+    await Promise.all(
+      dummy_careers.map(async (career, i) => {
+        if (i < visibleCareerCount) {
+          await waitFor(() => expect(screen.getAllByTestId(`About__Career${i}`).length).toBe(2));
+          expect(screen.getAllByTestId(`About__Career${i}__Date`).length).toBe(2);
+          expect(screen.getAllByTestId(`About__Career${i}__Place`).length).toBe(2);
+          expect(screen.getAllByTestId(`About__Career${i}__Favicon`).length).toBe(2);
+          expect(screen.getAllByTestId(`About__Career${i}__Name`).length).toBe(2);
+          career.details.map((careerDetail, j) => {
+            expect(screen.getAllByTestId(`About__Career${i}__Body${j}`).length).toBe(2);
+            careerDetail.skills.map((skill, k) => {
+              expect(screen.getAllByTestId(`About__Career${i}__Body${j}__Skill${k}`).length).toBe(2);
+            });
+          });
+        } else {
+          await waitFor(() => expect(screen.queryByTestId(`About__Career${i}`)).toBeNull());
+        }
+      })
+    );
+    const visibleCertificationCount = dummy_certifications?.filter((certification) => certification.visible).length;
+    await Promise.all(
+      dummy_certifications.map(async (_, i) => {
+        if (i < visibleCertificationCount) {
+          await waitFor(() => expect(screen.getAllByTestId(`About__Certification${i}`).length).toBe(2));
+          expect(screen.getAllByTestId(`About__Certification${i}__Date`).length).toBe(2);
+          expect(screen.getAllByTestId(`About__Certification${i}__Favicon`).length).toBe(2);
+          expect(screen.getAllByTestId(`About__Certification${i}__Name`).length).toBe(2);
+          expect(screen.getAllByTestId(`About__Certification${i}__Body`).length).toBe(2);
+        } else {
+          await waitFor(() => expect(screen.queryByTestId(`About__Certification${i}`)).toBeNull());
+        }
+      })
+    );
+    const visibleSnsCount = dummy_sns?.filter((sns) => sns.visible).length;
+    await Promise.all(
+      dummy_sns.map(async (_, i) => {
+        if (i < visibleSnsCount) {
+          await waitFor(() => expect(screen.getByTestId(`About__SNS${i}`)).toBeVisible());
+          expect(screen.getByTestId(`About__SNS${i}__Favicon`)).toBeVisible();
+        } else {
+          await waitFor(() => expect(screen.queryByTestId(`About__SNS${i}`)).toBeNull());
+        }
+      })
+    );
     expect(screen.getByTestId('About__Contact__Name')).toBeVisible();
     expect(screen.getByTestId('About__Contact__Email')).toBeVisible();
     expect(screen.getByTestId('About__Contact__Message')).toBeVisible();
     expect(screen.getByTestId('About__Contact__Send')).toBeVisible();
     expect(screen.getByTestId('About__Contact__Attention')).toBeVisible();
     expect(screen.getByTestId('About__Contact__PrivacyPolicy')).toBeVisible();
+  });
+
+  test('キャリアと資格情報が取得前の場合、スケルトンスクリーンが表示されること', async () => {
+    spy_useCareers.mockImplementation(() => undefined);
+    spy_useCertifications.mockImplementation(() => undefined);
+    spy_useSns.mockImplementation(() => undefined);
+
+    render(<About />);
+
+    expect(screen.getByTestId('About__SectionTitle')).toBeVisible();
+    expect(screen.getAllByTestId('About__Author__Name').length).toBe(2);
+    expect(screen.getAllByTestId('About__Author__Job').length).toBe(2);
+    await Promise.all(
+      [...Array(values.skeltonCount.about.career).keys()].map(async (i) => {
+        await waitFor(() => expect(screen.getAllByTestId(`About__Career${i}--Loading`).length).toBe(2));
+        expect(screen.getAllByTestId(`About__Career${i}__SkeletonDate`).length).toBe(2);
+        expect(screen.getAllByTestId(`About__Career${i}__SkeletonPlace`).length).toBe(2);
+        expect(screen.getAllByTestId(`About__Career${i}__SkeltonFavicon`).length).toBe(2);
+        expect(screen.getAllByTestId(`About__Career${i}__SkeletonName`).length).toBe(2);
+        expect(screen.getAllByTestId(`About__Career${i}__SkeletonBody`).length).toBe(2);
+      })
+    );
+    await Promise.all(
+      [...Array(values.skeltonCount.about.certification).keys()].map(async (i) => {
+        await waitFor(() => expect(screen.getAllByTestId(`About__Certification${i}--Loading`).length).toBe(2));
+        expect(screen.getAllByTestId(`About__Certification${i}__SkeletonDate`).length).toBe(2);
+        expect(screen.getAllByTestId(`About__Certification${i}__SkeltonFavicon`).length).toBe(2);
+        expect(screen.getAllByTestId(`About__Certification${i}__SkeletonName`).length).toBe(2);
+        expect(screen.getAllByTestId(`About__Certification${i}__SkeletonBody`).length).toBe(2);
+      })
+    );
+    await Promise.all(
+      [...Array(values.skeltonCount.about.sns).keys()].map(async (i) => {
+        await waitFor(() => expect(screen.getByTestId(`About__SNS${i}--Loading`)).toBeVisible());
+        expect(screen.getByTestId(`About__SNS${i}__SkeltonFavicon`)).toBeVisible();
+      })
+    );
   });
 
   test('問い合わせフォームの全ての入力欄に正常フォーマットな値を設定することで送信ボタンが活性化されること', async () => {
