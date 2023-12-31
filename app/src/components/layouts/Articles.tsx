@@ -61,7 +61,7 @@ export const Articles = (props: { sx?: SxProps<Theme> }) => {
                         >
                           <OverlayBadge
                             invisible={
-                              !(article.likesCount && values.ARTICLES_LIKES_COUNT_THRESHOLD <= article.likesCount)
+                              !(article.likesCount && values.likesCountThreshold.visible <= article.likesCount)
                             }
                             badgeContent={
                               <Stack direction="row" gap={0.5} sx={{ alignItems: 'center', color: 'common.white' }}>
@@ -74,7 +74,7 @@ export const Articles = (props: { sx?: SxProps<Theme> }) => {
                               </Stack>
                             }
                             color={
-                              article.likesCount && values.ARTICLES_LIKES_COUNT_POPULAR <= article.likesCount
+                              article.likesCount && values.likesCountThreshold.popular <= article.likesCount
                                 ? 'error'
                                 : 'secondary'
                             }
@@ -137,7 +137,7 @@ export const Articles = (props: { sx?: SxProps<Theme> }) => {
             </SectionFadeIn>
           ) : (
             <Grid container spacing={4} sx={{ mt: 2 }}>
-              {[...Array(values.ARTICLES_SKELETON_DISPLAY_COUNT).keys()].map((i) => (
+              {[...Array(values.skeltonCount.articles).keys()].map((i) => (
                 <Grid
                   item
                   key={`Articles__Card${i}--Loading`}
