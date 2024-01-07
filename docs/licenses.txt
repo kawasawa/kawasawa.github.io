@@ -7128,7 +7128,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 -----
 
-The following software may be included in this product: ci-info, dns-equal. A copy of the source code may be downloaded from https://github.com/watson/ci-info.git (ci-info), git+https://github.com/watson/dns-equal.git (dns-equal). This software contains the following license and notice below:
+The following software may be included in this product: ci-info. A copy of the source code may be downloaded from https://github.com/watson/ci-info.git. This software contains the following license and notice below:
 
 The MIT License (MIT)
 
@@ -25902,7 +25902,7 @@ The following software may be included in this product: regex-parser. A copy of 
 
 The MIT License (MIT)
 
-Copyright (c) 2014-20 Ionică Bizău <bizauionica@gmail.com> (https://ionicabizau.net)
+Copyright (c) 2014-24 Ionică Bizău <bizauionica@gmail.com> (https://ionicabizau.net)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -30879,7 +30879,7 @@ THE SOFTWARE.
 
 -----
 
-The following software may be included in this product: workspace-aggregator-dbd379a3-b327-4975-9b9f-ea2a6021a95d. This software contains the following license and notice below:
+The following software may be included in this product: workspace-aggregator-0d08dd6d-598c-46e4-b9c1-13ded8551766. This software contains the following license and notice below:
 
 MIT License
 
