@@ -8243,7 +8243,7 @@ THE SOFTWARE.
 
 The following software may be included in this product: core-js, core-js-compat, core-js-pure. A copy of the source code may be downloaded from https://github.com/zloirock/core-js.git (core-js), https://github.com/zloirock/core-js.git (core-js-compat), https://github.com/zloirock/core-js.git (core-js-pure). This software contains the following license and notice below:
 
-Copyright (c) 2014-2023 Denis Pushkarev
+Copyright (c) 2014-2024 Denis Pushkarev
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31291,7 +31291,7 @@ THE SOFTWARE.
 
 -----
 
-The following software may be included in this product: workspace-aggregator-7cfec3b1-83a6-43a1-9a1e-c305b2899278. This software contains the following license and notice below:
+The following software may be included in this product: workspace-aggregator-8b7a5e49-dedf-4487-8ffc-fd88e3561ca5. This software contains the following license and notice below:
 
 MIT License
 
