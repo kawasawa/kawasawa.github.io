@@ -14,10 +14,10 @@
     "redoc-cli": "^0.13.20"
   },
   "scripts": {
-    "start": "run-s start:mock start:app",
-    "start:mock": "make -C ./mock docker-compose-up",
-    "start:mock:swagger": "rm -rf ./mock/dist/swagger && swagger-codegen generate -l nodejs-server -i ./tools/swagger/openapi.json -o ./mock/dist/swagger && npm run start --prefix ./mock/dist/swagger",
-    "start:app": "yarn workspace app start",
+    "dev": "run-s start:mock start:app",
+    "dev:mock": "make -C ./mock docker-compose-up",
+    "dev:mock:swagger": "rm -rf ./mock/dist/swagger && swagger-codegen generate -l nodejs-server -i ./tools/swagger/openapi.json -o ./mock/dist/swagger && npm run start --prefix ./mock/dist/swagger",
+    "dev:app": "yarn workspace app dev",
     "lint": "yarn workspace app lint",
     "test:ut": "yarn workspace app test:ut",
     "test:ita": "mkdir -p ./tools/dist && . ./app/.env.test && echo \"::add-mask::$REACT_APP_GOOGLE_SHEETS_API_KEY\" && echo \"::add-mask::$REACT_APP_GOOGLE_SHEETS_ID\" && newman run ./tools/postman/postman_collection.json --env-var \"REFERER=localhost/\" --env-var \"REACT_APP_GOOGLEAPIS_URL=$REACT_APP_GOOGLEAPIS_URL\" --env-var \"REACT_APP_GOOGLE_SHEETS_API_KEY=$REACT_APP_GOOGLE_SHEETS_API_KEY\" --env-var \"REACT_APP_GOOGLE_SHEETS_ID=$REACT_APP_GOOGLE_SHEETS_ID\" --reporters htmlextra,cli --reporter-htmlextra-skipSensitiveData --reporter-htmlextra-export ./tools/dist/newman-report.html && sed -e \"s/$REACT_APP_GOOGLE_SHEETS_API_KEY/_/g\" -e \"s/$REACT_APP_GOOGLE_SHEETS_ID/_/g\" -i ./tools/dist/newman-report.html",
