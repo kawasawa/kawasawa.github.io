@@ -17,7 +17,7 @@
     "start": "run-s start:mock start:app",
     "start:mock": "make -C ./mock docker-compose-up",
     "start:mock:swagger": "rm -rf ./mock/dist/swagger && swagger-codegen generate -l nodejs-server -i ./tools/swagger/openapi.json -o ./mock/dist/swagger && npm run start --prefix ./mock/dist/swagger",
-    "start:app": "yarn workspace app start",
+    "start:app": "yarn workspace app dev",
     "stop": "make -C ./mock docker-compose-down",
     "lint": "yarn workspace app lint",
     "test:ut": "yarn workspace app test:ut",
