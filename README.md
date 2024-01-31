@@ -24,7 +24,7 @@
 | リンター                  | [ESLint](https://eslint.org/) , [Secretlint](https://github.com/secretlint/secretlint/)                                |
 | フォーマッター            | [Prettier](https://prettier.io/)                                                                                       |
 | パッケージマネージャー    | [Yarn](https://yarnpkg.com/)                                                                                           |
-| ビルドツール              | [Create React App](https://create-react-app.dev/) , [CRACO](https://craco.js.org/)                                     |
+| ビルドツール              | [Vite](https://vitejs.dev/)                                                                                            |
 | ER 図生成ツール           | [tbls](https://github.com/k1LoW/tbls/)                                                                                 |
 | API 仕様書生成ツール      | [ReDoc](https://redocly.com/redoc/)                                                                                    |
 | API テストツール          | [Newman](https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/) |
