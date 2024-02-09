@@ -1005,7 +1005,7 @@ SOFTWARE.
 
 -----
 
-The following software may be included in this product: @humanwhocodes/config-array, @humanwhocodes/module-importer, @pkgjs/parseargs. A copy of the source code may be downloaded from git+https://github.com/humanwhocodes/config-array.git (@humanwhocodes/config-array), git+https://github.com/humanwhocodes/module-importer.git (@humanwhocodes/module-importer), git@github.com:pkgjs/parseargs.git (@pkgjs/parseargs). This software contains the following license and notice below:
+The following software may be included in this product: @humanwhocodes/config-array, @humanwhocodes/module-importer, @pkgjs/parseargs, @prisma/client, @prisma/debug, @prisma/engines, @prisma/engines-version, @prisma/fetch-engine, @prisma/get-platform, prisma. A copy of the source code may be downloaded from git+https://github.com/humanwhocodes/config-array.git (@humanwhocodes/config-array), git+https://github.com/humanwhocodes/module-importer.git (@humanwhocodes/module-importer), git@github.com:pkgjs/parseargs.git (@pkgjs/parseargs), https://github.com/prisma/prisma.git (@prisma/client), https://github.com/prisma/prisma.git (@prisma/debug), https://github.com/prisma/prisma.git (@prisma/engines), https://github.com/prisma/engines-wrapper.git (@prisma/engines-version), https://github.com/prisma/prisma.git (@prisma/fetch-engine), https://github.com/prisma/prisma.git (@prisma/get-platform), https://github.com/prisma/prisma.git (prisma). This software contains the following license and notice below:
 
 Apache License
                            Version 2.0, January 2004
@@ -2423,7 +2423,7 @@ SOFTWARE
 
 -----
 
-The following software may be included in this product: @types/aria-query, @types/babel__core, @types/babel__generator, @types/babel__template, @types/babel__traverse, @types/bluebird, @types/body-parser, @types/bonjour, @types/connect, @types/connect-history-api-fallback, @types/continuation-local-storage, @types/cookie-parser, @types/cors, @types/csurf, @types/debug, @types/eslint, @types/eslint-scope, @types/estree, @types/express, @types/express-serve-static-core, @types/express-session, @types/graceful-fs, @types/helmet, @types/html-minifier-terser, @types/http-errors, @types/http-proxy, @types/istanbul-lib-coverage, @types/istanbul-lib-report, @types/istanbul-reports, @types/jest, @types/json-schema, @types/lodash, @types/mime, @types/morgan, @types/ms, @types/node, @types/node-forge, @types/normalize-package-data, @types/parse-json, @types/prettier, @types/prop-types, @types/q, @types/qs, @types/range-parser, @types/react, @types/react-dom, @types/react-scroll, @types/react-slick, @types/react-transition-group, @types/resolve, @types/scheduler, @types/semver, @types/send, @types/sequelize, @types/serve-index, @types/serve-static, @types/sockjs, @types/stack-utils, @types/testing-library__jest-dom, @types/trusted-types, @types/validator, @types/ws, @types/yargs, @types/yargs-parser. A copy of the source code may be downloaded from https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/aria-query), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/babel__core), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/babel__generator), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/babel__template), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/babel__traverse), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/bluebird), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/body-parser), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/bonjour), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/connect), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/connect-history-api-fallback), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/continuation-local-storage), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/cookie-parser), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/cors), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/csurf), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/debug), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/eslint), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/eslint-scope), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/estree), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/express), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/express-serve-static-core), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/express-session), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/graceful-fs), https://github.com/helmetjs/helmet (@types/helmet), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/html-minifier-terser), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/http-errors), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/http-proxy), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/istanbul-lib-coverage), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/istanbul-lib-report), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/istanbul-reports), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/jest), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/json-schema), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/lodash), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/mime), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/morgan), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/ms), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/node), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/node-forge), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/normalize-package-data), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/parse-json), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/prettier), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/prop-types), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/q), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/qs), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/range-parser), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/react), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/react-dom), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/react-scroll), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/react-slick), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/react-transition-group), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/resolve), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/scheduler), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/semver), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/send), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/sequelize), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/serve-index), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/serve-static), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/sockjs), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/stack-utils), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/testing-library__jest-dom), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/trusted-types), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/validator), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/ws), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/yargs), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/yargs-parser). This software contains the following license and notice below:
+The following software may be included in this product: @types/aria-query, @types/babel__core, @types/babel__generator, @types/babel__template, @types/babel__traverse, @types/body-parser, @types/bonjour, @types/connect, @types/connect-history-api-fallback, @types/cookie-parser, @types/cors, @types/csurf, @types/eslint, @types/eslint-scope, @types/estree, @types/express, @types/express-serve-static-core, @types/express-session, @types/graceful-fs, @types/helmet, @types/html-minifier-terser, @types/http-errors, @types/http-proxy, @types/istanbul-lib-coverage, @types/istanbul-lib-report, @types/istanbul-reports, @types/jest, @types/json-schema, @types/lodash, @types/mime, @types/morgan, @types/node, @types/node-forge, @types/normalize-package-data, @types/parse-json, @types/prettier, @types/prop-types, @types/q, @types/qs, @types/range-parser, @types/react, @types/react-dom, @types/react-scroll, @types/react-slick, @types/react-transition-group, @types/resolve, @types/scheduler, @types/semver, @types/send, @types/serve-index, @types/serve-static, @types/sockjs, @types/stack-utils, @types/testing-library__jest-dom, @types/trusted-types, @types/ws, @types/yargs, @types/yargs-parser. A copy of the source code may be downloaded from https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/aria-query), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/babel__core), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/babel__generator), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/babel__template), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/babel__traverse), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/body-parser), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/bonjour), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/connect), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/connect-history-api-fallback), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/cookie-parser), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/cors), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/csurf), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/eslint), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/eslint-scope), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/estree), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/express), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/express-serve-static-core), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/express-session), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/graceful-fs), https://github.com/helmetjs/helmet (@types/helmet), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/html-minifier-terser), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/http-errors), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/http-proxy), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/istanbul-lib-coverage), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/istanbul-lib-report), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/istanbul-reports), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/jest), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/json-schema), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/lodash), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/mime), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/morgan), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/node), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/node-forge), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/normalize-package-data), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/parse-json), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/prettier), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/prop-types), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/q), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/qs), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/range-parser), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/react), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/react-dom), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/react-scroll), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/react-slick), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/react-transition-group), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/resolve), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/scheduler), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/semver), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/send), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/serve-index), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/serve-static), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/sockjs), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/stack-utils), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/testing-library__jest-dom), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/trusted-types), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/ws), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/yargs), https://github.com/DefinitelyTyped/DefinitelyTyped.git (@types/yargs-parser). This software contains the following license and notice below:
 
 MIT License
 
@@ -8322,7 +8322,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 -----
 
-The following software may be included in this product: css-select, css-what, domelementtype, domhandler, domutils, entities, nth-check. A copy of the source code may be downloaded from git://github.com/fb55/css-select.git (css-select), https://github.com/fb55/css-what (css-what), git://github.com/fb55/domelementtype.git (domelementtype), git://github.com/fb55/domhandler.git (domhandler), git://github.com/FB55/domutils.git (domutils), git://github.com/fb55/entities.git (entities), https://github.com/fb55/nth-check (nth-check). This software contains the following license and notice below:
+The following software may be included in this product: css-select, css-what, domelementtype, domhandler, domutils, entities, nth-check. A copy of the source code may be downloaded from git://github.com/fb55/css-select.git (css-select), https://github.com/fb55/css-what (css-what), git://github.com/fb55/domelementtype.git (domelementtype), git://github.com/fb55/domhandler.git (domhandler), git://github.com/fb55/domutils.git (domutils), git://github.com/fb55/entities.git (entities), https://github.com/fb55/nth-check (nth-check). This software contains the following license and notice below:
 
 Copyright (c) Felix Böhm
 All rights reserved.
@@ -10466,32 +10466,6 @@ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
 CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
------
-
-The following software may be included in this product: dottie. A copy of the source code may be downloaded from git://github.com/mickhansen/dottie.js.git. This software contains the following license and notice below:
-
-The MIT License
-
-Copyright (c) 2013-2014 Mick Hansen. http://mhansen.io
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
 
 -----
 
@@ -14043,32 +14017,6 @@ The following software may be included in this product: immer. A copy of the sou
 MIT License
 
 Copyright (c) 2017 Michel Weststrate
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
------
-
-The following software may be included in this product: inflection. A copy of the source code may be downloaded from https://github.com/dreamerslab/node.inflection.git. This software contains the following license and notice below:
-
-MIT License
-
-Copyright (c) 2021 dreamerslab
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -18203,32 +18151,6 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
------
-
-The following software may be included in this product: pg-connection-string. A copy of the source code may be downloaded from git://github.com/brianc/node-postgres.git. This software contains the following license and notice below:
-
-The MIT License (MIT)
-
-Copyright (c) 2014 Iced Development
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
 
 -----
 
@@ -26349,32 +26271,6 @@ Felix Geisendörfer (felix@debuggable.com)
 
 -----
 
-The following software may be included in this product: retry-as-promised. A copy of the source code may be downloaded from https://github.com/mickhansen/retry-as-promised.git. This software contains the following license and notice below:
-
-The MIT License
-
-Copyright (c) 2015-2016 Mick Hansen. http://mhansen.io
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
------
-
 The following software may be included in this product: reusify. A copy of the source code may be downloaded from git+https://github.com/mcollina/reusify.git. This software contains the following license and notice below:
 
 The MIT License (MIT)
@@ -27291,87 +27187,6 @@ The following software may be included in this product: seq-queue. A copy of the
 (The MIT License)
 
 Copyright (c) 2012 Netease, Inc. and other pomelo contributors
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-'Software'), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
------
-
-The following software may be included in this product: sequelize. A copy of the source code may be downloaded from https://github.com/sequelize/sequelize.git. This software contains the following license and notice below:
-
-MIT License
-
-Copyright (c) 2014-present Sequelize contributors
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
------
-
-The following software may be included in this product: sequelize-pool. A copy of the source code may be downloaded from http://github.com/sushantdhiman/sequelize-pool.git. This software contains the following license and notice below:
-
-(The MIT License)
-
-Copyright (c) 2018-present Sushant <sushantdhiman@outlook.com>
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-'Software'), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
---------------------------------
-
-(Original Fork License)
-
-[generic-pool@2.5]
-
-Copyright (c) 2010-2016 James Cooper <james@bitmechanic.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -29190,32 +29005,6 @@ THE SOFTWARE.
 
 -----
 
-The following software may be included in this product: toposort-class. A copy of the source code may be downloaded from https://github.com/gustavohenke/toposort.git. This software contains the following license and notice below:
-
-The MIT License (MIT)
-
-Copyright (c) 2015 Gustavo Henke and Aaron Trent
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
------
-
 The following software may be included in this product: tough-cookie. A copy of the source code may be downloaded from git://github.com/salesforce/tough-cookie.git. This software contains the following license and notice below:
 
 Copyright (c) 2015, Salesforce.com, Inc.
@@ -30962,31 +30751,6 @@ SOFTWARE.
 
 -----
 
-The following software may be included in this product: wkx. A copy of the source code may be downloaded from http://github.com/cschwarz/wkx.git. This software contains the following license and notice below:
-
-The MIT License (MIT)
-
-Copyright (c) 2013 Christian Schwarz
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
------
-
 The following software may be included in this product: workbox-background-sync, workbox-broadcast-update, workbox-build, workbox-cacheable-response, workbox-core, workbox-expiration, workbox-google-analytics, workbox-navigation-preload, workbox-precaching, workbox-range-requests, workbox-recipes, workbox-routing, workbox-strategies, workbox-streams, workbox-sw, workbox-webpack-plugin, workbox-window. A copy of the source code may be downloaded from https://github.com/googlechrome/workbox.git (workbox-background-sync), https://github.com/googlechrome/workbox.git (workbox-broadcast-update), https://github.com/googlechrome/workbox.git (workbox-build), https://github.com/googlechrome/workbox.git (workbox-cacheable-response), https://github.com/googlechrome/workbox.git (workbox-core), https://github.com/googlechrome/workbox.git (workbox-expiration), https://github.com/googlechrome/workbox.git (workbox-google-analytics), https://github.com/googlechrome/workbox.git (workbox-navigation-preload), https://github.com/googlechrome/workbox.git (workbox-precaching), https://github.com/googlechrome/workbox.git (workbox-range-requests), https://github.com/googlechrome/workbox.git (workbox-recipes), https://github.com/googlechrome/workbox.git (workbox-routing), https://github.com/googlechrome/workbox.git (workbox-strategies), https://github.com/googlechrome/workbox.git (workbox-streams), https://github.com/googlechrome/workbox.git (workbox-sw), https://github.com/googlechrome/workbox.git (workbox-webpack-plugin), https://github.com/googlechrome/workbox.git (workbox-window). This software contains the following license and notice below:
 
 Copyright 2018 Google LLC
@@ -31011,7 +30775,7 @@ THE SOFTWARE.
 
 -----
 
-The following software may be included in this product: workspace-aggregator-bd28031b-7359-403d-b7ae-2fcaf8924584. This software contains the following license and notice below:
+The following software may be included in this product: workspace-aggregator-0a9ea25c-7f51-4848-aa7a-b00c5cefdc08. This software contains the following license and notice below:
 
 MIT License
 
