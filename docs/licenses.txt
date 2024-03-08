@@ -2763,11 +2763,11 @@ THE SOFTWARE.
 
 -----
 
-The following software may be included in this product: array.prototype.flat, array.prototype.flatmap. A copy of the source code may be downloaded from git://github.com/es-shims/Array.prototype.flat.git (array.prototype.flat), git://github.com/es-shims/Array.prototype.flatMap.git (array.prototype.flatmap). This software contains the following license and notice below:
+The following software may be included in this product: array.prototype.findlast, array.prototype.toreversed, array.prototype.tosorted, reflect.getprototypeof. A copy of the source code may be downloaded from git+https://github.com/es-shims/Array.prototype.findLast.git (array.prototype.findlast), git+https://github.com/es-shims/Array.prototype.toReversed.git (array.prototype.toreversed), git+https://github.com/es-shims/Array.prototype.toSorted.git (array.prototype.tosorted), git+https://github.com/es-shims/Reflect.getPrototypeOf.git (reflect.getprototypeof). This software contains the following license and notice below:
 
 MIT License
 
-Copyright (c) 2017 ECMAScript Shims
+Copyright (c) 2021 ECMAScript Shims
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -2789,11 +2789,11 @@ SOFTWARE.
 
 -----
 
-The following software may be included in this product: array.prototype.tosorted, reflect.getprototypeof. A copy of the source code may be downloaded from git+https://github.com/es-shims/Array.prototype.toSorted.git (array.prototype.tosorted), git+https://github.com/es-shims/Reflect.getPrototypeOf.git (reflect.getprototypeof). This software contains the following license and notice below:
+The following software may be included in this product: array.prototype.flat, array.prototype.flatmap. A copy of the source code may be downloaded from git://github.com/es-shims/Array.prototype.flat.git (array.prototype.flat), git://github.com/es-shims/Array.prototype.flatMap.git (array.prototype.flatmap). This software contains the following license and notice below:
 
 MIT License
 
-Copyright (c) 2021 ECMAScript Shims
+Copyright (c) 2017 ECMAScript Shims
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -2862,32 +2862,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE
-
------
-
-The following software may be included in this product: asn1.js. A copy of the source code may be downloaded from git@github.com:indutny/asn1.js. This software contains the following license and notice below:
-
-MIT License
-
-Copyright (c) 2017 Fedor Indutny
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
 
 -----
 
@@ -28444,7 +28418,7 @@ SOFTWARE.
 
 -----
 
-The following software may be included in this product: workspace-aggregator-e82775ba-daa4-4752-8950-146ef3924d40. This software contains the following license and notice below:
+The following software may be included in this product: workspace-aggregator-2656db30-2460-45a0-a98a-5f6a6e39460e. This software contains the following license and notice below:
 
 MIT License
 
