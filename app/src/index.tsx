@@ -10,8 +10,11 @@ import ReactDOM from 'react-dom';
 import { initReactI18next } from 'react-i18next';
 
 import App from '@/App';
-import jaJson from '@/locales/ja.json';
+import enUsJson from '@/locales/en-US.json';
+import jaJpJson from '@/locales/ja-JP.json';
 import reportWebVitals from '@/reportWebVitals';
+import { configKeys, getConfig } from '@/utils/config';
+import { initLocale, LocaleCodes, localeCodes } from '@/utils/localization';
 
 Sentry.init({
   dsn: process.env.REACT_APP_SENTRY_DSN,
@@ -23,11 +26,14 @@ Sentry.init({
 
 i18n.use(initReactI18next).init({
   resources: {
-    ja: { translation: jaJson },
+    [localeCodes.jaJp]: { translation: jaJpJson },
+    [localeCodes.enUs]: { translation: enUsJson },
   },
-  lng: 'ja',
-  fallbackLng: 'ja',
+  lng: getConfig(configKeys.locale) ?? localeCodes.jaJp,
+  fallbackLng: localeCodes.jaJp,
 });
+
+initLocale((getConfig(configKeys.locale) as LocaleCodes) ?? localeCodes.jaJp);
 
 ReactDOM.render(
   <React.StrictMode>
