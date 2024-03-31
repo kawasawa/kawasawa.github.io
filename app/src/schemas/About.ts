@@ -1,6 +1,6 @@
 /* istanbul ignore file */
 
-import Yup from '@/locales/yup.ja';
+import { Yup } from '@/utils/localization';
 
 export const createSchema = () =>
   Yup.object().shape({
