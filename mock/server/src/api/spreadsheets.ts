@@ -15,8 +15,10 @@ export const articlesMetadata = async (req: Request, res: Response, next: NextFu
     const values = [
       [
         'id',
-        'title',
-        'body',
+        'title_ja-JP',
+        'title_en-US',
+        'body_ja-JP',
+        'body_en-US',
         'tags',
         'url',
         'likes_count',
@@ -27,8 +29,10 @@ export const articlesMetadata = async (req: Request, res: Response, next: NextFu
       ],
       ...records.map((value) => [
         value.id,
-        value.title,
-        value.body,
+        value.title_ja_jp,
+        value.title_en_us,
+        value.body_ja_jp,
+        value.body_en_us,
         value.tags,
         value.url,
         value.likes_count,
