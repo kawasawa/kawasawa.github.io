@@ -52,9 +52,9 @@ import { ChipList, ChipListItem, SectionFadeIn, SectionTitle } from '@/component
 import { ConfirmDialog, PrivacyPolicyDialog } from '@/components/dialogs';
 import { meta, sections, styles } from '@/constants';
 import { Career, career, Certification, certification, sns } from '@/entities';
-import Yup from '@/locales/yup.ja';
 import { isProduction, isTest } from '@/utils/env';
 import { handleError } from '@/utils/errors';
+import { Yup } from '@/utils/localization';
 
 const ProfileSectionTitle = (props: { children: React.ReactNode; sx?: SxProps<Theme> }) => (
   <Box sx={{ py: 1, borderBottom: 1, borderColor: 'grey.800', ...props.sx }}>
