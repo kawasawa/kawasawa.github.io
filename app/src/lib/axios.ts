@@ -1,6 +1,9 @@
-import axios, { AxiosError, AxiosInstance, Method } from 'axios';
+import axios, { AxiosError, AxiosInstance } from 'axios';
+import axiosRetry from 'axios-retry';
 
-export const createInstance = <T>(retryLimit = 3) => {
+let _client: AxiosInstance | null = null;
+
+const createApiClient = () => {
   const client = axios.create();
   client.defaults.baseURL = process.env.REACT_APP_GOOGLEAPIS_URL;
 
@@ -34,42 +37,20 @@ export const createInstance = <T>(retryLimit = 3) => {
   }
 
   // リトライを制御する
-  if (retryLimit <= 0) return client;
-  client.interceptors.response.use(
-    (response) => response,
-    async (error: AxiosError) => {
-      // レスポンスとリトライ状況の確認
-      if (retryLimit <= 0) {
-        console.error(error);
-        return Promise.reject(error);
-      }
-      retryLimit--;
-      console.warn(error);
-      console.warn(`retryLimit=${retryLimit}`);
-
-      // リクエストの再試行
-      const method = error.config.method;
-      const url = error.config.url;
-      const data = error.config.data !== undefined ? JSON.parse(error.config.data) : undefined;
-      /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
-      return invoke<T>(client, method!, url!, data);
-    }
-  );
+  axiosRetry(client, {
+    // リトライ回数
+    retries: 3,
+    // 指数バックオフ方式
+    retryDelay: axiosRetry.exponentialDelay,
+    // リトライ時のログ出力
+    onRetry: (count: number, error: AxiosError) => console.warn(`axios retried: retryCount=${count}, error=%o`, error),
+    onMaxRetryTimesExceeded: (error: AxiosError) => console.error(`axios failed: error=%o`, error),
+  });
   return client;
 };
 
-/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-export const invoke = <T>(client: AxiosInstance, method: Method, url: string, data?: any) => {
-  switch (method.toUpperCase()) {
-    case 'GET':
-      return client.get<T>(url);
-    case 'POST':
-      return client.post<T>(url, data);
-    case 'PATCH':
-      return client.patch<T>(url, data);
-    case 'DELETE':
-      return client.delete<T>(url, { data });
-    default:
-      throw new Error(`Not implemented retry method: method=${method}`);
-  }
-};
+/**
+ * API クライアントのインスタンスを取得します。
+ * @returns API クライアント
+ */
+export const getApiClient = () => _client ?? (_client = createApiClient());
