@@ -53,7 +53,7 @@ import { ConfirmDialog, PrivacyPolicyDialog } from '@/components/dialogs';
 import { ChipList, ChipListItem, SectionFadeIn, SectionTitle } from '@/components/elements';
 import { meta, sections, styles, values } from '@/constants';
 import { CareerData, CertificationData, Sns, useCareers, useCertifications, useSns } from '@/hooks';
-import { createInstance } from '@/lib';
+import { getApiClient } from '@/lib';
 import { PendingContext } from '@/pages';
 import { createSchema } from '@/schemas/About';
 import { handleError } from '@/utils/errors';
@@ -514,7 +514,7 @@ const ContactArea = () => {
           /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
           await send(process.env.REACT_APP_EMAILJS_SERVICE_ID!, process.env.REACT_APP_EMAILJS_TEMPLATE_ID!, params);
         } else {
-          const client = createInstance();
+          const client = getApiClient();
           const response = await client.get(`${process.env.REACT_APP_GOOGLEAPIS_URL}/dev/csrf-token`);
           await client.post(`${process.env.REACT_APP_GOOGLEAPIS_URL}/dev/send`, params, {
             headers: { 'x-csrf-token': response.data.data },
