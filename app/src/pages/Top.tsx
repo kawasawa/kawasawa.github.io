@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import React from 'react';
 
 import { About, Articles, Banner, Footer, Header, Products } from '@/components';
-import { BackToTopButton } from '@/components/controls';
+import { BackToTopButton, Installer } from '@/components/controls';
 
 export const Top = () => {
   const backToTopRef = React.useRef<HTMLDivElement>(null);
@@ -20,6 +20,7 @@ export const Top = () => {
       <Articles data-testid="Top__Articles" />
       <About data-testid="Top__About" />
       <Footer data-testid="Top__Footer" />
+      <Installer data-testid="Top__InstallButton" />
       <BackToTopButton isVisible={isVisible} data-testid="Top__BackToTopButton" />
     </Box>
   );
