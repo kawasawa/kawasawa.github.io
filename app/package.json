@@ -16,6 +16,7 @@
     "hamburger-react": "^2.5.0",
     "i18next": "^21.6.12",
     "react": "^18.2.0",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
     "react-freeze": "^1.0.3",
     "react-ga4": "^1.4.1",
@@ -28,6 +29,7 @@
     "react-tsparticles": "^1.42.1",
     "react-typed": "^1.2.0",
     "slick-carousel": "^1.8.1",
+    "use-pwa": "^2.2.0",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },
@@ -61,6 +63,7 @@
     "typescript": "^4.5.5",
     "vite": "^5.1.1",
     "vite-plugin-env-compatible": "^2.0.1",
+    "vite-plugin-pwa": "^0.21.0",
     "vite-tsconfig-paths": "^4.3.1"
   },
   "scripts": {
