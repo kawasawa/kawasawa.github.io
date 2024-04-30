@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import React from 'react';
 
-import { BackToTopButton } from '@/components/elements';
+import { BackToTopButton, Installer } from '@/components/elements';
 import { About, Articles, Banner, Footer, Header, Products } from '@/components/layouts';
 
 export const Top = () => {
@@ -20,6 +20,7 @@ export const Top = () => {
       <Articles data-testid="Top__Articles" />
       <About data-testid="Top__About" />
       <Footer data-testid="Top__Footer" />
+      <Installer data-testid="Top__InstallButton" />
       <BackToTopButton isVisible={isVisible} data-testid="Top__BackToTopButton" />
     </Box>
   );
