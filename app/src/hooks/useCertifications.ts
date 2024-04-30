@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { endpoints } from '@/constants';
-import { createInstance, GoogleSheetsApiResponse } from '@/lib';
+import { getApiClient, GoogleSheetsApiResponse } from '@/lib';
 import { handleError } from '@/utils/errors';
 
 export type CertificationData = {
@@ -17,7 +17,7 @@ export type CertificationData = {
 };
 
 const fetchData = async () => {
-  const client = createInstance();
+  const client = getApiClient();
   const [certificationsResponse] = await Promise.all([
     client.get<GoogleSheetsApiResponse>(endpoints.getCertifications),
   ]);

@@ -11,11 +11,11 @@ const MockComponent = ({ ready }: { ready: boolean }) => {
 };
 
 describe('useArticles', () => {
-  const spy_createInstance = jest.spyOn(Axios, 'createInstance');
+  const spy_getApiClient = jest.spyOn(Axios, 'getApiClient');
   const spy_handleError = jest.spyOn(AppError, 'handleError');
 
   beforeEach(() => {
-    spy_createInstance.mockClear();
+    spy_getApiClient.mockClear();
     spy_handleError.mockClear();
   });
 
@@ -162,7 +162,7 @@ describe('useArticles', () => {
     };
 
     const mock_get = jest.fn().mockReturnValueOnce(dummy_pickup).mockReturnValueOnce(dummy_metadata);
-    spy_createInstance.mockReturnValue({ get: mock_get } as unknown as any);
+    spy_getApiClient.mockReturnValue({ get: mock_get } as unknown as any);
 
     render(<MockComponent ready={true} />);
 
@@ -175,7 +175,7 @@ describe('useArticles', () => {
     const mock_get = jest.fn().mockImplementation(() => {
       throw error;
     });
-    spy_createInstance.mockReturnValue({ get: mock_get } as unknown as any);
+    spy_getApiClient.mockReturnValue({ get: mock_get } as unknown as any);
 
     render(<MockComponent ready={true} />);
 
@@ -184,7 +184,7 @@ describe('useArticles', () => {
 
   test('ready状態でない場合、記事とサムネイルが取得されないこと', async () => {
     const mock_get = jest.fn();
-    spy_createInstance.mockReturnValue({ get: mock_get } as unknown as any);
+    spy_getApiClient.mockReturnValue({ get: mock_get } as unknown as any);
 
     render(<MockComponent ready={false} />);
 

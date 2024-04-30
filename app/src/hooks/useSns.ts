@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { endpoints } from '@/constants';
-import { createInstance, GoogleSheetsApiResponse } from '@/lib';
+import { getApiClient, GoogleSheetsApiResponse } from '@/lib';
 import { handleError } from '@/utils/errors';
 
 export type Sns = {
@@ -14,7 +14,7 @@ export type Sns = {
 };
 
 const fetchData = async () => {
-  const client = createInstance();
+  const client = getApiClient();
   const [snsResponse] = await Promise.all([client.get<GoogleSheetsApiResponse>(endpoints.getSns)]);
 
   const sns = snsResponse.data.values[0];

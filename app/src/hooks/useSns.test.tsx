@@ -11,11 +11,11 @@ const MockComponent = ({ ready }: { ready: boolean }) => {
 };
 
 describe('useSns', () => {
-  const spy_createInstance = jest.spyOn(Axios, 'createInstance');
+  const spy_getApiClient = jest.spyOn(Axios, 'getApiClient');
   const spy_handleError = jest.spyOn(AppError, 'handleError');
 
   beforeEach(() => {
-    spy_createInstance.mockClear();
+    spy_getApiClient.mockClear();
     spy_handleError.mockClear();
   });
 
@@ -50,7 +50,7 @@ describe('useSns', () => {
     ];
 
     const mock_get = jest.fn().mockReturnValueOnce(dummy_sns);
-    spy_createInstance.mockReturnValue({ get: mock_get } as unknown as any);
+    spy_getApiClient.mockReturnValue({ get: mock_get } as unknown as any);
 
     render(<MockComponent ready={true} />);
 
@@ -63,7 +63,7 @@ describe('useSns', () => {
     const mock_get = jest.fn().mockImplementation(() => {
       throw dummy_error;
     });
-    spy_createInstance.mockReturnValue({ get: mock_get } as unknown as any);
+    spy_getApiClient.mockReturnValue({ get: mock_get } as unknown as any);
 
     render(<MockComponent ready={true} />);
 
@@ -72,7 +72,7 @@ describe('useSns', () => {
 
   test('ready状態でない場合、表示データが取得されないこと', async () => {
     const mock_get = jest.fn();
-    spy_createInstance.mockReturnValue({ get: mock_get } as unknown as any);
+    spy_getApiClient.mockReturnValue({ get: mock_get } as unknown as any);
 
     render(<MockComponent ready={false} />);
 
