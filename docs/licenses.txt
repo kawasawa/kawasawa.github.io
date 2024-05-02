@@ -27809,7 +27809,7 @@ SOFTWARE.
 
 -----
 
-The following software may be included in this product: workspace-aggregator-bf87571b-b702-4e73-a5bb-b53c2eb7bf64. This software contains the following license and notice below:
+The following software may be included in this product: workspace-aggregator-33d725b3-603a-4055-8609-8c77737b0b59. This software contains the following license and notice below:
 
 MIT License
 
