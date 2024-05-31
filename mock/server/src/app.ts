@@ -4,9 +4,10 @@ import cors from 'cors';
 import csrf from 'csurf';
 import express, { NextFunction, Request, Response } from 'express';
 import helmet from 'helmet';
-import morgan from 'morgan';
+import pinoHttp from 'pino-http';
 
 import { convertToBoomInstance } from './errors';
+import { _logger, options as loggerOptions } from './logger';
 import { contentTypeFilter, sslFilter } from './middlewares';
 import { ApiErrorResponse } from './responses';
 import { devRouter, healthRouter, spreadsheetsRouter } from './routes';
@@ -91,7 +92,7 @@ export const createApp = () => {
   const app = express();
 
   // ログ出力
-  app.use(morgan('combined'));
+  app.use(pinoHttp({ ...loggerOptions.pinoHttp, logger: _logger }));
   // CORS対応
   app.use(cors(corsOptions));
   // Content-Typeフィルタ
