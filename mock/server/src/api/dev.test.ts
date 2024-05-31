@@ -11,14 +11,30 @@ jest.mock('../schemas/dev', () => ({
 
 describe('dev', () => {
   describe('error', () => {
-    test('例外がスローされること', () => {
-      expect(() => error()).toThrow('dummy error');
+    test('例外がスローされること', async () => {
+      // メソッドを実行
+      const req = httpMocks.createRequest();
+      const res = httpMocks.createResponse();
+      const next = jest.fn();
+      await error(req, res, next);
+
+      // コールバック関数を確認
+      expect(next).toBeCalledWith(expect.any(Error));
+      expect(next.mock.calls[0][0].message).toBe('dummy error');
     });
   });
 
   describe('boomError', () => {
-    test('例外がスローされること', () => {
-      expect(() => boomError()).toThrow(boom.internal('dummy boom error'));
+    test('例外がスローされること', async () => {
+      // メソッドを実行
+      const req = httpMocks.createRequest();
+      const res = httpMocks.createResponse();
+      const next = jest.fn();
+      await boomError(req, res, next);
+
+      // コールバック関数を確認
+      expect(next).toBeCalledWith(expect.any(boom.Boom));
+      expect(next.mock.calls[0][0].message).toBe('dummy boom error');
     });
   });
 
@@ -37,13 +53,14 @@ describe('dev', () => {
   });
 
   describe('csrfToken', () => {
-    test('CSRF トークンが返却されること', () => {
+    test('CSRF トークンが返却されること', async () => {
       // メソッドを実行
       const req = httpMocks.createRequest({
         csrfToken: () => 'dummy_csrf_token',
       });
       const res = httpMocks.createResponse();
-      csrfToken(req, res);
+      const next = jest.fn();
+      await csrfToken(req, res, next);
 
       // レスポンスを確認
       const data = res._getJSONData();
