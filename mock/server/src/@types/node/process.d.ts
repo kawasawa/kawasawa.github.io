@@ -6,6 +6,7 @@ declare module 'process' {
 
         // APP
         readonly EXPRESS_PORT: number;
+        readonly LOG_LEVEL: 'fatal' | 'error' | 'warn' | 'info' | 'debug' | 'trace';
       }
     }
   }

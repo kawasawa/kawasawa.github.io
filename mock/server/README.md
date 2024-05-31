@@ -11,7 +11,7 @@
 | 開発言語         | [TypeScript](https://www.typescriptlang.org/)                                               |
 | フレームワーク   | [Express.js](https://expressjs.com/)                                                        |
 | バリデーター     | [Yup](https://github.com/jquense/yup/)                                                      |
-| ロガー           | [morgan](https://github.com/expressjs/morgan/)                                              |
+| ロガー           | [pino](https://github.com/pinojs/pino/)                                                     |
 | エラーハンドラ   | [boom](https://github.com/hapijs/boom/)                                                     |
 | セキュリティ対策 | [helmet](https://github.com/helmetjs/helmet/), [csurf](https://github.com/expressjs/csurf/) |
 | OR マッパー      | [Prisma](https://www.prisma.io/)                                                            |

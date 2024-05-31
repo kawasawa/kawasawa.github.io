@@ -4,9 +4,10 @@ import cors from 'cors';
 import csrf from 'csurf';
 import express, { NextFunction, Request, Response } from 'express';
 import helmet from 'helmet';
-import morgan from 'morgan';
+import pinoHttp from 'pino-http';
 
 import { convertToBoomInstance } from './errors';
+import { _logger, options as loggerOptions } from './lib';
 import { contentTypeFilter, sslFilter } from './middlewares';
 import { ApiErrorResponse } from './responses';
 import { devRouter, healthRouter, spreadsheetsRouter } from './routes';
@@ -92,7 +93,7 @@ export const createApp = () => {
   const app = express();
 
   // ログ出力
-  app.use(morgan('combined'));
+  app.use(pinoHttp({ ...loggerOptions.pinoHttp, logger: _logger }));
   // セキュリティヘッダー付与
   //   このミドルウェアはレスポンスの返却が発生する処理より前に設定する
   //   XSS対策関連のヘッダー (X-XSS-Protection, X-Content-Type-Options, Content-Security-Policy, Cross-Origin-Embedder-Policy, Cross-Origin-Resource-Policy 等) を含む

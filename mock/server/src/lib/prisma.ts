@@ -1,5 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 
+import { dbLog, dbQuery } from './pino';
+
 // 公式では、PrismaClient のインスタンスはシングルトンであるべきとされている。
 // 各インスタンスが接続プールを管理するため、DB の接続数を使い果たす可能性があるためである。
 // また、常時接続が起こり得る API サーバの場合は、接続の解放 `$disconnect()` は推奨されていない。
@@ -8,8 +10,17 @@ let _client: PrismaClient | null = null;
 
 const createDbClient = () => {
   const client = new PrismaClient({
-    log: ['query', 'info', `warn`, `error`],
+    log: [
+      { level: 'query', emit: 'event' },
+      { level: 'info', emit: 'event' },
+      { level: 'warn', emit: 'event' },
+      { level: 'error', emit: 'event' },
+    ],
   });
+  client.$on('query', (event) => dbQuery(event));
+  client.$on('info', (event) => dbLog(event, 'info'));
+  client.$on('warn', (event) => dbLog(event, 'warn'));
+  client.$on('error', (event) => dbLog(event, 'error'));
   return client;
 };
 

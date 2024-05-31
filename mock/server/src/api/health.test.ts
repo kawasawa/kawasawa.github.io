@@ -8,7 +8,8 @@ describe('health', () => {
       // メソッドを実行
       const req = httpMocks.createRequest();
       const res = httpMocks.createResponse();
-      await index(req, res);
+      const next = jest.fn();
+      await index(req, res, next);
 
       // ステータスコードを確認
       expect(res.statusCode).toBe(200);
