@@ -29,6 +29,7 @@
     "openapi",
     "pageview",
     "peaceiris",
+    "pino",
     "redoc",
     "sonarqube",
     "snyk",
