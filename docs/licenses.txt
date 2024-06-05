@@ -3431,11 +3431,11 @@ SOFTWARE.
 
 -----
 
-The following software may be included in this product: braces, get-value, has-value, has-values, normalize-path. A copy of the source code may be downloaded from https://github.com/micromatch/braces.git (braces), https://github.com/jonschlinkert/get-value.git (get-value), https://github.com/jonschlinkert/has-value.git (has-value), https://github.com/jonschlinkert/has-values.git (has-values), https://github.com/jonschlinkert/normalize-path.git (normalize-path). This software contains the following license and notice below:
+The following software may be included in this product: braces, fill-range, is-number, micromatch. A copy of the source code may be downloaded from https://github.com/micromatch/braces.git (braces), https://github.com/jonschlinkert/fill-range.git (fill-range), https://github.com/jonschlinkert/is-number.git (is-number), https://github.com/micromatch/micromatch.git (micromatch). This software contains the following license and notice below:
 
 The MIT License (MIT)
 
-Copyright (c) 2014-2018, Jon Schlinkert.
+Copyright (c) 2014-present, Jon Schlinkert.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -8168,32 +8168,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 -----
 
-The following software may be included in this product: fill-range, is-number, micromatch. A copy of the source code may be downloaded from https://github.com/jonschlinkert/fill-range.git (fill-range), https://github.com/jonschlinkert/is-number.git (is-number), https://github.com/micromatch/micromatch.git (micromatch). This software contains the following license and notice below:
-
-The MIT License (MIT)
-
-Copyright (c) 2014-present, Jon Schlinkert.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
------
-
 The following software may be included in this product: finalhandler. A copy of the source code may be downloaded from https://github.com/pillarjs/finalhandler.git. This software contains the following license and notice below:
 
 (The MIT License)
@@ -8634,6 +8608,32 @@ SOFTWARE.
 
 -----
 
+The following software may be included in this product: get-value, has-value, has-values, normalize-path. A copy of the source code may be downloaded from https://github.com/jonschlinkert/get-value.git (get-value), https://github.com/jonschlinkert/has-value.git (has-value), https://github.com/jonschlinkert/has-values.git (has-values), https://github.com/jonschlinkert/normalize-path.git (normalize-path). This software contains the following license and notice below:
+
+The MIT License (MIT)
+
+Copyright (c) 2014-2018, Jon Schlinkert.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+-----
+
 The following software may be included in this product: getpass, http-signature, sshpk. A copy of the source code may be downloaded from https://github.com/arekinath/node-getpass.git (getpass), git://github.com/joyent/node-http-signature.git (http-signature), git+https://github.com/joyent/node-sshpk.git (sshpk). This software contains the following license and notice below:
 
 Copyright Joyent, Inc. All rights reserved.
@@ -8796,7 +8796,7 @@ The following software may be included in this product: hamburger-react. A copy 
 
 MIT License
 
-Copyright (c) 2020 Luuk de Vlieger
+Copyright (c) 2023 Luuk de Vlieger
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -10125,7 +10125,7 @@ THE SOFTWARE.
 
 -----
 
-The following software may be included in this product: isexe, json-stringify-safe, lru-cache, minimatch, once, rimraf, semver, which, wrappy, yallist. A copy of the source code may be downloaded from git+https://github.com/isaacs/isexe.git (isexe), git://github.com/isaacs/json-stringify-safe (json-stringify-safe), git://github.com/isaacs/node-lru-cache.git (lru-cache), git://github.com/isaacs/minimatch.git (minimatch), git://github.com/isaacs/once (once), git://github.com/isaacs/rimraf.git (rimraf), https://github.com/npm/node-semver.git (semver), git://github.com/isaacs/node-which.git (which), https://github.com/npm/wrappy (wrappy), git+https://github.com/isaacs/yallist.git (yallist). This software contains the following license and notice below:
+The following software may be included in this product: isexe, json-stringify-safe, lru-cache, minimatch, once, rimraf, semver, which, wrappy, yallist. A copy of the source code may be downloaded from git+https://github.com/isaacs/isexe.git (isexe), git://github.com/isaacs/json-stringify-safe (json-stringify-safe), git://github.com/isaacs/node-lru-cache.git (lru-cache), git://github.com/isaacs/minimatch.git (minimatch), git://github.com/isaacs/once (once), git://github.com/isaacs/rimraf.git (rimraf), git+https://github.com/npm/node-semver.git (semver), git://github.com/isaacs/node-which.git (which), https://github.com/npm/wrappy (wrappy), git+https://github.com/isaacs/yallist.git (yallist). This software contains the following license and notice below:
 
 The ISC License
 
@@ -24693,7 +24693,7 @@ Repository: micromatch/braces
 
 > The MIT License (MIT)
 > 
-> Copyright (c) 2014-2018, Jon Schlinkert.
+> Copyright (c) 2014-present, Jon Schlinkert.
 > 
 > Permission is hereby granted, free of charge, to any person obtaining a copy
 > of this software and associated documentation files (the "Software"), to deal
@@ -27809,7 +27809,7 @@ SOFTWARE.
 
 -----
 
-The following software may be included in this product: workspace-aggregator-647673e0-3df5-496d-a245-d7f7384457f1. This software contains the following license and notice below:
+The following software may be included in this product: workspace-aggregator-7078ed70-3eaf-4847-9624-2620249482e9. This software contains the following license and notice below:
 
 MIT License
 
