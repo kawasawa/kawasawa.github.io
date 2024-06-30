@@ -16,8 +16,15 @@ export const sections = {
 export const values = {
   ARTICLES_LIKES_COUNT_THRESHOLD: 10,
   ARTICLES_LIKES_COUNT_POPULAR: 100,
-  ARTICLES_SKELETON_DISPLAY_COUNT: 3,
-  PRODUCTS_ALWAYS_DISPLAY_COUNT: 3,
+  skeltonCount: {
+    articles: 3,
+    products: 3,
+    about: {
+      career: 5,
+      certification: 5,
+      sns: 4,
+    },
+  },
 } as const;
 
 export const styles = {
@@ -35,8 +42,14 @@ export const endpoints = {
     'https://app.fossa.com/api/projects/custom%2B34428%2Fgithub.com%2Fkawasawa%2Fkawasawa.github.io.svg?type=shield',
   snykBadge: 'https://snyk.io/test/github/kawasawa/kawasawa.github.io/badge.svg',
   licenseBadge: 'https://img.shields.io/github/license/kawasawa/kawasawa.github.io.svg',
-  getIconBadge: 'https://img.shields.io/badge/',
   getFavicon: 'https://favicongrabber.com/api/grab/',
+  getIcons: `${process.env.REACT_APP_GOOGLEAPIS_URL}/spreadsheets/${process.env.REACT_APP_GOOGLE_SHEETS_ID}/values/icons?key=${process.env.REACT_APP_GOOGLE_SHEETS_API_KEY}`,
+  getProducts: `${process.env.REACT_APP_GOOGLEAPIS_URL}/spreadsheets/${process.env.REACT_APP_GOOGLE_SHEETS_ID}/values/products?key=${process.env.REACT_APP_GOOGLE_SHEETS_API_KEY}`,
+  getProductImages: `${process.env.REACT_APP_GOOGLEAPIS_URL}/spreadsheets/${process.env.REACT_APP_GOOGLE_SHEETS_ID}/values/product-images?key=${process.env.REACT_APP_GOOGLE_SHEETS_API_KEY}`,
+  getCareers: `${process.env.REACT_APP_GOOGLEAPIS_URL}/spreadsheets/${process.env.REACT_APP_GOOGLE_SHEETS_ID}/values/careers?key=${process.env.REACT_APP_GOOGLE_SHEETS_API_KEY}`,
+  getCareerDetails: `${process.env.REACT_APP_GOOGLEAPIS_URL}/spreadsheets/${process.env.REACT_APP_GOOGLE_SHEETS_ID}/values/career-details?key=${process.env.REACT_APP_GOOGLE_SHEETS_API_KEY}`,
+  getCertifications: `${process.env.REACT_APP_GOOGLEAPIS_URL}/spreadsheets/${process.env.REACT_APP_GOOGLE_SHEETS_ID}/values/certifications?key=${process.env.REACT_APP_GOOGLE_SHEETS_API_KEY}`,
+  getSns: `${process.env.REACT_APP_GOOGLEAPIS_URL}/spreadsheets/${process.env.REACT_APP_GOOGLE_SHEETS_ID}/values/sns?key=${process.env.REACT_APP_GOOGLE_SHEETS_API_KEY}`,
   getArticlesMetadata: `${process.env.REACT_APP_GOOGLEAPIS_URL}/spreadsheets/${process.env.REACT_APP_GOOGLE_SHEETS_ID}/values/articles-metadata?key=${process.env.REACT_APP_GOOGLE_SHEETS_API_KEY}`,
   getArticlesPickup: `${process.env.REACT_APP_GOOGLEAPIS_URL}/spreadsheets/${process.env.REACT_APP_GOOGLE_SHEETS_ID}/values/articles-pickup?key=${process.env.REACT_APP_GOOGLE_SHEETS_API_KEY}`,
 } as const;

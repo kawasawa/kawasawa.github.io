@@ -1,11 +1,520 @@
 {
 	"info": {
-		"_postman_id": "92e38658-08b3-4f49-bb8f-dff531077478",
+		"_postman_id": "64db1c94-ad95-47cd-a706-3b44c966f4ab",
 		"name": "kawasawa.github.io",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "17647550"
 	},
 	"item": [
+		{
+			"name": "icons",
+			"item": [
+				{
+					"name": "データ照会",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('ステータスコードが 200 であること', () => {",
+									"    pm.response.to.status(200);",
+									"});",
+									"",
+									"pm.test('Content-Type が \"application/json; charset=utf-8\" であること', () => {",
+									"    pm.expect(pm.response.headers.get('Content-Type').toLowerCase()).to.eql('application/json; charset=utf-8');",
+									"});",
+									"",
+									"pm.test('アイコンデータを取得できること', () => {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.values.length).to.gte(2)",
+									"    pm.expect(jsonData.values[0]).to.eql([",
+									"        'id', 'data'",
+									"    ]);",
+									"    for (let i = 1; i < jsonData.values.length; i++) {",
+									"        pm.expect(jsonData.values[i][0]).to.match(/^[0-9a-zA-Z]+$/);",
+									"        pm.expect(jsonData.values[i][1]).to.match(/^https:\\/\\/img.shields.io\\/badge\\/.+&style=flat$/);",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Referer",
+								"value": "{{REFERER}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{REACT_APP_GOOGLEAPIS_URL}}/spreadsheets/{{REACT_APP_GOOGLE_SHEETS_ID}}/values/icons?key={{REACT_APP_GOOGLE_SHEETS_API_KEY}}",
+							"host": [
+								"{{REACT_APP_GOOGLEAPIS_URL}}"
+							],
+							"path": [
+								"spreadsheets",
+								"{{REACT_APP_GOOGLE_SHEETS_ID}}",
+								"values",
+								"icons"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{REACT_APP_GOOGLE_SHEETS_API_KEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "データ照会",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('ステータスコードが 200 であること', () => {",
+									"    pm.response.to.status(200);",
+									"});",
+									"",
+									"pm.test('Content-Type が \"application/json; charset=utf-8\" であること', () => {",
+									"    pm.expect(pm.response.headers.get('Content-Type').toLowerCase()).to.eql('application/json; charset=utf-8');",
+									"});",
+									"",
+									"pm.test('アイコンデータを取得できること', () => {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.values.length).to.gte(2)",
+									"    pm.expect(jsonData.values[0]).to.eql([",
+									"        'id', 'title_ja-JP', 'title_en-US', 'subject_ja-JP', 'subject_en-US', 'body_ja-JP', 'body_en-US', 'skills', 'url_code', 'url_home', 'downloads', 'pickup', 'visible'",
+									"    ]);",
+									"    for (let i = 1; i < jsonData.values.length; i++) {",
+									"        pm.expect(isNaN(Number(jsonData.values[i][0]))).to.false;",
+									"        pm.expect(jsonData.values[i][1]).not.to.empty;",
+									"        pm.expect(jsonData.values[i][2]).not.to.empty;",
+									"        pm.expect(jsonData.values[i][3]).not.to.empty;",
+									"        pm.expect(jsonData.values[i][4]).not.to.empty;",
+									"        pm.expect(jsonData.values[i][5]).not.to.empty;",
+									"        pm.expect(jsonData.values[i][6]).not.to.empty;",
+									"        pm.expect(jsonData.values[i][7]).not.to.empty;",
+									"        pm.expect(jsonData.values[i][8]).to.match(/^https?:\\/\\/[\\w/:%#\\$&\\?\\(\\)~\\.=\\+\\-]+$/);",
+									"        pm.expect(jsonData.values[i][9]).to.match(/^https?:\\/\\/[\\w/:%#\\$&\\?\\(\\)~\\.=\\+\\-]+$/);",
+									"        if (!!jsonData.values[i][10])",
+									"            pm.expect(isNaN(Number(jsonData.values[i][10]))).to.false;",
+									"        pm.expect(jsonData.values[i][11]).to.oneOf(['true', 'false']);",
+									"        pm.expect(jsonData.values[i][12]).to.oneOf(['true', 'false']);",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Referer",
+								"value": "{{REFERER}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{REACT_APP_GOOGLEAPIS_URL}}/spreadsheets/{{REACT_APP_GOOGLE_SHEETS_ID}}/values/products?key={{REACT_APP_GOOGLE_SHEETS_API_KEY}}",
+							"host": [
+								"{{REACT_APP_GOOGLEAPIS_URL}}"
+							],
+							"path": [
+								"spreadsheets",
+								"{{REACT_APP_GOOGLE_SHEETS_ID}}",
+								"values",
+								"products"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{REACT_APP_GOOGLE_SHEETS_API_KEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "product-images",
+			"item": [
+				{
+					"name": "データ照会",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('ステータスコードが 200 であること', () => {",
+									"    pm.response.to.status(200);",
+									"});",
+									"",
+									"pm.test('Content-Type が \"application/json; charset=utf-8\" であること', () => {",
+									"    pm.expect(pm.response.headers.get('Content-Type').toLowerCase()).to.eql('application/json; charset=utf-8');",
+									"});",
+									"",
+									"pm.test('アイコンデータを取得できること', () => {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.values.length).to.gte(2)",
+									"    pm.expect(jsonData.values[0]).to.eql([",
+									"        'product_id', 'row_no', 'data'",
+									"    ]);",
+									"    for (let i = 1; i < jsonData.values.length; i++) {",
+									"        pm.expect(isNaN(Number(jsonData.values[i][0]))).to.false;",
+									"        pm.expect(isNaN(Number(jsonData.values[i][1]))).to.false;",
+									"        pm.expect(jsonData.values[i][2]).to.match(/^data:image\\/webp;base64,.+$/);",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Referer",
+								"value": "{{REFERER}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{REACT_APP_GOOGLEAPIS_URL}}/spreadsheets/{{REACT_APP_GOOGLE_SHEETS_ID}}/values/product-images?key={{REACT_APP_GOOGLE_SHEETS_API_KEY}}",
+							"host": [
+								"{{REACT_APP_GOOGLEAPIS_URL}}"
+							],
+							"path": [
+								"spreadsheets",
+								"{{REACT_APP_GOOGLE_SHEETS_ID}}",
+								"values",
+								"product-images"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{REACT_APP_GOOGLE_SHEETS_API_KEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "careers",
+			"item": [
+				{
+					"name": "データ照会",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('ステータスコードが 200 であること', () => {",
+									"    pm.response.to.status(200);",
+									"});",
+									"",
+									"pm.test('Content-Type が \"application/json; charset=utf-8\" であること', () => {",
+									"    pm.expect(pm.response.headers.get('Content-Type').toLowerCase()).to.eql('application/json; charset=utf-8');",
+									"});",
+									"",
+									"pm.test('アイコンデータを取得できること', () => {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.values.length).to.gte(2)",
+									"    pm.expect(jsonData.values[0]).to.eql([",
+									"        'id', 'date', 'place', 'title_ja-JP', 'title_en-US', 'favicon', 'url', 'visible'",
+									"    ]);",
+									"    for (let i = 1; i < jsonData.values.length; i++) {",
+									"        pm.expect(isNaN(Number(jsonData.values[i][0]))).to.false;",
+									"        pm.expect(jsonData.values[i][1]).to.match(/^\\d{4}-\\d{2}$/);",
+									"        pm.expect(jsonData.values[i][2]).not.to.empty;",
+									"        pm.expect(jsonData.values[i][3]).not.to.empty;",
+									"        pm.expect(jsonData.values[i][4]).not.to.empty;",
+									"        if (!!jsonData.values[i][5])",
+									"            pm.expect(jsonData.values[i][5]).to.match(/^https?:\\/\\/[\\w/:%#\\$&\\?\\(\\)~\\.=\\+\\-]+$/);",
+									"        if (!!jsonData.values[i][6])",
+									"            pm.expect(jsonData.values[i][6]).to.match(/^https?:\\/\\/[\\w/:%#\\$&\\?\\(\\)~\\.=\\+\\-]+$/);",
+									"        pm.expect(jsonData.values[i][7]).to.oneOf(['true', 'false']);",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Referer",
+								"value": "{{REFERER}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{REACT_APP_GOOGLEAPIS_URL}}/spreadsheets/{{REACT_APP_GOOGLE_SHEETS_ID}}/values/careers?key={{REACT_APP_GOOGLE_SHEETS_API_KEY}}",
+							"host": [
+								"{{REACT_APP_GOOGLEAPIS_URL}}"
+							],
+							"path": [
+								"spreadsheets",
+								"{{REACT_APP_GOOGLE_SHEETS_ID}}",
+								"values",
+								"careers"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{REACT_APP_GOOGLE_SHEETS_API_KEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "career-details",
+			"item": [
+				{
+					"name": "データ照会",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('ステータスコードが 200 であること', () => {",
+									"    pm.response.to.status(200);",
+									"});",
+									"",
+									"pm.test('Content-Type が \"application/json; charset=utf-8\" であること', () => {",
+									"    pm.expect(pm.response.headers.get('Content-Type').toLowerCase()).to.eql('application/json; charset=utf-8');",
+									"});",
+									"",
+									"pm.test('アイコンデータを取得できること', () => {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.values.length).to.gte(2)",
+									"    pm.expect(jsonData.values[0]).to.eql([",
+									"        'career_id', 'row_no', 'subject_ja-JP', 'subject_en-US', 'skills'",
+									"    ]);",
+									"    for (let i = 1; i < jsonData.values.length; i++) {",
+									"        pm.expect(isNaN(Number(jsonData.values[i][0]))).to.false;",
+									"        pm.expect(isNaN(Number(jsonData.values[i][1]))).to.false;",
+									"        pm.expect(jsonData.values[i][2]).not.to.empty;",
+									"        pm.expect(jsonData.values[i][3]).not.to.empty;",
+									"        if (!!jsonData.values[i][4])",
+									"            pm.expect(jsonData.values[i][4]).not.to.empty;",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Referer",
+								"value": "{{REFERER}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{REACT_APP_GOOGLEAPIS_URL}}/spreadsheets/{{REACT_APP_GOOGLE_SHEETS_ID}}/values/career-details?key={{REACT_APP_GOOGLE_SHEETS_API_KEY}}",
+							"host": [
+								"{{REACT_APP_GOOGLEAPIS_URL}}"
+							],
+							"path": [
+								"spreadsheets",
+								"{{REACT_APP_GOOGLE_SHEETS_ID}}",
+								"values",
+								"career-details"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{REACT_APP_GOOGLE_SHEETS_API_KEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "certifications",
+			"item": [
+				{
+					"name": "データ照会",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('ステータスコードが 200 であること', () => {",
+									"    pm.response.to.status(200);",
+									"});",
+									"",
+									"pm.test('Content-Type が \"application/json; charset=utf-8\" であること', () => {",
+									"    pm.expect(pm.response.headers.get('Content-Type').toLowerCase()).to.eql('application/json; charset=utf-8');",
+									"});",
+									"",
+									"pm.test('アイコンデータを取得できること', () => {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.values.length).to.gte(2)",
+									"    pm.expect(jsonData.values[0]).to.eql([",
+									"        'id', 'date', 'title_ja-JP', 'title_en-US', 'subject_ja-JP', 'subject_en-US', 'favicon', 'url', 'visible'",
+									"    ]);",
+									"    for (let i = 1; i < jsonData.values.length; i++) {",
+									"        pm.expect(isNaN(Number(jsonData.values[i][0]))).to.false;",
+									"        pm.expect(jsonData.values[i][1]).to.match(/^\\d{4}-\\d{2}$/);",
+									"        pm.expect(jsonData.values[i][2]).not.to.empty;",
+									"        pm.expect(jsonData.values[i][3]).not.to.empty;",
+									"        pm.expect(jsonData.values[i][4]).not.to.empty;",
+									"        pm.expect(jsonData.values[i][5]).not.to.empty;",
+									"        if (!!jsonData.values[i][6])",
+									"            pm.expect(jsonData.values[i][6]).to.match(/^https?:\\/\\/[\\w/:%#\\$&\\?\\(\\)~\\.=\\+\\-]+$/);",
+									"        if (!!jsonData.values[i][7])",
+									"            pm.expect(jsonData.values[i][7]).to.match(/^https?:\\/\\/[\\w/:%#\\$&\\?\\(\\)~\\.=\\+\\-]+$/);",
+									"        pm.expect(jsonData.values[i][8]).to.oneOf(['true', 'false']);",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Referer",
+								"value": "{{REFERER}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{REACT_APP_GOOGLEAPIS_URL}}/spreadsheets/{{REACT_APP_GOOGLE_SHEETS_ID}}/values/certifications?key={{REACT_APP_GOOGLE_SHEETS_API_KEY}}",
+							"host": [
+								"{{REACT_APP_GOOGLEAPIS_URL}}"
+							],
+							"path": [
+								"spreadsheets",
+								"{{REACT_APP_GOOGLE_SHEETS_ID}}",
+								"values",
+								"certifications"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{REACT_APP_GOOGLE_SHEETS_API_KEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "sns",
+			"item": [
+				{
+					"name": "データ照会",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('ステータスコードが 200 であること', () => {",
+									"    pm.response.to.status(200);",
+									"});",
+									"",
+									"pm.test('Content-Type が \"application/json; charset=utf-8\" であること', () => {",
+									"    pm.expect(pm.response.headers.get('Content-Type').toLowerCase()).to.eql('application/json; charset=utf-8');",
+									"});",
+									"",
+									"pm.test('アイコンデータを取得できること', () => {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.values.length).to.gte(2)",
+									"    pm.expect(jsonData.values[0]).to.eql([",
+									"        'id', 'title_ja-JP', 'title_en-US', 'favicon', 'url', 'visible'",
+									"    ]);",
+									"    for (let i = 1; i < jsonData.values.length; i++) {",
+									"        pm.expect(isNaN(Number(jsonData.values[i][0]))).to.false;",
+									"        pm.expect(jsonData.values[i][1]).not.to.empty;",
+									"        pm.expect(jsonData.values[i][2]).not.to.empty;",
+									"        if (!!jsonData.values[i][3])",
+									"            pm.expect(jsonData.values[i][3]).to.match(/^https?:\\/\\/[\\w/:%#\\$&\\?\\(\\)~\\.=\\+\\-]+$/);",
+									"        if (!!jsonData.values[i][4])",
+									"            pm.expect(jsonData.values[i][4]).to.match(/^https?:\\/\\/[\\w/:%#\\$&\\?\\(\\)~\\.=\\+\\-]+$/);",
+									"        pm.expect(jsonData.values[i][5]).to.oneOf(['true', 'false']);",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Referer",
+								"value": "{{REFERER}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{REACT_APP_GOOGLEAPIS_URL}}/spreadsheets/{{REACT_APP_GOOGLE_SHEETS_ID}}/values/sns?key={{REACT_APP_GOOGLE_SHEETS_API_KEY}}",
+							"host": [
+								"{{REACT_APP_GOOGLEAPIS_URL}}"
+							],
+							"path": [
+								"spreadsheets",
+								"{{REACT_APP_GOOGLE_SHEETS_ID}}",
+								"values",
+								"sns"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{REACT_APP_GOOGLE_SHEETS_API_KEY}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
 		{
 			"name": "articles-metadata",
 			"item": [
