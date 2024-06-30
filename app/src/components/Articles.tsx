@@ -137,7 +137,7 @@ export const Articles = (props: { sx?: SxProps<Theme> }) => {
             </SectionFadeIn>
           ) : (
             <Grid container spacing={4} sx={{ mt: 2 }}>
-              {[...Array(values.ARTICLES_SKELETON_DISPLAY_COUNT).keys()].map((i) => (
+              {[...Array(values.skeltonCount.articles).keys()].map((i) => (
                 <Grid
                   item
                   key={`Articles__Card${i}--Loading`}
