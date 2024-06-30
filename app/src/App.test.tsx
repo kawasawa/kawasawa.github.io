@@ -3,7 +3,7 @@ import React from 'react';
 import * as ReactG4 from 'react-ga4';
 
 import App from '@/App';
-import { endpoints } from '@/constants';
+import { links } from '@/constants';
 
 jest.mock('react-ga4', () => ({
   initialize: jest.fn(),
@@ -42,6 +42,6 @@ describe('App', () => {
     render(<App />);
 
     expect(spy_initialize).toBeCalledWith(process.env.REACT_APP_GOOGLE_ANALYTICS_ID);
-    expect(spy_send).toBeCalledWith({ hitType: 'pageview', page: endpoints.self });
+    expect(spy_send).toBeCalledWith({ hitType: 'pageview', page: links.self });
   });
 });
