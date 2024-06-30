@@ -1,8 +1,24 @@
 import express from 'express';
 
-import { articlesMetadata, articlesPickup, version } from '../api';
+import {
+  articlesMetadata,
+  articlesPickup,
+  careerDetails,
+  careers,
+  certifications,
+  icons,
+  productImages,
+  products,
+  version,
+} from '../api';
 
 const router = express.Router();
+router.get('/:sheetId/values/icons', icons);
+router.get('/:sheetId/values/products', products);
+router.get('/:sheetId/values/product-images', productImages);
+router.get('/:sheetId/values/careers', careers);
+router.get('/:sheetId/values/career-details', careerDetails);
+router.get('/:sheetId/values/certifications', certifications);
 router.get('/:sheetId/values/articles-metadata', articlesMetadata);
 router.get('/:sheetId/values/articles-pickup', articlesPickup);
 router.get('/:sheetId/values/version', version);
