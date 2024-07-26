@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-		<title>README</title>
+		<title>products</title>
 		<style>
 			/* PDF Specific */
 
@@ -1106,76 +1106,209 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 			
 		</nav>
 		<main>
-			<h1 id="database" tabindex="-1"><a class="anchor" href="#database" aria-hidden="true"><span class="octicon octicon-link"></span></a> database</h1>
-<h2 id="tables" tabindex="-1"><a class="anchor" href="#tables" aria-hidden="true"><span class="octicon octicon-link"></span></a> Tables</h2>
+			<h1 id="products" tabindex="-1"><a class="anchor" href="#products" aria-hidden="true"><span class="octicon octicon-link"></span></a> products</h1>
+<h2 id="description" tabindex="-1"><a class="anchor" href="#description" aria-hidden="true"><span class="octicon octicon-link"></span></a> Description</h2>
+<details>
+<summary><strong>Table Definition</strong></summary>
+<pre><code class="language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> `products` (
+  `id` <span class="hljs-type">int</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> AUTO_INCREMENT,
+  `title_ja_jp` <span class="hljs-type">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">COLLATE</span> utf8mb4_bin <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
+  `title_en_us` <span class="hljs-type">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">COLLATE</span> utf8mb4_bin <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
+  `subject_ja_jp` <span class="hljs-type">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">COLLATE</span> utf8mb4_bin <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
+  `subject_en_us` <span class="hljs-type">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">COLLATE</span> utf8mb4_bin <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
+  `body_ja_jp` text <span class="hljs-keyword">COLLATE</span> utf8mb4_bin <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
+  `body_en_us` text <span class="hljs-keyword">COLLATE</span> utf8mb4_bin <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
+  `skills` text <span class="hljs-keyword">COLLATE</span> utf8mb4_bin <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
+  `url_code` text <span class="hljs-keyword">COLLATE</span> utf8mb4_bin <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
+  `url_home` text <span class="hljs-keyword">COLLATE</span> utf8mb4_bin <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
+  `downloads` <span class="hljs-type">int</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span>,
+  `pickup` tinyint(<span class="hljs-number">1</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
+  `visible` tinyint(<span class="hljs-number">1</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
+  <span class="hljs-keyword">PRIMARY</span> KEY (`id`)
+) ENGINE<span class="hljs-operator">=</span>InnoDB AUTO_INCREMENT<span class="hljs-operator">=</span>[Redacted <span class="hljs-keyword">by</span> tbls] <span class="hljs-keyword">DEFAULT</span> CHARSET<span class="hljs-operator">=</span>utf8mb4 <span class="hljs-keyword">COLLATE</span><span class="hljs-operator">=</span>utf8mb4_bin
+</code></pre>
+</details>
+<h2 id="columns" tabindex="-1"><a class="anchor" href="#columns" aria-hidden="true"><span class="octicon octicon-link"></span></a> Columns</h2>
 <table>
 <thead>
 <tr>
 <th>Name</th>
-<th>Columns</th>
-<th>Comment</th>
 <th>Type</th>
+<th>Default</th>
+<th>Nullable</th>
+<th>Extra Definition</th>
+<th>Children</th>
+<th>Parents</th>
+<th>Comment</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="articles_metadata.html">articles_metadata</a></td>
-<td>10</td>
+<td>id</td>
+<td>int</td>
 <td></td>
-<td>BASE TABLE</td>
-</tr>
-<tr>
-<td><a href="articles_pickup.html">articles_pickup</a></td>
-<td>2</td>
-<td></td>
-<td>BASE TABLE</td>
-</tr>
-<tr>
-<td><a href="career_details.html">career_details</a></td>
-<td>5</td>
-<td></td>
-<td>BASE TABLE</td>
-</tr>
-<tr>
-<td><a href="careers.html">careers</a></td>
-<td>8</td>
-<td></td>
-<td>BASE TABLE</td>
-</tr>
-<tr>
-<td><a href="certifications.html">certifications</a></td>
-<td>9</td>
-<td></td>
-<td>BASE TABLE</td>
-</tr>
-<tr>
-<td><a href="icons.html">icons</a></td>
-<td>2</td>
-<td></td>
-<td>BASE TABLE</td>
-</tr>
-<tr>
+<td>false</td>
+<td>auto_increment</td>
 <td><a href="product_images.html">product_images</a></td>
-<td>3</td>
 <td></td>
-<td>BASE TABLE</td>
+<td></td>
 </tr>
 <tr>
-<td><a href="products.html">products</a></td>
-<td>13</td>
+<td>title_ja_jp</td>
+<td>varchar(255)</td>
 <td></td>
-<td>BASE TABLE</td>
+<td>false</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td><a href="version.html">version</a></td>
-<td>1</td>
+<td>title_en_us</td>
+<td>varchar(255)</td>
 <td></td>
-<td>BASE TABLE</td>
+<td>false</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>subject_ja_jp</td>
+<td>varchar(255)</td>
+<td></td>
+<td>false</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>subject_en_us</td>
+<td>varchar(255)</td>
+<td></td>
+<td>false</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>body_ja_jp</td>
+<td>text</td>
+<td></td>
+<td>false</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>body_en_us</td>
+<td>text</td>
+<td></td>
+<td>false</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>skills</td>
+<td>text</td>
+<td></td>
+<td>false</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>url_code</td>
+<td>text</td>
+<td></td>
+<td>false</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>url_home</td>
+<td>text</td>
+<td></td>
+<td>false</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>downloads</td>
+<td>int</td>
+<td></td>
+<td>true</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>pickup</td>
+<td>tinyint(1)</td>
+<td></td>
+<td>false</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>visible</td>
+<td>tinyint(1)</td>
+<td></td>
+<td>false</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="constraints" tabindex="-1"><a class="anchor" href="#constraints" aria-hidden="true"><span class="octicon octicon-link"></span></a> Constraints</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PRIMARY</td>
+<td>PRIMARY KEY</td>
+<td>PRIMARY KEY (id)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="indexes" tabindex="-1"><a class="anchor" href="#indexes" aria-hidden="true"><span class="octicon octicon-link"></span></a> Indexes</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PRIMARY</td>
+<td>PRIMARY KEY (id) USING BTREE</td>
 </tr>
 </tbody>
 </table>
 <h2 id="relations" tabindex="-1"><a class="anchor" href="#relations" aria-hidden="true"><span class="octicon octicon-link"></span></a> Relations</h2>
-<p><img src="schema.svg" alt="er"></p>
+<p><img src="products.svg" alt="er"></p>
 <hr>
 <blockquote>
 <p>Generated by <a href="https://github.com/k1LoW/tbls">tbls</a></p>

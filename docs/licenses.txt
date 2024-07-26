@@ -1350,7 +1350,7 @@ THE SOFTWARE.
 
 -----
 
-The following software may be included in this product: @sindresorhus/merge-streams, ansi-escapes, boxen, camelcase, cli-boxes, emittery, escape-string-regexp, execa, find-up, get-stream, globals, globby, import-fresh, is-stream, locate-path, make-dir, meow, onetime, p-limit, p-locate, p-map, parse-json, path-type, read-pkg, slash, string-length, strip-json-comments, supports-color, unicorn-magic, wrap-ansi, yocto-queue. A copy of the source code may be downloaded from https://github.com/sindresorhus/merge-streams.git (@sindresorhus/merge-streams), https://github.com/sindresorhus/ansi-escapes.git (ansi-escapes), https://github.com/sindresorhus/boxen.git (boxen), https://github.com/sindresorhus/camelcase.git (camelcase), https://github.com/sindresorhus/cli-boxes.git (cli-boxes), https://github.com/sindresorhus/emittery.git (emittery), https://github.com/sindresorhus/escape-string-regexp.git (escape-string-regexp), https://github.com/sindresorhus/execa.git (execa), https://github.com/sindresorhus/find-up.git (find-up), https://github.com/sindresorhus/get-stream.git (get-stream), https://github.com/sindresorhus/globals.git (globals), https://github.com/sindresorhus/globby.git (globby), https://github.com/sindresorhus/import-fresh.git (import-fresh), https://github.com/sindresorhus/is-stream.git (is-stream), https://github.com/sindresorhus/locate-path.git (locate-path), https://github.com/sindresorhus/make-dir.git (make-dir), https://github.com/sindresorhus/meow.git (meow), https://github.com/sindresorhus/onetime.git (onetime), https://github.com/sindresorhus/p-limit.git (p-limit), https://github.com/sindresorhus/p-locate.git (p-locate), https://github.com/sindresorhus/p-map.git (p-map), https://github.com/sindresorhus/parse-json.git (parse-json), https://github.com/sindresorhus/path-type.git (path-type), https://github.com/sindresorhus/read-pkg.git (read-pkg), https://github.com/sindresorhus/slash.git (slash), https://github.com/sindresorhus/string-length.git (string-length), https://github.com/sindresorhus/strip-json-comments.git (strip-json-comments), https://github.com/chalk/supports-color.git (supports-color), https://github.com/sindresorhus/unicorn-magic.git (unicorn-magic), https://github.com/chalk/wrap-ansi.git (wrap-ansi), https://github.com/sindresorhus/yocto-queue.git (yocto-queue). This software contains the following license and notice below:
+The following software may be included in this product: @sindresorhus/merge-streams, ansi-escapes, boxen, camelcase, cli-boxes, emittery, escape-string-regexp, execa, find-up, get-stream, globals, globby, import-fresh, import-local, is-stream, locate-path, make-dir, meow, onetime, p-limit, p-locate, p-map, parse-json, path-type, read-pkg, slash, string-length, strip-json-comments, supports-color, unicorn-magic, wrap-ansi, yocto-queue. A copy of the source code may be downloaded from https://github.com/sindresorhus/merge-streams.git (@sindresorhus/merge-streams), https://github.com/sindresorhus/ansi-escapes.git (ansi-escapes), https://github.com/sindresorhus/boxen.git (boxen), https://github.com/sindresorhus/camelcase.git (camelcase), https://github.com/sindresorhus/cli-boxes.git (cli-boxes), https://github.com/sindresorhus/emittery.git (emittery), https://github.com/sindresorhus/escape-string-regexp.git (escape-string-regexp), https://github.com/sindresorhus/execa.git (execa), https://github.com/sindresorhus/find-up.git (find-up), https://github.com/sindresorhus/get-stream.git (get-stream), https://github.com/sindresorhus/globals.git (globals), https://github.com/sindresorhus/globby.git (globby), https://github.com/sindresorhus/import-fresh.git (import-fresh), https://github.com/sindresorhus/import-local.git (import-local), https://github.com/sindresorhus/is-stream.git (is-stream), https://github.com/sindresorhus/locate-path.git (locate-path), https://github.com/sindresorhus/make-dir.git (make-dir), https://github.com/sindresorhus/meow.git (meow), https://github.com/sindresorhus/onetime.git (onetime), https://github.com/sindresorhus/p-limit.git (p-limit), https://github.com/sindresorhus/p-locate.git (p-locate), https://github.com/sindresorhus/p-map.git (p-map), https://github.com/sindresorhus/parse-json.git (parse-json), https://github.com/sindresorhus/path-type.git (path-type), https://github.com/sindresorhus/read-pkg.git (read-pkg), https://github.com/sindresorhus/slash.git (slash), https://github.com/sindresorhus/string-length.git (string-length), https://github.com/sindresorhus/strip-json-comments.git (strip-json-comments), https://github.com/chalk/supports-color.git (supports-color), https://github.com/sindresorhus/unicorn-magic.git (unicorn-magic), https://github.com/chalk/wrap-ansi.git (wrap-ansi), https://github.com/sindresorhus/yocto-queue.git (yocto-queue). This software contains the following license and notice below:
 
 MIT License
 
@@ -1999,7 +1999,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 -----
 
-The following software may be included in this product: aggregate-error, ansi-regex, ansi-styles, array-union, callsites, camelcase, chalk, clean-stack, detect-newline, escape-string-regexp, find-up, globals, globby, has-flag, import-local, indent-string, is-fullwidth-code-point, is-generator-fn, is-path-inside, leven, locate-path, mimic-fn, npm-run-path, p-limit, p-locate, p-try, parent-module, parse-json, parse-ms, path-exists, path-key, path-type, pify, pkg-dir, pretty-ms, read-pkg, redent, resolve-cwd, resolve-from, shebang-regex, slash, string-width, strip-ansi, strip-bom, strip-final-newline, strip-indent, supports-color, terminal-link, widest-line, yn. A copy of the source code may be downloaded from https://github.com/sindresorhus/aggregate-error.git (aggregate-error), https://github.com/chalk/ansi-regex.git (ansi-regex), https://github.com/chalk/ansi-styles.git (ansi-styles), https://github.com/sindresorhus/array-union.git (array-union), https://github.com/sindresorhus/callsites.git (callsites), https://github.com/sindresorhus/camelcase.git (camelcase), https://github.com/chalk/chalk.git (chalk), https://github.com/sindresorhus/clean-stack.git (clean-stack), https://github.com/sindresorhus/detect-newline.git (detect-newline), https://github.com/sindresorhus/escape-string-regexp.git (escape-string-regexp), https://github.com/sindresorhus/find-up.git (find-up), https://github.com/sindresorhus/globals.git (globals), https://github.com/sindresorhus/globby.git (globby), https://github.com/sindresorhus/has-flag.git (has-flag), https://github.com/sindresorhus/import-local.git (import-local), https://github.com/sindresorhus/indent-string.git (indent-string), https://github.com/sindresorhus/is-fullwidth-code-point.git (is-fullwidth-code-point), https://github.com/sindresorhus/is-generator-fn.git (is-generator-fn), https://github.com/sindresorhus/is-path-inside.git (is-path-inside), https://github.com/sindresorhus/leven.git (leven), https://github.com/sindresorhus/locate-path.git (locate-path), https://github.com/sindresorhus/mimic-fn.git (mimic-fn), https://github.com/sindresorhus/npm-run-path.git (npm-run-path), https://github.com/sindresorhus/p-limit.git (p-limit), https://github.com/sindresorhus/p-locate.git (p-locate), https://github.com/sindresorhus/p-try.git (p-try), https://github.com/sindresorhus/parent-module.git (parent-module), https://github.com/sindresorhus/parse-json.git (parse-json), https://github.com/sindresorhus/parse-ms.git (parse-ms), https://github.com/sindresorhus/path-exists.git (path-exists), https://github.com/sindresorhus/path-key.git (path-key), https://github.com/sindresorhus/path-type.git (path-type), https://github.com/sindresorhus/pify.git (pify), https://github.com/sindresorhus/pkg-dir.git (pkg-dir), https://github.com/sindresorhus/pretty-ms.git (pretty-ms), https://github.com/sindresorhus/read-pkg.git (read-pkg), https://github.com/sindresorhus/redent.git (redent), https://github.com/sindresorhus/resolve-cwd.git (resolve-cwd), https://github.com/sindresorhus/resolve-from.git (resolve-from), https://github.com/sindresorhus/shebang-regex.git (shebang-regex), https://github.com/sindresorhus/slash.git (slash), https://github.com/sindresorhus/string-width.git (string-width), https://github.com/chalk/strip-ansi.git (strip-ansi), https://github.com/sindresorhus/strip-bom.git (strip-bom), https://github.com/sindresorhus/strip-final-newline.git (strip-final-newline), https://github.com/sindresorhus/strip-indent.git (strip-indent), https://github.com/chalk/supports-color.git (supports-color), https://github.com/sindresorhus/terminal-link.git (terminal-link), https://github.com/sindresorhus/widest-line.git (widest-line), https://github.com/sindresorhus/yn.git (yn). This software contains the following license and notice below:
+The following software may be included in this product: aggregate-error, ansi-regex, ansi-styles, array-union, callsites, camelcase, chalk, clean-stack, detect-newline, escape-string-regexp, find-up, globals, globby, has-flag, indent-string, is-fullwidth-code-point, is-generator-fn, is-path-inside, leven, locate-path, mimic-fn, npm-run-path, p-limit, p-locate, p-try, parent-module, parse-json, parse-ms, path-exists, path-key, path-type, pify, pkg-dir, pretty-ms, read-pkg, redent, resolve-cwd, resolve-from, shebang-regex, slash, string-width, strip-ansi, strip-bom, strip-final-newline, strip-indent, supports-color, terminal-link, widest-line, yn. A copy of the source code may be downloaded from https://github.com/sindresorhus/aggregate-error.git (aggregate-error), https://github.com/chalk/ansi-regex.git (ansi-regex), https://github.com/chalk/ansi-styles.git (ansi-styles), https://github.com/sindresorhus/array-union.git (array-union), https://github.com/sindresorhus/callsites.git (callsites), https://github.com/sindresorhus/camelcase.git (camelcase), https://github.com/chalk/chalk.git (chalk), https://github.com/sindresorhus/clean-stack.git (clean-stack), https://github.com/sindresorhus/detect-newline.git (detect-newline), https://github.com/sindresorhus/escape-string-regexp.git (escape-string-regexp), https://github.com/sindresorhus/find-up.git (find-up), https://github.com/sindresorhus/globals.git (globals), https://github.com/sindresorhus/globby.git (globby), https://github.com/sindresorhus/has-flag.git (has-flag), https://github.com/sindresorhus/indent-string.git (indent-string), https://github.com/sindresorhus/is-fullwidth-code-point.git (is-fullwidth-code-point), https://github.com/sindresorhus/is-generator-fn.git (is-generator-fn), https://github.com/sindresorhus/is-path-inside.git (is-path-inside), https://github.com/sindresorhus/leven.git (leven), https://github.com/sindresorhus/locate-path.git (locate-path), https://github.com/sindresorhus/mimic-fn.git (mimic-fn), https://github.com/sindresorhus/npm-run-path.git (npm-run-path), https://github.com/sindresorhus/p-limit.git (p-limit), https://github.com/sindresorhus/p-locate.git (p-locate), https://github.com/sindresorhus/p-try.git (p-try), https://github.com/sindresorhus/parent-module.git (parent-module), https://github.com/sindresorhus/parse-json.git (parse-json), https://github.com/sindresorhus/parse-ms.git (parse-ms), https://github.com/sindresorhus/path-exists.git (path-exists), https://github.com/sindresorhus/path-key.git (path-key), https://github.com/sindresorhus/path-type.git (path-type), https://github.com/sindresorhus/pify.git (pify), https://github.com/sindresorhus/pkg-dir.git (pkg-dir), https://github.com/sindresorhus/pretty-ms.git (pretty-ms), https://github.com/sindresorhus/read-pkg.git (read-pkg), https://github.com/sindresorhus/redent.git (redent), https://github.com/sindresorhus/resolve-cwd.git (resolve-cwd), https://github.com/sindresorhus/resolve-from.git (resolve-from), https://github.com/sindresorhus/shebang-regex.git (shebang-regex), https://github.com/sindresorhus/slash.git (slash), https://github.com/sindresorhus/string-width.git (string-width), https://github.com/chalk/strip-ansi.git (strip-ansi), https://github.com/sindresorhus/strip-bom.git (strip-bom), https://github.com/sindresorhus/strip-final-newline.git (strip-final-newline), https://github.com/sindresorhus/strip-indent.git (strip-indent), https://github.com/chalk/supports-color.git (supports-color), https://github.com/sindresorhus/terminal-link.git (terminal-link), https://github.com/sindresorhus/widest-line.git (widest-line), https://github.com/sindresorhus/yn.git (yn). This software contains the following license and notice below:
 
 MIT License
 
@@ -2672,7 +2672,7 @@ THE SOFTWARE.
 
 -----
 
-The following software may be included in this product: array.prototype.findlast, array.prototype.toreversed, array.prototype.tosorted, reflect.getprototypeof. A copy of the source code may be downloaded from git+https://github.com/es-shims/Array.prototype.findLast.git (array.prototype.findlast), git+https://github.com/es-shims/Array.prototype.toReversed.git (array.prototype.toreversed), git+https://github.com/es-shims/Array.prototype.toSorted.git (array.prototype.tosorted), git+https://github.com/es-shims/Reflect.getPrototypeOf.git (reflect.getprototypeof). This software contains the following license and notice below:
+The following software may be included in this product: array.prototype.findlast, array.prototype.tosorted, reflect.getprototypeof. A copy of the source code may be downloaded from git+https://github.com/es-shims/Array.prototype.findLast.git (array.prototype.findlast), git+https://github.com/es-shims/Array.prototype.toSorted.git (array.prototype.tosorted), git+https://github.com/es-shims/Reflect.getPrototypeOf.git (reflect.getprototypeof). This software contains the following license and notice below:
 
 MIT License
 
@@ -10235,7 +10235,7 @@ The following software may be included in this product: isobject. A copy of the 
 
 The MIT License (MIT)
 
-Copyright (c) 2014-2016, Jon Schlinkert.
+Copyright (c) 2014-2017, Jon Schlinkert.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -10261,7 +10261,7 @@ The following software may be included in this product: isobject. A copy of the 
 
 The MIT License (MIT)
 
-Copyright (c) 2014-2017, Jon Schlinkert.
+Copyright (c) 2014-2016, Jon Schlinkert.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -12828,7 +12828,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 -----
 
-The following software may be included in this product: node-releases. A copy of the source code may be downloaded from https://github.com/chicoxyzzy/node-releases.git. This software contains the following license and notice below:
+The following software may be included in this product: node-releases. A copy of the source code may be downloaded from git+https://github.com/chicoxyzzy/node-releases.git. This software contains the following license and notice below:
 
 The MIT License
 
@@ -24935,6 +24935,27 @@ License: MIT
 By: Mathias Bynens
 Repository: https://github.com/mathiasbynens/cssesc.git
 
+> Copyright Mathias Bynens <https://mathiasbynens.be/>
+> 
+> Permission is hereby granted, free of charge, to any person obtaining
+> a copy of this software and associated documentation files (the
+> "Software"), to deal in the Software without restriction, including
+> without limitation the rights to use, copy, modify, merge, publish,
+> distribute, sublicense, and/or sell copies of the Software, and to
+> permit persons to whom the Software is furnished to do so, subject to
+> the following conditions:
+> 
+> The above copyright notice and this permission notice shall be
+> included in all copies or substantial portions of the Software.
+> 
+> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+> EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+> MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+> NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+> LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+> OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+> WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 ---------------------------------------
 
 ## debug
@@ -26589,6 +26610,29 @@ License: MIT
 By: Ben Briggs, Chris Eppstein
 Repository: postcss/postcss-selector-parser
 
+> Copyright (c) Ben Briggs <beneb.info@gmail.com> (http://beneb.info)
+> 
+> Permission is hereby granted, free of charge, to any person
+> obtaining a copy of this software and associated documentation
+> files (the "Software"), to deal in the Software without
+> restriction, including without limitation the rights to use,
+> copy, modify, merge, publish, distribute, sublicense, and/or sell
+> copies of the Software, and to permit persons to whom the
+> Software is furnished to do so, subject to the following
+> conditions:
+> 
+> The above copyright notice and this permission notice shall be
+> included in all copies or substantial portions of the Software.
+> 
+> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+> EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+> OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+> NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+> HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+> WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+> FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+> OTHER DEALINGS IN THE SOFTWARE.
+
 ---------------------------------------
 
 ## postcss-value-parser
@@ -27734,7 +27778,7 @@ SOFTWARE.
 
 -----
 
-The following software may be included in this product: workspace-aggregator-701bb12e-12bb-4139-9744-a3d193256e53. This software contains the following license and notice below:
+The following software may be included in this product: workspace-aggregator-9a42ee84-b1a9-4588-82ce-5e7b41559a45. This software contains the following license and notice below:
 
 MIT License
 
