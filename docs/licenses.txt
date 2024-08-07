@@ -27804,7 +27804,7 @@ SOFTWARE.
 
 -----
 
-The following software may be included in this product: workspace-aggregator-0f0f57fd-0a8b-46a4-ba04-0cd0ce6728ab. This software contains the following license and notice below:
+The following software may be included in this product: workspace-aggregator-db0178e2-550f-423c-858f-5fcd9ff2ef8f. This software contains the following license and notice below:
 
 MIT License
 
