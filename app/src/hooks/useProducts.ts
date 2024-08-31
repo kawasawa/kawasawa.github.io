@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { createInstance, GoogleSheetsApiResponse } from '@/api';
+import { getApiClient, GoogleSheetsApiResponse } from '@/api';
 import { endpoints } from '@/constants';
 import { handleError } from '@/utils/errors';
 
@@ -27,7 +27,7 @@ export type ProductData = {
 };
 
 const fetchData = async () => {
-  const client = createInstance();
+  const client = getApiClient();
   const [productsResponse, productImagesResponse, iconsResponse] = await Promise.all([
     client.get<GoogleSheetsApiResponse>(endpoints.getProducts),
     client.get<GoogleSheetsApiResponse>(endpoints.getProductImages),
