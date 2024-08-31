@@ -47,7 +47,7 @@ import { TFunction, useTranslation } from 'react-i18next';
 import { useInView } from 'react-intersection-observer';
 import { toast } from 'react-toastify';
 
-import { createInstance } from '@/api';
+import { getApiClient } from '@/api';
 import imageProfile from '@/assets/profile.webp';
 import { ConfirmDialog, PrivacyPolicyDialog } from '@/components/dialogs';
 import { ChipList, ChipListItem, SectionFadeIn, SectionTitle } from '@/components/elements';
@@ -522,7 +522,7 @@ const ContactArea = () => {
           /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
           await send(process.env.REACT_APP_EMAILJS_SERVICE_ID!, process.env.REACT_APP_EMAILJS_TEMPLATE_ID!, params);
         } else {
-          const client = createInstance();
+          const client = getApiClient();
           await client.get(`${process.env.REACT_APP_GOOGLEAPIS_URL}/dev/csrf-token`);
           await client.post(`${process.env.REACT_APP_GOOGLEAPIS_URL}/dev/send`, params);
         }
