@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { createInstance, GoogleSheetsApiResponse } from '@/api';
+import { getApiClient, GoogleSheetsApiResponse } from '@/api';
 import { endpoints } from '@/constants';
 import { handleError } from '@/utils/errors';
 
@@ -17,7 +17,7 @@ export type CertificationData = {
 };
 
 const fetchData = async () => {
-  const client = createInstance();
+  const client = getApiClient();
   const [certificationsResponse] = await Promise.all([
     client.get<GoogleSheetsApiResponse>(endpoints.getCertifications),
   ]);
