@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { createInstance, FaviconGrabberApiResponse } from '@/api';
+import { FaviconGrabberApiResponse, getApiClient } from '@/api';
 import { endpoints } from '@/constants';
 import { handleError } from '@/utils/errors';
 
@@ -16,7 +16,7 @@ const parseUrl = (url: string) => {
 /** @deprecated 破棄予定 */
 /* istanbul ignore next */
 const getFavicon = async (urls: string[]) => {
-  const client = createInstance();
+  const client = getApiClient();
   const buffer: (string | undefined)[] = [];
   const responses = await Promise.all(
     urls.map(async (url, i) => {

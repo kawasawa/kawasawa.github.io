@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { createInstance, GoogleSheetsApiResponse } from '@/api';
+import { getApiClient, GoogleSheetsApiResponse } from '@/api';
 import { endpoints } from '@/constants';
 import { handleError } from '@/utils/errors';
 
@@ -18,7 +18,7 @@ export type ArticleData = {
 };
 
 const fetchData = async () => {
-  const client = createInstance();
+  const client = getApiClient();
   const [pickupResponse, metadataResponse] = await Promise.all([
     client.get<GoogleSheetsApiResponse>(endpoints.getArticlesPickup),
     client.get<GoogleSheetsApiResponse>(endpoints.getArticlesMetadata),
