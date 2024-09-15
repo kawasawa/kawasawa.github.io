@@ -5893,32 +5893,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 -----
 
-The following software may be included in this product: dequal, kleur, resolve.exports. A copy of the source code may be downloaded from https://github.com/lukeed/dequal.git (dequal), https://github.com/lukeed/kleur.git (kleur), https://github.com/lukeed/resolve.exports.git (resolve.exports). This software contains the following license and notice below:
-
-The MIT License (MIT)
-
-Copyright (c) Luke Edwards <luke.edwards05@gmail.com> (lukeed.com)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
------
-
 The following software may be included in this product: destroy. A copy of the source code may be downloaded from https://github.com/stream-utils/destroy.git. This software contains the following license and notice below:
 
 The MIT License (MIT)
@@ -10235,7 +10209,7 @@ The following software may be included in this product: isobject. A copy of the 
 
 The MIT License (MIT)
 
-Copyright (c) 2014-2017, Jon Schlinkert.
+Copyright (c) 2014-2016, Jon Schlinkert.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -10261,7 +10235,7 @@ The following software may be included in this product: isobject. A copy of the 
 
 The MIT License (MIT)
 
-Copyright (c) 2014-2016, Jon Schlinkert.
+Copyright (c) 2014-2017, Jon Schlinkert.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -10975,6 +10949,32 @@ THE SOFTWARE.
 
 -----
 
+The following software may be included in this product: kleur, resolve.exports. A copy of the source code may be downloaded from https://github.com/lukeed/kleur.git (kleur), https://github.com/lukeed/resolve.exports.git (resolve.exports). This software contains the following license and notice below:
+
+The MIT License (MIT)
+
+Copyright (c) Luke Edwards <luke.edwards05@gmail.com> (lukeed.com)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+-----
+
 The following software may be included in this product: levn, optionator, prelude-ls, type-check. A copy of the source code may be downloaded from git://github.com/gkz/levn.git (levn), git://github.com/gkz/optionator.git (optionator), git://github.com/gkz/prelude-ls.git (prelude-ls), git://github.com/gkz/type-check.git (type-check). This software contains the following license and notice below:
 
 Copyright (c) George Zahariev
@@ -11652,6 +11652,32 @@ ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
 WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
 ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
 IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+-----
+
+The following software may be included in this product: lru.min. A copy of the source code may be downloaded from git+https://github.com/wellwelwel/lru.min.git. This software contains the following license and notice below:
+
+MIT License
+
+Copyright (c) 2024-current Weslley Araújo (@wellwelwel)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 -----
 
@@ -27804,7 +27830,7 @@ SOFTWARE.
 
 -----
 
-The following software may be included in this product: workspace-aggregator-fd5b5066-cd33-4be5-9173-37e175edb7d4. This software contains the following license and notice below:
+The following software may be included in this product: workspace-aggregator-ab4e16a6-6337-4914-91f8-26d187a916a8. This software contains the following license and notice below:
 
 MIT License
 
