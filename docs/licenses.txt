@@ -27830,7 +27830,7 @@ SOFTWARE.
 
 -----
 
-The following software may be included in this product: workspace-aggregator-d3f06913-3b91-4fa8-8b31-6ce60609eebf. This software contains the following license and notice below:
+The following software may be included in this product: workspace-aggregator-605edb4f-4f83-4ee8-872d-8feef94e6f6e. This software contains the following license and notice below:
 
 MIT License
 
