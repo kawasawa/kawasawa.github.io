@@ -1003,7 +1003,7 @@ SOFTWARE.
 
 -----
 
-The following software may be included in this product: @mui/base, @mui/core-downloads-tracker, @mui/icons-material, @mui/lab, @mui/material, @mui/private-theming, @mui/styled-engine, @mui/system, @mui/types, @mui/utils. A copy of the source code may be downloaded from https://github.com/mui/material-ui.git (@mui/base), https://github.com/mui/material-ui.git (@mui/core-downloads-tracker), https://github.com/mui/material-ui.git (@mui/icons-material), https://github.com/mui/material-ui.git (@mui/lab), https://github.com/mui/material-ui.git (@mui/material), https://github.com/mui/material-ui.git (@mui/private-theming), https://github.com/mui/material-ui.git (@mui/styled-engine), https://github.com/mui/material-ui.git (@mui/system), https://github.com/mui/material-ui.git (@mui/types), https://github.com/mui/material-ui.git (@mui/utils). This software contains the following license and notice below:
+The following software may be included in this product: @mui/base, @mui/core-downloads-tracker, @mui/icons-material, @mui/lab, @mui/material, @mui/private-theming, @mui/styled-engine, @mui/system, @mui/types, @mui/utils. A copy of the source code may be downloaded from https://github.com/mui/material-ui.git (@mui/base), https://github.com/mui/material-ui.git (@mui/core-downloads-tracker), https://github.com/mui/material-ui.git (@mui/icons-material), https://github.com/mui/material-ui.git (@mui/lab), https://github.com/mui/material-ui.git (@mui/material), https://github.com/mui/material-ui.git (@mui/private-theming), https://github.com/mui/material-ui.git (@mui/styled-engine), https://github.com/mui/material-ui.git (@mui/system), git+https://github.com/mui/material-ui.git (@mui/types), https://github.com/mui/material-ui.git (@mui/utils). This software contains the following license and notice below:
 
 The MIT License (MIT)
 
@@ -2971,6 +2971,24 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 -----
 
+The following software may be included in this product: axios-retry. A copy of the source code may be downloaded from git+https://github.com/softonic/axios-retry.git. This software contains the following license and notice below:
+
+Copyright 2019 Softonic International S.A.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+-----
+
 The following software may be included in this product: babel-plugin-istanbul. A copy of the source code may be downloaded from git+https://github.com/istanbuljs/babel-plugin-istanbul.git. This software contains the following license and notice below:
 
 Copyright (c) 2016, Istanbul Code Coverage
@@ -3586,7 +3604,7 @@ SOFTWARE.
 
 -----
 
-The following software may be included in this product: browserify-rsa. A copy of the source code may be downloaded from https://github.com:crypto-browserify/browserify-rsa.git. This software contains the following license and notice below:
+The following software may be included in this product: browserify-rsa. A copy of the source code may be downloaded from https://github.com/crypto-browserify/browserify-rsa.git. This software contains the following license and notice below:
 
 The MIT License (MIT)
 
@@ -10182,6 +10200,21 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+-----
+
+The following software may be included in this product: is-retry-allowed. A copy of the source code may be downloaded from https://github.com/sindresorhus/is-retry-allowed.git. This software contains the following license and notice below:
+
+MIT License
+
+Copyright (c) Vsevolod Strukchinsky <floatdrop@gmail.com> (github.com/floatdrop)
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 -----
 
@@ -27830,7 +27863,7 @@ SOFTWARE.
 
 -----
 
-The following software may be included in this product: workspace-aggregator-3dfb1158-a00a-4db4-b46b-9d2765275016. This software contains the following license and notice below:
+The following software may be included in this product: workspace-aggregator-a2fef0f4-43c8-49f5-81a3-3a88f85c9dac. This software contains the following license and notice below:
 
 MIT License
 
