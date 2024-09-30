@@ -7,8 +7,9 @@ import express, { NextFunction, Request, Response } from 'express';
 import session from 'express-session';
 import { SessionOptions } from 'express-session';
 import helmet from 'helmet';
-import morgan from 'morgan';
+import pinoHttp from 'pino-http';
 
+import { error, logger, options as loggerOptions } from './logger';
 import { sslFilter } from './middlewares';
 import { healthRouter, spreadsheetsRouter } from './routes';
 
@@ -47,7 +48,7 @@ export const createApp = () => {
   const app = express();
 
   // ログ出力
-  app.use(morgan('combined'));
+  app.use(pinoHttp({ ...loggerOptions.pinoHttp, logger }));
   // Cookieパーサ
   app.use(cookieParser());
   // JSONパーサ
@@ -74,7 +75,7 @@ export const createApp = () => {
     const e = Boom.isBoom(err) ? err : Boom.boomify(err, { statusCode: Boom.internal().output.statusCode });
     const statusCode = e.output.statusCode;
     const message = `${e.output.payload.error}: ${e.message}`;
-    console.error(e);
+    error(req, message, e);
     res.status(statusCode).json({ error: { code: statusCode, message: message } });
   });
 

@@ -33,6 +33,7 @@
     "openapi",
     "pageview",
     "peaceiris",
+    "pino",
     "qiita",
     "redoc",
     "resave",
