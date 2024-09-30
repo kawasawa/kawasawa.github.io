@@ -27,6 +27,7 @@
     "openapi",
     "pageview",
     "peaceiris",
+    "pino",
     "redoc",
     "resave",
     "snyk",
