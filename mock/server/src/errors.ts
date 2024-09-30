@@ -1,6 +1,9 @@
 import boom from '@hapi/boom';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
+import { NextFunction, Request, RequestHandler, Response } from 'express';
 import { ValidationError } from 'yup';
+
+import { _fatal, info } from './logger';
 
 /**
  * エラーオブジェクトを Boom インスタンスに変換します。
@@ -34,4 +37,26 @@ export const convertToBoomInstance = (err: any) => {
   }
   // いずれにも当てはまらない不明なオブジェクトの場合はそれを Error 型に内包し 500 として扱う
   return boom.boomify(new Error(String(err)), { statusCode: boom.internal().output.statusCode });
+};
+
+/**
+ * 指定されたリクエストハンドラに対して、例外の発生を監視しハンドリングを行います。
+ * @param handler リクエストハンドラ
+ * @returns エラーハンドリングを行ったリクエストハンドラ
+ */
+export const observeError = (handler: RequestHandler) => async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    await handler(req, res, next);
+  } catch (e) {
+    // バリデーションエラーは既知の例外であるためハンドルする
+    if (ValidationError.isError(e)) {
+      info(req, `validation failed. message=${e.message}`);
+      next(e);
+      return;
+    }
+    // 上記以外は想定外のエラーとして扱う
+    const b = convertToBoomInstance(e);
+    _fatal(req, 'unhandled exception occurred.', b);
+    next(b);
+  }
 };
