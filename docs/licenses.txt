@@ -1203,7 +1203,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 -----
 
-The following software may be included in this product: @secretlint/config-creator, @secretlint/config-loader, @secretlint/core, @secretlint/formatter, @secretlint/node, @secretlint/profiler, @secretlint/secretlint-rule-preset-recommend, @secretlint/source-creator, @secretlint/types, secretlint. A copy of the source code may be downloaded from https://github.com/secretlint/secretlint.git (@secretlint/config-creator), https://github.com/secretlint/secretlint.git (@secretlint/config-loader), https://github.com/secretlint/secretlint.git (@secretlint/core), https://github.com/secretlint/secretlint.git (@secretlint/formatter), https://github.com/secretlint/secretlint.git (@secretlint/node), https://github.com/secretlint/secretlint.git (@secretlint/profiler), https://github.com/secretlint/secretlint.git (@secretlint/secretlint-rule-preset-recommend), https://github.com/secretlint/secretlint.git (@secretlint/source-creator), https://github.com/secretlint/secretlint.git (@secretlint/types), https://github.com/secretlint/secretlint.git (secretlint). This software contains the following license and notice below:
+The following software may be included in this product: @secretlint/config-creator, @secretlint/config-loader, @secretlint/core, @secretlint/formatter, @secretlint/node, @secretlint/profiler, @secretlint/resolver, @secretlint/secretlint-rule-preset-recommend, @secretlint/source-creator, @secretlint/types, secretlint. A copy of the source code may be downloaded from https://github.com/secretlint/secretlint.git (@secretlint/config-creator), https://github.com/secretlint/secretlint.git (@secretlint/config-loader), https://github.com/secretlint/secretlint.git (@secretlint/core), https://github.com/secretlint/secretlint.git (@secretlint/formatter), https://github.com/secretlint/secretlint.git (@secretlint/node), https://github.com/secretlint/secretlint.git (@secretlint/profiler), https://github.com/secretlint/secretlint.git (@secretlint/resolver), https://github.com/secretlint/secretlint.git (@secretlint/secretlint-rule-preset-recommend), https://github.com/secretlint/secretlint.git (@secretlint/source-creator), https://github.com/secretlint/secretlint.git (@secretlint/types), https://github.com/secretlint/secretlint.git (secretlint). This software contains the following license and notice below:
 
 Copyright (c) 2020 azu
 
@@ -10131,32 +10131,6 @@ The following software may be included in this product: is-extglob, word-wrap. A
 The MIT License (MIT)
 
 Copyright (c) 2014-2016, Jon Schlinkert
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
------
-
-The following software may be included in this product: is-file. A copy of the source code may be downloaded from https://github.com/jsdevel/node-is-file.git. This software contains the following license and notice below:
-
-The MIT License (MIT)
-
-Copyright (c) 2014 Joseph Spencer
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -27890,7 +27864,7 @@ SOFTWARE.
 
 -----
 
-The following software may be included in this product: workspace-aggregator-8a5040be-8e2f-4ee0-a6f1-55dd47998189. This software contains the following license and notice below:
+The following software may be included in this product: workspace-aggregator-62b1b94d-20f2-47f6-af4a-cefeeb5bb394. This software contains the following license and notice below:
 
 MIT License
 
