@@ -1203,7 +1203,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 -----
 
-The following software may be included in this product: @secretlint/config-creator, @secretlint/config-loader, @secretlint/core, @secretlint/formatter, @secretlint/node, @secretlint/profiler, @secretlint/resolver, @secretlint/secretlint-rule-preset-recommend, @secretlint/source-creator, @secretlint/types, secretlint. A copy of the source code may be downloaded from https://github.com/secretlint/secretlint.git (@secretlint/config-creator), https://github.com/secretlint/secretlint.git (@secretlint/config-loader), https://github.com/secretlint/secretlint.git (@secretlint/core), https://github.com/secretlint/secretlint.git (@secretlint/formatter), https://github.com/secretlint/secretlint.git (@secretlint/node), https://github.com/secretlint/secretlint.git (@secretlint/profiler), https://github.com/secretlint/secretlint.git (@secretlint/resolver), https://github.com/secretlint/secretlint.git (@secretlint/secretlint-rule-preset-recommend), https://github.com/secretlint/secretlint.git (@secretlint/source-creator), https://github.com/secretlint/secretlint.git (@secretlint/types), https://github.com/secretlint/secretlint.git (secretlint). This software contains the following license and notice below:
+The following software may be included in this product: @secretlint/config-creator, @secretlint/config-loader, @secretlint/core, @secretlint/formatter, @secretlint/node, @secretlint/profiler, @secretlint/resolver, @secretlint/secretlint-rule-preset-recommend, @secretlint/source-creator, @secretlint/types, @textlint/resolver, secretlint. A copy of the source code may be downloaded from https://github.com/secretlint/secretlint.git (@secretlint/config-creator), https://github.com/secretlint/secretlint.git (@secretlint/config-loader), https://github.com/secretlint/secretlint.git (@secretlint/core), https://github.com/secretlint/secretlint.git (@secretlint/formatter), https://github.com/secretlint/secretlint.git (@secretlint/node), https://github.com/secretlint/secretlint.git (@secretlint/profiler), https://github.com/secretlint/secretlint.git (@secretlint/resolver), https://github.com/secretlint/secretlint.git (@secretlint/secretlint-rule-preset-recommend), https://github.com/secretlint/secretlint.git (@secretlint/source-creator), https://github.com/secretlint/secretlint.git (@secretlint/types), https://github.com/textlint/textlint.git (@textlint/resolver), https://github.com/secretlint/secretlint.git (secretlint). This software contains the following license and notice below:
 
 Copyright (c) 2020 azu
 
@@ -10266,7 +10266,7 @@ The following software may be included in this product: isobject. A copy of the 
 
 The MIT License (MIT)
 
-Copyright (c) 2014-2017, Jon Schlinkert.
+Copyright (c) 2014-2016, Jon Schlinkert.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -10292,7 +10292,7 @@ The following software may be included in this product: isobject. A copy of the 
 
 The MIT License (MIT)
 
-Copyright (c) 2014-2016, Jon Schlinkert.
+Copyright (c) 2014-2017, Jon Schlinkert.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -28110,7 +28110,7 @@ SOFTWARE.
 
 -----
 
-The following software may be included in this product: workspace-aggregator-c918770d-122d-4f4c-af3d-b689bef665ff. This software contains the following license and notice below:
+The following software may be included in this product: workspace-aggregator-1977b907-aec5-46d5-b2f9-d651672efc42. This software contains the following license and notice below:
 
 MIT License
 
