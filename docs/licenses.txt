@@ -28110,7 +28110,7 @@ SOFTWARE.
 
 -----
 
-The following software may be included in this product: workspace-aggregator-f023a7a1-ffe2-4ecc-a17b-14d1d94ebc29. This software contains the following license and notice below:
+The following software may be included in this product: workspace-aggregator-a57f2bfe-a9ae-42a8-88fe-8498d66295d0. This software contains the following license and notice below:
 
 MIT License
 
