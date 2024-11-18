@@ -10645,7 +10645,7 @@ The following software may be included in this product: isobject. A copy of the 
 
 The MIT License (MIT)
 
-Copyright (c) 2014-2017, Jon Schlinkert.
+Copyright (c) 2014-2016, Jon Schlinkert.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -10671,7 +10671,7 @@ The following software may be included in this product: isobject. A copy of the 
 
 The MIT License (MIT)
 
-Copyright (c) 2014-2016, Jon Schlinkert.
+Copyright (c) 2014-2017, Jon Schlinkert.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -29574,7 +29574,7 @@ THE SOFTWARE.
 
 -----
 
-The following software may be included in this product: workspace-aggregator-e188f6cc-49dd-4e34-9ab9-0d7dfdee4c23. This software contains the following license and notice below:
+The following software may be included in this product: workspace-aggregator-d4a5f3de-d802-4b10-8126-e200c7e3c42b. This software contains the following license and notice below:
 
 MIT License
 
