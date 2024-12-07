@@ -1112,8 +1112,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 <summary><strong>Table Definition</strong></summary>
 <pre><code class="language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> `articles_metadata` (
   `id` <span class="hljs-type">char</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">COLLATE</span> utf8mb4_bin <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
-  `title` <span class="hljs-type">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">COLLATE</span> utf8mb4_bin <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
-  `body` text <span class="hljs-keyword">COLLATE</span> utf8mb4_bin <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
+  `title_ja_jp` <span class="hljs-type">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">COLLATE</span> utf8mb4_bin <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
+  `title_en_us` <span class="hljs-type">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">COLLATE</span> utf8mb4_bin <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
+  `body_ja_jp` text <span class="hljs-keyword">COLLATE</span> utf8mb4_bin <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
+  `body_en_us` text <span class="hljs-keyword">COLLATE</span> utf8mb4_bin <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
   `tags` <span class="hljs-type">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">COLLATE</span> utf8mb4_bin <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
   `url` text <span class="hljs-keyword">COLLATE</span> utf8mb4_bin <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
   `likes_count` <span class="hljs-type">int</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
@@ -1149,7 +1151,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 <td></td>
 </tr>
 <tr>
-<td>title</td>
+<td>title_ja_jp</td>
 <td>varchar(255)</td>
 <td></td>
 <td>false</td>
@@ -1158,7 +1160,25 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 <td></td>
 </tr>
 <tr>
-<td>body</td>
+<td>title_en_us</td>
+<td>varchar(255)</td>
+<td></td>
+<td>false</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>body_ja_jp</td>
+<td>text</td>
+<td></td>
+<td>false</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>body_en_us</td>
 <td>text</td>
 <td></td>
 <td>false</td>
