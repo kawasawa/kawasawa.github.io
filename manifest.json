@@ -1,6 +1,7 @@
 {
-  "short_name": "@kawasawa",
   "name": "Kazuki Awasawa - Portfolio site",
+  "short_name": "@kawasawa",
+  "description": "エンジニアとして活動する 粟澤 和紀 のポートフォリオサイトです。",
   "icons": [
     {
       "src": "favicon.ico",
