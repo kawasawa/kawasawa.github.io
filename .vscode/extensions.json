@@ -18,6 +18,10 @@
     "esbenp.prettier-vscode",
     "Prisma.prisma",
 
+    // AI コーディング
+    "GitHub.copilot",
+    "GitHub.copilot-chat",
+
     // その他
     "streetsidesoftware.code-spell-checker",
     "Gruntfuggly.todo-tree",
