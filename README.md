@@ -177,7 +177,11 @@ app 配下がフロントエンド (React.js) 、mock 配下がバックエン�
 ```:
 +--.github/                    # GitHub 関連ファイル
 |  |
+|  +--instructions/            # GitHub Copilot カスタムインストラクション (用途別)
+|  |
 |  +--workflows/               # GitHub Actions ワークフロー
+|  |
+|  +--copilot-instructions.md  # GitHub Copilot カスタムインストラクション (共通)
 |
 |
 +--.vscode/                    # VSCode 設定ファイル

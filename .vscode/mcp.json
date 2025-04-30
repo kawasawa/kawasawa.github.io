@@ -1,0 +1,35 @@
+// ******************************************************************************
+// MCP サーバ設定
+// ******************************************************************************
+
+{
+  "inputs": [
+    {
+      "id": "github_token",
+      "type": "promptString",
+      "description": "GitHub Personal Access Token",
+      "password": true
+    }
+  ],
+  "servers": {
+    // "github": {
+    //   "command": "docker",
+    //   "args": [
+    //     "run",
+    //     "--rm",
+    //     "-i", // MCP サーバとのやり取りは標準入出力で行われるため
+    //     "-e",
+    //     "GITHUB_PERSONAL_ACCESS_TOKEN",
+    //     "ghcr.io/github/github-mcp-server"
+    //   ],
+    //   "env": {
+    //     "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github_token}"
+    //   }
+    // },
+    "context7": {
+      // "〇〇について教えて use context7" のようにして問い合わせる
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"]
+    }
+  }
+}
