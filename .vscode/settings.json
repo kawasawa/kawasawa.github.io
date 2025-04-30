@@ -30,6 +30,17 @@
   "jest.jestCommandLine": "yarn test:ut",
   "jest.runMode": "on-demand",
 
+  // AI の設定
+  "chat.agent.enabled": true,
+  "chat.promptFiles": true,
+  "chat.instructionsFilesLocations": {
+    ".github/instructions": true
+  },
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+  "github.copilot.chat.languageContext.typescript.enabled": true,
+  "github.copilot.chat.languageContext.inline.typescript.enabled": true,
+  "github.copilot.chat.languageContext.fix.typescript.enabled": true,
+
   // 拡張子の関連付け
   "files.associations": {
     "*.env.*": "properties",
