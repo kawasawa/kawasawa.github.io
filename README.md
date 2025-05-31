@@ -169,6 +169,16 @@ VS Code でのコーディングとテストのほか、Sourcetree でのバー�
 | 性能テストツール    | [K6](https://k6.io/)                                              |
 | 作図ツール          | [draw.io](https://app.diagrams.net/)                              |
 
+### MCP サーバ
+
+GitHub 等のクラウドリソースにアクセスするための既存の MCP サーバの他、ソースコード内の特定のアノテーションコメントが付与された記載をナレッジとして生成 AI の情報源にさせる自作サーバも構築しています。  
+収集されたコメントはベクトルデータに変換され、 Python オブジェクト形式でシリアライズしキャッシュされます。
+
+> [!NOTE]
+> MCP ナレッジサーバについては [README.md](https://github.com/kawasawa/kawasawa.github.io/blob/master/mcp/knowledge/README.md) をご参照ください。
+
+![mcp](./docs/images/mcp.drawio.png)
+
 ### ディレクトリ構成
 
 プロダクトのディレクトリ構成を下記に示します。  
@@ -223,6 +233,11 @@ app 配下がフロントエンド (React.js) 、mock 配下がバックエン�
 +--docs/                       # ドキュメント類
 |  |
 |  +--images/                  # 画像ファイル
+|
+|
++--mcp/                        # MCP サーバ
+|  |
+|  +--knowledge/               # ナレッジサーバ
 |
 |
 +--mock/                       # モック
