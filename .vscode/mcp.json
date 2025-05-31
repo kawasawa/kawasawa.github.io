@@ -30,6 +30,10 @@
       // "〇〇について教えて use context7" のようにして問い合わせる
       "command": "npx",
       "args": ["-y", "@upstash/context7-mcp@latest"]
+    },
+    "kawasawa-knowledge": {
+      "command": "${workspaceFolder}/mcp/knowledge/run.sh",
+      "args": ["--workspace", "${workspaceFolder}"]
     }
   }
 }
