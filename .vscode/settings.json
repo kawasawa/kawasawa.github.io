@@ -5,6 +5,7 @@
 {
   // フォーマッターの設定
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[python]": { "editor.defaultFormatter": "ms-python.black-formatter" },
   "[prisma]": { "editor.defaultFormatter": "Prisma.prisma" },
   "eslint.workingDirectories": [{ "mode": "auto" }],
   "javascript.updateImportsOnFileMove.enabled": "always",
@@ -18,7 +19,10 @@
 
   // フォーマットタイミングを指定
   "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": { "source.fixAll.eslint": "explicit" },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
 
   // テスターの設定
   "jest.jestCommandLine": "yarn test:ut",

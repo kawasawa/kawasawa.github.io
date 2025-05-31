@@ -35,6 +35,14 @@
       "env": {
         "FASTMCP_LOG_LEVEL": "ERROR"
       }
+    },
+    "kawasawa-knowledge": {
+      "command": "python3",
+      "args": [
+        "${workspaceFolder}/mcp/knowledge/main.py",
+        "--workspace",
+        "${workspaceFolder}"
+      ]
     }
   }
 }
