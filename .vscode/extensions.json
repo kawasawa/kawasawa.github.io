@@ -18,6 +18,11 @@
     "esbenp.prettier-vscode",
     "Prisma.prisma",
 
+    // MCP 開発
+    "ms-python.python",
+    "ms-python.black-formatter",
+    "ms-python.isort",
+
     // AI コーディング
     "GitHub.copilot",
     "GitHub.copilot-chat",
