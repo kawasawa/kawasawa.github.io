@@ -35,6 +35,10 @@
       "env": {
         "FASTMCP_LOG_LEVEL": "ERROR"
       }
+    },
+    "kawasawa-knowledge": {
+      "command": "${workspaceFolder}/mcp/knowledge/run.sh",
+      "args": ["--workspace", "${workspaceFolder}"]
     }
   }
 }
